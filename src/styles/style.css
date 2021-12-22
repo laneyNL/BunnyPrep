@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(235, 232, 232);
+}
+
+h1 {
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  color: rgb(59, 169, 169);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-column-gap: 10px;
+  margin: 30px;
+}
+
+.room {
+  border: 1px solid black;
+}
+
+.left-sidebar {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100px;
+}
+
+
+.right-sidebar {
+  border: 1px solid black;
+
+}
+.links {
+  display: flex;
+  justify-content: space-evenly;
+}
+.links a {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  background-color: rgb(59, 169, 169);
+  text-decoration: none;
+}
