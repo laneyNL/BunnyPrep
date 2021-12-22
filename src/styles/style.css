@@ -1,5 +1,6 @@
 body {
   background-color: rgb(235, 232, 232);
+  
 }
 
 h1 {
@@ -18,7 +19,7 @@ h1 {
 }
 
 .room {
-  border: 1px solid black;
+  margin: auto;
 }
 
 .left-sidebar {
@@ -27,17 +28,20 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100px;
+  margin: auto;
 }
 
 
 .right-sidebar {
   border: 1px solid black;
+  margin: auto;
 
 }
 .links {
   display: flex;
   justify-content: space-evenly;
 }
+
 .links a {
   border: 1px solid black;
   border-radius: 5px;
@@ -45,4 +49,8 @@ h1 {
   color: black;
   background-color: rgb(59, 169, 169);
   text-decoration: none;
+}
+
+canvas {
+  margin: auto;
 }
