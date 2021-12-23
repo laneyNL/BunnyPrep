@@ -21,18 +21,18 @@ export default class Room {
   }
   
   background() {
-    this.room.fillStyle = "#C6C0C0";
+    this.room.fillStyle = "white";
     this.room.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
-    this.rightRectangle(350, 15, 333, 150, 'rgba(28, 154, 218, 0.23)');
-    this.leftRectangle(350,15, 333, 149, 'rgba(28, 154, 218, 0.23)');
-    this.floorRectangle(350, 165, 370, 370, 'rgba(28, 154, 218, 0.23)');
+    this.rightRectangle(350, 15, 333, 150, 'rgba(242, 236, 207, 0.8)');
+    this.leftRectangle(350, 15, 333, 149, 'rgba(242, 236, 207, 0.8)');
+    this.floorRectangle(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');
 
   }
   
   window() {
     this.rightRectangle(500,110, 135, 100, 'white');
-    this.floorRectangle(510,105,150,10,'white');
-    this.leftRectangle(647,175,10,98);
+    this.floorRectangle(506,106,150,5,'white');
+    this.leftRectangle(643,176,5,99, 'white');
     this.rightRectangle(510, 130, 30, 30, 'skyblue');
     this.rightRectangle(550, 150, 30, 30, 'skyblue');
     this.rightRectangle(590, 170, 30, 30, 'skyblue');
@@ -43,7 +43,7 @@ export default class Room {
 
   door() {
     this.leftRectangle(115,175,50,105,'white');
-    this.leftRectangle(110,185,40,100,'pink');
+    this.leftRectangle(110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
     this.room.fillStyle = 'yellow';
     this.room.beginPath();
     this.room.arc(100, 240, 5, 0, Math.PI*2, true);
@@ -53,13 +53,13 @@ export default class Room {
   }
 
   drawer() {
-    this.rightRectangle(330, 130, 100, 75, 'pink'); //drawer
-    this.floorRectangle(359, 114, 110, 30, 'pink');
-    this.leftRectangle(459,166, 25, 75, 'pink');
+    this.rightRectangle(330, 130, 100, 75, "rgba(77, 67, 56)"); //drawer
+    this.floorRectangle(359, 114, 110, 30, "rgba(77, 67, 56)");
+    this.leftRectangle(459,166, 25, 75, "rgba(77, 67, 56)");
     this.rightRectangle(340,150, 80, 20, 'white');
     this.rightRectangle(340,180, 80, 20, 'white');
-    this.rightRectangle(375,175, 10, 5, 'pink');
-    this.rightRectangle(375,205, 10, 5, 'pink');
+    this.rightRectangle(375,175, 10, 5, "rgba(77, 67, 56)");
+    this.rightRectangle(375,205, 10, 5, "rgba(77, 67, 56)");
   }
   tv() {
     this.rightRectangle(350, 60, 80, 70, 'gray') //tv
@@ -93,7 +93,7 @@ export default class Room {
     this.leftRectangle(258,325,25,94, 'pink');
     this.floorRectangle(142,267,125,30, 'pink');
     this.rightRectangle(120, 280, 110, 100, 'pink');
-    this.leftRectangle(300,350,40,50, 'pink');
+    this.leftRectangle(300,348,40,50, 'pink');
   }
 
   circleBorder(x,y, radius, color) {
