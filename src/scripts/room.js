@@ -10,8 +10,14 @@ export default class Room {
     this.room.strokeStyle = "black";
     this.background();
     this.door();
+    this.drawer();
     this.tv();
-    this.rug();
+    // this.rug();
+    this.mat();
+    this.box();
+    this.water();
+    this.couch();
+    this.window();
   }
   
   background() {
@@ -23,7 +29,20 @@ export default class Room {
 
   }
   
+  window() {
+    this.rightRectangle(500,110, 135, 100, 'white');
+    this.floorRectangle(510,105,150,10,'white');
+    this.leftRectangle(647,175,10,98);
+    this.rightRectangle(510, 130, 30, 30, 'skyblue');
+    this.rightRectangle(550, 150, 30, 30, 'skyblue');
+    this.rightRectangle(590, 170, 30, 30, 'skyblue');
+    this.rightRectangle(510, 170, 30, 30, 'skyblue');
+    this.rightRectangle(550, 190, 30, 30, 'skyblue');
+    this.rightRectangle(590, 210, 30, 30, 'skyblue');
+  }
+
   door() {
+    this.leftRectangle(115,175,50,105,'white');
     this.leftRectangle(110,185,40,100,'pink');
     this.room.fillStyle = 'yellow';
     this.room.beginPath();
@@ -33,23 +52,58 @@ export default class Room {
     this.room.closePath();
   }
 
+  drawer() {
+    this.rightRectangle(330, 130, 100, 75, 'pink'); //drawer
+    this.floorRectangle(359, 114, 110, 30, 'pink');
+    this.leftRectangle(459,166, 25, 75, 'pink');
+    this.rightRectangle(340,150, 80, 20, 'white');
+    this.rightRectangle(340,180, 80, 20, 'white');
+    this.rightRectangle(375,175, 10, 5, 'pink');
+    this.rightRectangle(375,205, 10, 5, 'pink');
+  }
   tv() {
-    this.rightRectangle(370, 150, 100, 75, 'pink')
-    this.rightRectangle(380, 85, 80, 70, 'gray')
-    this.rightRectangle(390, 95, 60, 60, 'skyblue')
-
+    this.rightRectangle(350, 60, 80, 70, 'gray') //tv
+    this.leftRectangle(438,98,5,70);
+    this.floorRectangle(357,57,87,5);
+    this.rightRectangle(360, 70, 60, 60, 'skyblue')
   }
 
-  rug() {
-    // this.floorRectangle(550, 310, 50, 70, 'red';
-    // this.room.fillStyle="pink";
-    // this.room.beginPath();
-    // this.room.moveTo(375,420);
-    // this.room.arc(375,350, 70, 0, Math.PI*2, true);
-    // this.room.closePath();
-    // this.room.stroke();
-    // this.room.fill();
-    this.floorRectangle(400,300,50,80,'pink');
+  // rug() {
+  //   this.circleBorder(270,300,70,'red');
+  // }
+
+  mat() {
+    this.floorRectangle(500,250,170,110,'pink');
+  }
+  
+  box() {
+    this.leftRectangle(565,280,70,10,'grey');
+    this.rightRectangle(495,317, 70,10, 'grey');
+    this.leftRectangle(635,317,70,10,'grey');
+    this.floorRectangle(565,287,70,70,'lightyellow');
+  }
+
+  water() {
+    this.circleBorder(500,280,20,'grey');
+    this.circleBorder(500,280,15,'blue');
+  }
+
+  couch() {
+    this.floorRectangle(170,300,125,30, 'lightyellow');
+    this.leftRectangle(258,325,25,94, 'pink');
+    this.floorRectangle(142,267,125,30, 'pink');
+    this.rightRectangle(120, 280, 110, 100, 'pink');
+    this.leftRectangle(300,350,40,50, 'pink');
+  }
+
+  circleBorder(x,y, radius, color) {
+    this.room.fillStyle = color;
+    this.room.beginPath();
+    this.room.moveTo(x,y);
+    this.room.arc(x,y, radius, 0, Math.PI * 2, true);
+    this.room.closePath();
+    this.room.stroke();
+    this.room.fill();
   }
 
   rightRectangle(x1,y1, width, height, color) {
