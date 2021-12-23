@@ -13,21 +13,26 @@ export default class Room {
     this.tv();
     this.rug();
   }
-  
+
   background() {
     this.room.fillStyle = "#C6C0C0";
     this.room.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
-    this.rightRectangle(350, 15, 333, 150, 'rgba(28, 154, 218, 0.23)');
-    this.leftRectangle(350,15, 333, 149, 'rgba(28, 154, 218, 0.23)');
-    this.floorRectangle(350, 165, 370, 370, 'rgba(28, 154, 218, 0.23)');
+    // this.rightRectangle(350, 10, 175, 130, 'rgba(28, 154, 218, 0.23)');
+    // this.leftRectangle(170, 185, 175, 130, 'rgba(28, 154, 218, 0.23)');
+    // this.floorRectangle(350, 140, 250, 250,'rgba(28, 154, 218, 0.23)');
+
+
+    this.rightRectangle(350, 15, 300, 150, 'rgba(28, 154, 218, 0.23)');
+    this.leftRectangle(50, 165, 300, 150, 'rgba(28, 154, 218, 0.23)');
+    this.floorRectangle(350, 165, 300, 300, 'rgba(28, 154, 218, 0.23)');
 
   }
-  
+
   door() {
-    this.leftRectangle(110,185,40,100,'pink');
+    this.leftRectangle(60, 250, 40, 100, 'pink');
     this.room.fillStyle = 'yellow';
     this.room.beginPath();
-    this.room.arc(100, 240, 5, 0, Math.PI*2, true);
+    this.room.arc(70, 300, 5, 0, Math.PI * 2, true);
     this.room.stroke();
     this.room.fill();
     this.room.closePath();
@@ -49,10 +54,10 @@ export default class Room {
     // this.room.closePath();
     // this.room.stroke();
     // this.room.fill();
-    this.floorRectangle(400,300,50,80,'pink');
+    this.floorRectangle(400, 300, 50, 80, 'pink');
   }
 
-  rightRectangle(x1,y1, width, height, color) {
+  rightRectangle(x1, y1, width, height, color) {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x1, y1); //top left corner
@@ -67,12 +72,10 @@ export default class Room {
   leftRectangle(x1, y1, width, height, color) {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
-    this.room.moveTo(x1, y1); //top right corner
+    this.room.moveTo(x1, y1); //top left corner
+    this.room.lineTo(x1 + width, y1 - (width / 2));
+    this.room.lineTo(x1 + width, y1 + height - (width / 2));
     this.room.lineTo(x1, y1 + height);
-    this.room.lineTo(x1 - width, y1 + height + (width / 2));
-
-    this.room.lineTo(x1 - width, y1 + (width / 2));
-
     this.room.closePath();
     this.room.stroke();
     this.room.fill();
@@ -82,13 +85,11 @@ export default class Room {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x1, y1); //top corner
-
-    let yHeight = ((height**2)/5)**0.5;
-    let yWidth = ((width ** 2) / 5) ** 0.5;
-    this.room.lineTo(x1 + (2*yWidth), y1 + yWidth);
-    this.room.lineTo(x1 + (2*yWidth) - (2*yHeight), y1 + yWidth + yHeight);
-    this.room.lineTo(x1 - (2*yHeight), y1 + yHeight);
-    
+    this.room.lineTo(x1 + width, y1 + (width / 2));
+    // let y2 = ((width ** 2) + (height ** 2)) ** 0.5;
+    let y2 = ((width ^ 2) + (height ^ 2) - (2 * width * height * Math.cos(70 * (Math.PI / 180)))) ^ 0.5;
+    this.room.lineTo(x1, y1 + y2);
+    this.room.lineTo(x1 - height, y1 + (height / 2));
     this.room.closePath();
     this.room.stroke();
     this.room.fill();

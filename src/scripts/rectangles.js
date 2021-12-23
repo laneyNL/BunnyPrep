@@ -114,4 +114,28 @@ export default class Room {
     this.room.stroke();
     this.room.fill();
   }
+
+  floorRectangle(x1, y1, width, height, color) {
+    this.room.fillStyle = color;
+    this.room.beginPath();//slope ~ 1/2
+    this.room.moveTo(x1, y1); //top corner
+    this.room.lineTo(x1 + width, y1 + (width / 2));
+    let y2 = ((width ** 2) + (height ** 2)) ** 0.5
+    this.room.lineTo(x1, y1 + (y2));
+    this.room.lineTo(x1 - height, y1 + (height / 2));
+    this.room.closePath();
+    this.room.stroke();
+    this.room.fill();
+  }
+
+
+    // floorRectangle(x1, y1, width, height, color) {
+  //   this.room.save();
+  //   this.room.fillStyle = color;
+  //   this.room.translate(x1,y1);
+  //   this.room.rotate((Math.PI/180)*45);
+  //   this.room.translate(-x1,-y1);
+  //   this.room.fillRect(x1,y1,width,height);
+  //   this.room.restore();
+  // }
 }
