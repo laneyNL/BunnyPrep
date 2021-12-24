@@ -1,18 +1,14 @@
 <h1>Bunny Prep</h1>
 
 <h2>Background</h2>
-Bunny Prep is an interactive, educational 2D game that will teach you how to care for your bunny or rabbit. The user begins the game by choosing a rabbit to adopt. Prompts will then give on what tasks need to be completed to keep their rabbit happy. As the game progresses the user will be taught different facts about rabbit care and will be linked to different resources to learn more. If a rabbit’s happiness gauge falls to 0, the user will lose the game.
+Bunny Prep is an interactive, educational 2D game that will teach you how to care for your rabbit. The user begins the game by choosing a rabbit to adopt. Prompts will then give on what tasks need to be completed to keep their rabbit happy. As the game progresses the user will be taught different facts about rabbit care and will be linked to different resources to learn more. If a rabbit’s happiness gauge falls to 0, the user will lose the game.
 
 
 <h2>Functionality & MVPs</h2>
- In Bunny Prep, the user will be able to: 
+ In Bunny Prep, the game will feature: 
  <ul>
-  <li>Move the rabbit with the cursor to complete assigned tasks. </li>
-  <li>Make choices that will impact the rabbits happiness and health. </li>
-  <li></li>
-</ul>
-The game will also feature:
-<ul>
+  <li>User control of the rabbit with the cursor to complete assigned tasks. </li>
+  <li>Game choices that will impact the rabbits happiness and health. </li>
   <li>A rabbit happiness gauge that will change based on the user's actions.</li>
   <li>A running total cost tally to emphasize the monetary commitments of owning a rabbit.</li>
   <li>A sidebar will all facts learned throughout the game.</li>
