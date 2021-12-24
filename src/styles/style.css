@@ -30,12 +30,16 @@ h1 {
   justify-content: space-evenly;
   height: 100px;
   margin: auto;
+  width: 200px;
+  height: 500px;
 }
 
 
 .right-sidebar {
   border: 1px solid black;
   margin: auto;
+  width: 150px;
+  height: 500px;
 
 }
 .links {
