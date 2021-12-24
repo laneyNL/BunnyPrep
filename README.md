@@ -8,7 +8,7 @@ Bunny Prep is an interactive, educational 2D game that will teach you how to car
  In Bunny Prep, the game will feature: 
  <ul>
   <li>User control of the rabbit with the cursor to complete assigned tasks. </li>
-  <li>Game choices that will impact the rabbits happiness and health. </li>
+  <li>Game choices that will impact the rabbit's happiness and health. </li>
   <li>A rabbit happiness gauge that will change based on the user's actions.</li>
   <li>A running total cost tally to emphasize the monetary commitments of owning a rabbit.</li>
   <li>A sidebar with all facts learned throughout the game.</li>
