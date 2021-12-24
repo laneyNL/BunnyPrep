@@ -24,23 +24,23 @@ h1 {
 }
 
 .left-sidebar {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100px;
-  margin: auto;
   width: 200px;
-  height: 500px;
 }
 
+.left-sidebar, .right-sidebar{
+  border: 1px solid black;
+  margin: auto;
+  height: 500px;
+  background-color: rgb(59, 169, 169);
+}
 
 .right-sidebar {
   border: 1px solid black;
   margin: auto;
   width: 150px;
-  height: 500px;
-
 }
 .links {
   display: flex;
