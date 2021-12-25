@@ -16,8 +16,8 @@ export default class Room {
     this.mat();
     this.box();
     this.water();
-    this.couch();
-    this.window();
+    // this.couch();
+    // this.window();
   }
   
   background() {
@@ -30,15 +30,16 @@ export default class Room {
   }
   
   window() {
-    this.rightRectangle(500,110, 135, 100, 'white');
-    this.floorRectangle(506,106,150,5,'white');
-    this.leftRectangle(643,176,5,99, 'white');
-    this.rightRectangle(510, 130, 30, 30, 'skyblue');
-    this.rightRectangle(550, 150, 30, 30, 'skyblue');
-    this.rightRectangle(590, 170, 30, 30, 'skyblue');
-    this.rightRectangle(510, 170, 30, 30, 'skyblue');
-    this.rightRectangle(550, 190, 30, 30, 'skyblue');
-    this.rightRectangle(590, 210, 30, 30, 'skyblue');
+    // this.rightCuboid(500,110,135,100, 'white', 5);
+    // this.rightRectangle(500,110, 135, 100, 'white');
+    // this.floorRectangle(506,106,150,5,'white');
+    // this.leftRectangle(643,176,5,99, 'white');
+    // this.rightRectangle(510, 130, 30, 30, 'skyblue');
+    // this.rightRectangle(550, 150, 30, 30, 'skyblue');
+    // this.rightRectangle(590, 170, 30, 30, 'skyblue');
+    // this.rightRectangle(510, 170, 30, 30, 'skyblue');
+    // this.rightRectangle(550, 190, 30, 30, 'skyblue');
+    // this.rightRectangle(590, 210, 30, 30, 'skyblue');
   }
 
   door() {
@@ -110,21 +111,27 @@ export default class Room {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x1, y1); //top left corner
+    // let yHeight = this.changeY(height);
+    // let yWidth = this.changeY(width);
+    // this.room.lineTo(x1 + (2*(yWidth)), y1 + yWidth);
+    // this.room.lineTo(x1 + width, y1 + height + (width / 2));
+    // this.room.lineTo(x1, y1 + height);
     this.room.lineTo(x1 + width, y1 + (width / 2));
     this.room.lineTo(x1 + width, y1 + height + (width / 2));
     this.room.lineTo(x1, y1 + height);
+
     this.room.closePath();
     this.room.stroke();
     this.room.fill();
-
   }
+
   leftRectangle(x1, y1, width, height, color) {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x1, y1); //top right corner
+
     this.room.lineTo(x1, y1 + height);
     this.room.lineTo(x1 - width, y1 + height + (width / 2));
-
     this.room.lineTo(x1 - width, y1 + (width / 2));
 
     this.room.closePath();
@@ -137,21 +144,41 @@ export default class Room {
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x1, y1); //top corner
 
-    let yHeight = ((height**2)/5)**0.5;
-    let yWidth = ((width ** 2) / 5) ** 0.5;
-    this.room.lineTo(x1 + (2*yWidth), y1 + yWidth);
-    this.room.lineTo(x1 + (2*yWidth) - (2*yHeight), y1 + yWidth + yHeight);
-    this.room.lineTo(x1 - (2*yHeight), y1 + yHeight);
+    let rightPos = this.posChangeLinear(x1, y1, width, 'SE');
+    this.room.lineTo(...rightPos);
+    this.room.lineTo(...this.posChangeLinear(rightPos[0], rightPos[1], height, 'SW'));
+    this.room.lineTo(...this.posChangeLinear(x1, y1, height, 'SW'));
     
     this.room.closePath();
     this.room.stroke();
     this.room.fill();
   }
 
-  rightCuboid(x,y,width,height,color){
+  posChangeLinear(x, y, length, direction) {
+    let changeY = ((length ** 2) / 5) ** 0.5;
+    let changeX = 2*changeY;
+    switch(direction) {
+      case 'NE':
+        return [x + changeX, y - changeY];
+      case 'SE':
+        return [x + changeX, y + changeY];
+      case 'SW':
+        return [x - changeX, y + changeY];
+      case 'NW':
+        return [x - changeX, y - changeY];
+    }
+  }
+
+  rightCuboid(x,y,width,height,color, sideWidth){
     this.rightRectangle(x, y, width, height, color);
-    this.floorRectangle(359, 114, 110, 30, "rgba(77, 67, 56)");
-    this.leftRectangle(459, 166, 25, 75, "rgba(77, 67, 56)");
+    let yWidth = this.changeY(width);
+    let ySideWidth = this.changeY(sideWidth);
+
+    let sidePanelPos = [x+(2*yWidth)+(2*ySideWidth), y+yWidth-ySideWidth];
+    this.leftRectangle(...sidePanelPos, sideWidth, height, color);
+
+    let topPanelPos = this.posChangeLinear(x,y,sideWidth, 'NE');
+    this.floorRectangle(...topPanelPos, width, sideWidth, color);
   }
 
 }
