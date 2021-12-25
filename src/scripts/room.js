@@ -111,15 +111,15 @@ export default class Room {
   }
 
   
-  floorRectangle(x1, y1, width, height, color) {
+  floorRectangle(x, y, width, height, color) {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
-    this.room.moveTo(x1, y1); //top corner
+    this.room.moveTo(x, y); //top corner
 
-    let rightPos = this.changedPos(x1, y1, width, 'SE');
+    let rightPos = this.changedPos(x, y, width, 'SE');
     this.room.lineTo(...rightPos);
     this.room.lineTo(...this.changedPos(rightPos[0], rightPos[1], height, 'SW'));
-    this.room.lineTo(...this.changedPos(x1, y1, height, 'SW'));
+    this.room.lineTo(...this.changedPos(x, y, height, 'SW'));
     
     this.room.closePath();
     this.room.stroke();
@@ -139,7 +139,9 @@ export default class Room {
       case 'NW':
         return [x - changeX, y - changeY];
       case 'down':
-        return [x, y+length];
+        return [x, y + length];
+      case 'up':
+        return [x, y - length];
     }
   }
 
@@ -153,5 +155,20 @@ export default class Room {
     this.rectangle('left', ...sidePanelPos, sideWidth, height, color);
 
   }
+
+  floorCuboid(x,y,width,height,floorColor, sideHeight, sideColor){
+    this.floorRectangle(x,y,width,height,floorColor);
+    let leftSidePos = this.changedPos(x,y,sideHeight,up);
+    this.rectangle('left', ...leftSidePos, height, sideHeight, sideColor);
+
+    let frontSidePos = this.changedPos(...leftSidePos, height, 'SW');
+    this.rectangle('right',...frontSidePos, width, sideHeight, sideColor);
+
+    let rightSidePos = this.changedPos(...leftSidePos, width, 'SE');
+    this.rectangle('left', ...rightSidePos, width, sideHeight, sideColor);
+
+  }
+
+  
 
 }
