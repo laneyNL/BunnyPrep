@@ -16,7 +16,7 @@ export default class Room {
     this.mat();
     this.box();
     this.water();
-    // this.couch();
+    this.couch();
     this.window();
   }
   
@@ -74,11 +74,9 @@ export default class Room {
   }
 
   couch() {
-    this.floorRectangle(170,300,125,30, 'lightyellow');
-    this.rectangle('left',258,325,25,94, 'pink');
-    this.floorRectangle(142,267,125,30, 'pink');
-    this.rectangle('right',120, 280, 110, 100, 'pink');
-    this.rectangle('left',300,348,40,50, 'pink');
+    this.rightCuboid(115,320,70,50,'pink',60);
+    let nextSectionPos = this.changedPos(115,320, 70,'SE');
+    this.rightCuboid(...nextSectionPos,70,50,'pink',60);
   }
 
   borderedCircle(x,y, radius, color) {
@@ -157,6 +155,7 @@ export default class Room {
     this.floorRectangle(x,y,width,height,floorColor);
     let leftSidePos = this.changedPos(x,y,sideHeight,'up');
     this.rectangle('left', ...leftSidePos, height, sideHeight, sideColor);
+    this.rectangle('right', ...leftSidePos,width,sideHeight,sideColor);
 
     let frontSidePos = this.changedPos(...leftSidePos, height, 'SW');
     this.rectangle('right',...frontSidePos, width, sideHeight, sideColor);
