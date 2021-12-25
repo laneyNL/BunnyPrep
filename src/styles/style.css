@@ -10,6 +10,7 @@ h1 {
   padding: 10px;
   color: rgb(59, 169, 169);
   font-size: 50px;
+  position: relative;
 }
 
 .main {
@@ -23,39 +24,55 @@ h1 {
   margin: auto;
 }
 
-.left-sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 200px;
-}
 
-.left-sidebar, .right-sidebar{
-  border: 1px solid black;
+.left-sidebar, .right-sidebar, .popup, .links a{
+  border: 5px solid black;
   margin: auto;
+  border-radius: 5px;
   height: 500px;
   background-color: rgb(59, 169, 169);
 }
 
 .right-sidebar {
-  border: 1px solid black;
-  margin: auto;
   width: 150px;
+  text-align: center;
 }
+
+.left-sidebar, .popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+}
+
 .links {
   display: flex;
   justify-content: space-evenly;
 }
 
 .links a {
-  border: 1px solid black;
-  border-radius: 5px;
   padding: 5px;
   color: black;
-  background-color: rgb(59, 169, 169);
+  height: auto;
   text-decoration: none;
 }
 
 canvas {
   margin: auto;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  /* z-index: 1; */
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  background-color: bisque;
+}
+
+h1:hover + .popup {
+  display: flex;
 }
