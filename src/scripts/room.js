@@ -65,10 +65,7 @@ export default class Room {
   }
   
   box() {
-    this.rectangle('left',565,280,70,10,'grey');
-    this.rectangle('right',495,317, 70,10, 'grey');
-    this.rectangle('left',635,317,70,10,'grey');
-    this.floorRectangle(565,287,70,70,'lightyellow');
+    this.floorCuboid(565,287,70,70,'lightyellow', 10, 'grey');
   }
 
   water() {
@@ -156,9 +153,9 @@ export default class Room {
 
   }
 
-  floorCuboid(x,y,width,height,floorColor, sideHeight, sideColor){
+  floorCuboid(x,y,width,height,floorColor, sideHeight, sideColor) {
     this.floorRectangle(x,y,width,height,floorColor);
-    let leftSidePos = this.changedPos(x,y,sideHeight,up);
+    let leftSidePos = this.changedPos(x,y,sideHeight,'up');
     this.rectangle('left', ...leftSidePos, height, sideHeight, sideColor);
 
     let frontSidePos = this.changedPos(...leftSidePos, height, 'SW');
