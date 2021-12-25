@@ -20,6 +20,6 @@ export default class Game {
     const welcome = 'Welcome to Bunny Prep! This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
     this.submit.innerHTML = 'Begin Game';
-    this.submit.onclick = () => this.togglePopup;
+    this.submit.onclick = () => this.togglePopup();
   }
 }
