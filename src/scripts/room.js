@@ -77,9 +77,13 @@ export default class Room {
     this.rightCuboid(x, y,width,height,'pink',length);
     let nextSectionPos = this.changedPos(x, y, width,'SE');
     this.rightCuboid(...nextSectionPos,width,height,'pink',length);
+
     let buttonPos = this.changedPos(x, y, width/2, 'SE');
     buttonPos = this.changedPos(...buttonPos, length/2, 'NE');
     this.borderedCircle(...buttonPos, 5, 'pink');
+    let nextButtonPos = this.changedPos(...buttonPos, width, 'SE');
+    this.borderedCircle(...nextButtonPos, 5, 'pink');
+
   }
 
   borderedCircle(x,y, radius, color) {
@@ -166,10 +170,6 @@ export default class Room {
     let rightSidePos = this.changedPos(...leftSidePos, width, 'SE');
     this.rectangle('left', ...rightSidePos, width, sideHeight, sideColor);
 
-  }
-
-  repeatShape(x1,y1, direction, shape) {
-    
   }
 
 }
