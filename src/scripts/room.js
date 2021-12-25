@@ -76,18 +76,15 @@ export default class Room {
   }
 
   couch(x, y, width, height, length) {
-    // this.rightCuboid(x, y,width,height,'pink',length);
-    // let nextSectionPos = this.changedPos(x, y, width,'SE');
-    // this.rightCuboid(...nextSectionPos,width,height,'pink',length);
+    let buttonPos = this.changedPos(x, y, width / 2, 'SE');
+    buttonPos = this.changedPos(...buttonPos, length / 2, 'NE');
 
-    // this.repeatShape(2, , () => { this.rightCuboid(x, y, width, height, 'pink', length) });
-
-    let buttonPos = this.changedPos(x, y, width/2, 'SE');
-    buttonPos = this.changedPos(...buttonPos, length/2, 'NE');
-    this.borderedCircle(...buttonPos, 5, 'pink');
-    let nextButtonPos = this.changedPos(...buttonPos, width, 'SE');
-    this.borderedCircle(...nextButtonPos, 5, 'pink');
-
+    let shape = () => {
+      this.rightCuboid(x, y, width, height, 'pink', length);
+      this.borderedCircle(...buttonPos, 5, 'pink');
+    }
+    
+    this.repeatShape(2, ...this.changeXY(width), shape);
   }
 
   borderedCircle(x,y, radius, color) {
