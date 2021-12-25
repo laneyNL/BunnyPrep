@@ -70,7 +70,7 @@ export default class Room {
   }
 
   // rug() {
-  //   this.circleBorder(270,300,70,'red');
+  //   this.borderedCircle(270,300,70,'red');
   // }
 
   mat() {
@@ -85,8 +85,8 @@ export default class Room {
   }
 
   water() {
-    this.circleBorder(500,280,20,'grey');
-    this.circleBorder(500,280,15,'blue');
+    this.borderedCircle(500,280,20,'grey');
+    this.borderedCircle(500,280,15,'blue');
   }
 
   couch() {
@@ -97,7 +97,7 @@ export default class Room {
     this.rectangle('left',300,348,40,50, 'pink');
   }
 
-  circleBorder(x,y, radius, color) {
+  borderedCircle(x,y, radius, color) {
     this.room.fillStyle = color;
     this.room.beginPath();
     this.room.moveTo(x,y);
@@ -159,11 +159,11 @@ export default class Room {
   rightCuboid(x,y,width,height,color, sideWidth){
     this.rectangle('right',x, y, width, height, color);
 
-    let topPanelPos = this.changedPos(x,y,sideWidth, 'NE');
+    let topPanelPos = this.changedPos(x,y,sideWidth, 'NE'); //top right of top panel
     this.floorRectangle(...topPanelPos, width, sideWidth, color);
 
-    sidePanelPos = this.changedPos(...topPanelPos,width,'SE'); //top right of side panel
-    this.rectangle('left',...sidePanelPos, sideWidth, height, color);
+    let sidePanelPos = this.changedPos(...topPanelPos,width,'SE'); //top right of side panel
+    this.rectangle('left', ...sidePanelPos, sideWidth, height, color);
 
   }
 
