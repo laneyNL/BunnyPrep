@@ -45,28 +45,20 @@ export default class Room {
   door() {
     this.rectangle('left',115,175,50,105,'white');
     this.rectangle('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
-    this.room.fillStyle = 'yellow';
-    this.room.beginPath();
-    this.room.arc(100, 240, 5, 0, Math.PI*2, true);
-    this.room.stroke();
-    this.room.fill();
-    this.room.closePath();
+    this.borderedCircle(100,240,5,'yellow');
   }
 
   drawer() {
-    this.rectangle('right',330, 130, 100, 75, "rgba(77, 67, 56)"); //drawer
-    this.floorRectangle(359, 114, 110, 30, "rgba(77, 67, 56)");
-    this.rectangle('left',459,166, 25, 75, "rgba(77, 67, 56)");
-    this.rectangle('right',340,150, 80, 20, 'white');
-    this.rectangle('right',340,180, 80, 20, 'white');
+    this.rightCuboid(330, 130, 110, 75, "rgba(77, 67, 56)",30);
+    this.rectangle('right',344,152, 80, 20, 'white');
+    this.rectangle('right',344,182, 80, 20, 'white');
     this.rectangle('right',375,175, 10, 5, "rgba(77, 67, 56)");
     this.rectangle('right',375,205, 10, 5, "rgba(77, 67, 56)");
   }
+
   tv() {
-    this.rectangle('right',350, 60, 80, 70, 'gray') //tv
-    this.rectangle('left',438,98,5,70);
-    this.floorRectangle(357,57,87,5);
-    this.rectangle('right',360, 70, 60, 60, 'skyblue')
+    this.rightCuboid(348,48,95,80,'gray',4);
+    this.rectangle('right',358, 65, 70, 60, 'skyblue');
   }
 
   // rug() {
