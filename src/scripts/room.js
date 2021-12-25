@@ -31,8 +31,11 @@ export default class Room {
   
   window() {
     this.rightCuboid(500,110,135,100, 'white', 5);
-    this.repeatShape(2, 56, 28, () => { this.rectangle('right', 510, 130, 50, 30, 'skyblue') });
-    this.repeatShape(2, 56, 28, () => { this.rectangle('right', 510, 170, 50, 30, 'skyblue') });
+    let shape = () => { 
+      this.rectangle('right', 510, 130, 50, 30, 'skyblue');
+      this.rectangle('right', 510, 170, 50, 30, 'skyblue');
+    };
+    this.repeatShape(2, 56, 28, shape);
   }
 
   door() {
@@ -43,10 +46,11 @@ export default class Room {
 
   drawer() {
     this.rightCuboid(330, 130, 110, 75, "rgba(77, 67, 56)",30);
-    this.rectangle('right',344,152, 80, 20, 'white');
-    this.rectangle('right',344,182, 80, 20, 'white');
-    this.rectangle('right',375,175, 10, 5, "rgba(77, 67, 56)");
-    this.rectangle('right',375,205, 10, 5, "rgba(77, 67, 56)");
+    let shape = () => {
+      this.rectangle('right',344,152, 80, 20, 'white');
+      this.rectangle('right',375,175, 10, 5, "rgba(77, 67, 56)");
+    }
+    this.repeatShape(2, 0, 30, shape);
   }
 
   tv() {
@@ -72,9 +76,11 @@ export default class Room {
   }
 
   couch(x, y, width, height, length) {
-    this.rightCuboid(x, y,width,height,'pink',length);
-    let nextSectionPos = this.changedPos(x, y, width,'SE');
-    this.rightCuboid(...nextSectionPos,width,height,'pink',length);
+    // this.rightCuboid(x, y,width,height,'pink',length);
+    // let nextSectionPos = this.changedPos(x, y, width,'SE');
+    // this.rightCuboid(...nextSectionPos,width,height,'pink',length);
+
+    // this.repeatShape(2, , () => { this.rightCuboid(x, y, width, height, 'pink', length) });
 
     let buttonPos = this.changedPos(x, y, width/2, 'SE');
     buttonPos = this.changedPos(...buttonPos, length/2, 'NE');
@@ -126,9 +132,14 @@ export default class Room {
     this.room.fill();
   }
 
-  changedPos(x, y, length, direction) {
+  changeXY(length) {
     let changeY = ((length ** 2) / 5) ** 0.5;
-    let changeX = 2*changeY;
+    let changeX = 2 * changeY;
+    return [changeX, changeY];
+  }
+
+  changedPos(x, y, length, direction) {
+    let [changeX, changeY] = this.changeXY(length);
     switch(direction) {
       case 'NE':
         return [x + changeX, y - changeY];
