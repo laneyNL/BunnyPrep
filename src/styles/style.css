@@ -31,18 +31,19 @@ h1 {
   border-radius: 5px;
   height: 500px;
   background-color: rgb(59, 169, 169);
-}
-
-.right-sidebar {
-  width: 150px;
+  box-sizing: border-box;
   text-align: center;
-}
-
-.left-sidebar, .popup {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.right-sidebar {
+  width: 150px;
+}
+
+.left-sidebar{
   width: 200px;
 }
 
@@ -71,6 +72,8 @@ canvas {
   top: 25%;
   left: 25%;
   background-color: bisque;
+  padding: 5%;
+  font-size: 20px;
 }
 
 /* h1:hover + .popup {
