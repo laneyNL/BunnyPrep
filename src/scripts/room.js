@@ -31,10 +31,8 @@ export default class Room {
   
   window() {
     this.rightCuboid(500,110,135,100, 'white', 5);
-    this.rectangle('right',510, 130, 50, 30, 'skyblue');
-    this.rectangle('right',566, 158, 50, 30, 'skyblue');
-    this.rectangle('right',510, 170, 50, 30, 'skyblue');
-    this.rectangle('right',566, 198, 50, 30, 'skyblue');
+    this.repeatShape(2, 56, 28, () => { this.rectangle('right', 510, 130, 50, 30, 'skyblue') });
+    this.repeatShape(2, 56, 28, () => { this.rectangle('right', 510, 170, 50, 30, 'skyblue') });
   }
 
   door() {
@@ -170,6 +168,15 @@ export default class Room {
     let rightSidePos = this.changedPos(...leftSidePos, width, 'SE');
     this.rectangle('left', ...rightSidePos, width, sideHeight, sideColor);
 
+  }
+
+  repeatShape( times, changeX, changeY, shape) {
+    this.room.save();
+    for (let i = 0; i < times; i++) {
+      this.room.translate(i*changeX, i*changeY);
+      shape();
+    }
+    this.room.restore();
   }
 
 }
