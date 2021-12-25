@@ -23,17 +23,14 @@ export default class Room {
   background() {
     this.room.fillStyle = "white";
     this.room.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
-    this.rectangle('right', 350, 15, 333, 150, 'rgba(242, 236, 207, 0.8)');
-    this.rectangle('left', 350, 15, 333, 149, 'rgba(242, 236, 207, 0.8)');
+    this.rectangle('right', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
+    this.rectangle('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.floorRectangle(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');
 
   }
   
   window() {
     this.rightCuboid(500,110,135,100, 'white', 5);
-    // this.rectangle('right',500,110, 135, 100, 'white');
-    // this.floorRectangle(506,106,150,5,'white');
-    // this.leftRectangle(643,176,5,99, 'white');
     // this.rectangle('right',510, 130, 30, 30, 'skyblue');
     // this.rectangle('right',550, 150, 30, 30, 'skyblue');
     // this.rectangle('right',590, 170, 30, 30, 'skyblue');
