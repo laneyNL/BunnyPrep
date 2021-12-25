@@ -25,7 +25,7 @@ h1 {
 }
 
 
-.left-sidebar, .right-sidebar, .popup, .links a{
+.left-sidebar, .right-sidebar, #popup, .links a{
   border: 5px solid black;
   margin: auto;
   border-radius: 5px;
@@ -63,7 +63,7 @@ canvas {
   margin: auto;
 }
 
-.popup {
+#popup {
   position: absolute;
   display: flex;
   /* z-index: 1; */
@@ -74,6 +74,7 @@ canvas {
   background-color: bisque;
   padding: 5%;
   font-size: 20px;
+  font-weight: bold;
 }
 
 /* h1:hover + .popup {
