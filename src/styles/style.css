@@ -64,7 +64,7 @@ canvas {
 
 .popup {
   position: absolute;
-  display: none;
+  display: flex;
   /* z-index: 1; */
   width: 50%;
   height: 50%;
@@ -73,6 +73,6 @@ canvas {
   background-color: bisque;
 }
 
-h1:hover + .popup {
+/* h1:hover + .popup {
   display: flex;
-}
+} */
