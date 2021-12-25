@@ -16,7 +16,7 @@ export default class Room {
     this.mat();
     this.box();
     this.water();
-    this.couch();
+    this.couch(115, 330, 70, 40, 60);
     this.window();
   }
   
@@ -73,10 +73,13 @@ export default class Room {
     this.borderedCircle(500,280,15,'blue');
   }
 
-  couch() {
-    this.rightCuboid(115,320,70,50,'pink',60);
-    let nextSectionPos = this.changedPos(115,320, 70,'SE');
-    this.rightCuboid(...nextSectionPos,70,50,'pink',60);
+  couch(x, y, width, height, length) {
+    this.rightCuboid(x, y,width,height,'pink',length);
+    let nextSectionPos = this.changedPos(x, y, width,'SE');
+    this.rightCuboid(...nextSectionPos,width,height,'pink',length);
+    let buttonPos = this.changedPos(x, y, width/2, 'SE');
+    buttonPos = this.changedPos(...buttonPos, length/2, 'NE');
+    this.borderedCircle(...buttonPos, 5, 'pink');
   }
 
   borderedCircle(x,y, radius, color) {
@@ -165,6 +168,8 @@ export default class Room {
 
   }
 
-  
+  repeatShape(x1,y1, direction, shape) {
+    
+  }
 
 }
