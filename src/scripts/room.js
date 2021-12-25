@@ -148,4 +148,10 @@ export default class Room {
     this.room.fill();
   }
 
+  rightCuboid(x,y,width,height,color){
+    this.rightRectangle(x, y, width, height, color);
+    this.floorRectangle(359, 114, 110, 30, "rgba(77, 67, 56)");
+    this.leftRectangle(459, 166, 25, 75, "rgba(77, 67, 56)");
+  }
+
 }
