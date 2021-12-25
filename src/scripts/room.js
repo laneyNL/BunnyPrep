@@ -17,7 +17,7 @@ export default class Room {
     this.box();
     this.water();
     // this.couch();
-    // this.window();
+    this.window();
   }
   
   background() {
@@ -30,7 +30,7 @@ export default class Room {
   }
   
   window() {
-    // this.rightCuboid(500,110,135,100, 'white', 5);
+    this.rightCuboid(500,110,135,100, 'white', 5);
     // this.rectangle('right',500,110, 135, 100, 'white');
     // this.floorRectangle(506,106,150,5,'white');
     // this.leftRectangle(643,176,5,99, 'white');
@@ -159,11 +159,12 @@ export default class Room {
   rightCuboid(x,y,width,height,color, sideWidth){
     this.rectangle('right',x, y, width, height, color);
 
-    let sidePanelPos = thi;
-    this.rectangle('left',...sidePanelPos, sideWidth, height, color);
-
     let topPanelPos = this.changedPos(x,y,sideWidth, 'NE');
     this.floorRectangle(...topPanelPos, width, sideWidth, color);
+
+    sidePanelPos = this.changedPos(...topPanelPos,width,'SE'); //top right of side panel
+    this.rectangle('left',...sidePanelPos, sideWidth, height, color);
+
   }
 
 }
