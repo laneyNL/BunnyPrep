@@ -1,3 +1,6 @@
+import Bunny from './scripts/bunny';
+import Lesson from './scripts/lessons';
+
 export default class Game {
   constructor() {
     this.totalCost = 0;

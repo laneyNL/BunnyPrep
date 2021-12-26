@@ -5,4 +5,8 @@ export default class Bunny {
     this.name = name;
     this.happyMeter = 5;
   }
+
+  hay() {
+    
+  }
 }
