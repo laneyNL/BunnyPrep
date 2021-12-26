@@ -154,13 +154,13 @@ export default class Room {
   }
 
   rightCuboid(x,y,width,height,color, sideWidth){
-    this.rectangle('right',x, y, width, height, color);
+    this.rectangle('right',x -2, y +2, width, height, color);
 
     let topPanelPos = this.changedPos(x,y,sideWidth, 'NE'); //top right of top panel
-    this.floorRectangle(...topPanelPos, width, sideWidth, color);
+    this.floorRectangle(topPanelPos[0] - 2, topPanelPos[1], width, sideWidth, color);
 
     let sidePanelPos = this.changedPos(...topPanelPos,width,'SE'); //top right of side panel
-    this.rectangle('left', ...sidePanelPos, sideWidth, height, color);
+    this.rectangle('left', sidePanelPos[0] + 1, sidePanelPos[1] + 1, sideWidth, height, color);
 
   }
 

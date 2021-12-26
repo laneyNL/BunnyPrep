@@ -1,10 +1,10 @@
-import Bunny from './scripts/bunny';
-import Lesson from './scripts/lessons';
+// import Bunny from './scripts/bunny';
+// import Lesson from './scripts/lessons';
 
 export default class Game {
   constructor() {
     this.totalCost = 0;
-    this.display = 'none';
+    this.display = 'flex';
     this.popup = document.getElementById('popup');
     this.question = document.getElementById('question');
     this.submit = document.getElementById('submit')
@@ -15,8 +15,12 @@ export default class Game {
   }
   
   togglePopup() {
-    this.display === 'none' ? this.display = 'flex' : this.display = 'none';
-    this.popup.style.display = this.display; 
+    console.log(this.display);
+    let displayStyle = this.display === 'none' ? 'flex' : 'none';
+    this.display = displayStyle;
+    console.log(this.display)
+    this.popup.style.display = displayStyle;
+    console.log(this.popup.style.display)
   }
   
   welcome() {

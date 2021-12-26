@@ -1,11 +1,11 @@
-import Bunny from './scripts/bunny';
+// import Bunny from './scripts/bunny';
 
 export default class Lesson {
 
   constructor(bunny) {
     this.longDirections = '';
     this.taskBar = '';
-    this.bunnyName = bunny.name;
+    // this.bunnyName = bunny.name;
   }
 
   lesson1() {
