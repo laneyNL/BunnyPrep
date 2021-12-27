@@ -45,7 +45,7 @@ export default class Lesson {
 
   lesson8() {
     this.longDirections = `${this.name} is bored and would like to go outside. Would you like to allow ${this.name} to go outside to play?`;
-    // this.taskBar = ``;
+    this.taskBar = ``;
     this.info = `House bunnies should be kept indoors. When outside bunnies are exposed to diseases and predators.`
   }
 

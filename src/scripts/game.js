@@ -7,11 +7,12 @@ export default class Game {
     this.display = 'flex';
     this.popup = document.getElementById('popup');
     this.question = document.getElementById('question');
-    this.submit = document.getElementById('submit')
+    this.submit = document.getElementById('submit');
     this.play();
   }
   play() {
     this.welcome();
+    this.bunny = new Bunny(color);
   }
   
   togglePopup() {
@@ -28,5 +29,9 @@ export default class Game {
     this.question.innerHTML = welcome;
     this.submit.innerHTML = 'Begin Game';
     this.submit.onclick = () => this.togglePopup();
+  }
+
+  adoptAFriend() {
+    this.prompt = `Congratuations! You have made ${this.bunny.name} super happy. As you have become a good pet owner, would you like to adopt a friend for ${this.bunny.name}.`
   }
 }
