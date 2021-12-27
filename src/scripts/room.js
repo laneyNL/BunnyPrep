@@ -2,92 +2,92 @@ export default class Room {
   constructor(canvas) {
     this.room = canvas.getContext("2d");
     this.dimensions = { width: canvas.width, height: canvas.height };
-    this.drawroom();
+    this.drawRoom();
   }
 
-  drawroom() {
+  drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
-    this.background();
-    this.door();
-    this.drawer();
-    this.tv();
-    // this.rug();
-    this.mat();
-    this.box();
-    this.water();
-    this.couch(115, 330, 70, 40, 60);
-    this.window();
+    this.drawBackground();
+    this.drawDoor();
+    this.drawDrawer();
+    this.drawTV();
+    // this.drawRug();
+    this.drawMat();
+    this.drawBox();
+    this.drawWater();
+    this.drawCouch(115, 330, 70, 40, 60);
+    this.drawWindow();
   }
   
-  background() {
+  drawBackground() {
     // this.room.fillStyle = "white";
     // this.room.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
-    this.rectangle('right', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
-    this.rectangle('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
-    this.floorRectangle(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');
+    this.drawRect('right', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
+    this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
+    this.drawFloorRect(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');
 
   }
   
-  window() {
-    this.rightCuboid(500,110,135,100, 'white', 5);
+  drawWindow() {
+    this.drawRightCuboid(500,110,135,100, 'white', 5);
     let shape = () => { 
-      this.rectangle('right', 510, 130, 50, 30, 'skyblue');
-      this.rectangle('right', 510, 170, 50, 30, 'skyblue');
+      this.drawRect('right', 510, 130, 50, 30, 'skyblue');
+      this.drawRect('right', 510, 170, 50, 30, 'skyblue');
     };
     this.repeatShape(2, 56, 28, shape);
   }
 
-  door() {
-    this.rectangle('left',115,175,50,105,'white');
-    this.rectangle('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
-    this.borderedCircle(100,240,5,'yellow');
+  drawDoor() {
+    this.drawRect('left',115,175,50,105,'white');
+    this.drawRect('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
+    this.drawBorderedCircle(100,240,5,'yellow');
   }
 
-  drawer() {
-    this.rightCuboid(330, 130, 110, 75, "rgba(77, 67, 56)",30);
+  drawDrawer() {
+    this.drawRightCuboid(330, 130, 110, 75, "rgba(77, 67, 56)",30);
     let shape = () => {
-      this.rectangle('right',344,152, 80, 20, 'white');
-      this.rectangle('right',375,175, 10, 5, "rgba(77, 67, 56)");
+      this.drawRect('right',344,152, 80, 20, 'white');
+      this.drawRect('right',375,175, 10, 5, "rgba(77, 67, 56)");
     }
     this.repeatShape(2, 0, 30, shape);
   }
 
-  tv() {
-    this.rightCuboid(348,48,95,80,'gray',4);
-    this.rectangle('right',358, 65, 70, 60, 'skyblue');
+  drawTV() {
+    this.drawRightCuboid(348,48,95,80,'gray',4);
+    this.drawRect('right',358, 65, 70, 60, 'skyblue');
   }
 
-  // rug() {
-  //   this.borderedCircle(270,300,70,'red');
+  // drawRug() {
+  //   this.drawBorderedCircle(270,300,70,'red');
   // }
 
-  mat() {
-    this.floorRectangle(500,250,170,110,'pink');
+  drawMat() {
+    this.drawFloorRect(500,250,170,110,'pink');
   }
   
-  box() {
-    this.floorCuboid(565,287,70,70,'lightyellow', 10, 'grey');
+  drawBox() {
+    this.drawFloorCuboid(565,287,70,70,'lightyellow', 10, 'grey');
   }
 
-  water() {
-    this.borderedCircle(500,280,20,'grey');
-    this.borderedCircle(500,280,15,'blue');
+  drawWater() {
+    this.drawBorderedCircle(500,280,20,'grey');
+    this.drawBorderedCircle(500,280,15,'blue');
   }
 
-  couch(x, y, width, height, length) {
-    let buttonPos = this.changedPos(x, y, width / 2, 'SE');
-    buttonPos = this.changedPos(...buttonPos, length / 2, 'NE');
+  drawCouch(x, y, width, height, length) {
+    let buttonPos = this.nextCornerPos(x, y, width / 2, 'SE');
+    buttonPos = this.nextCornerPos(...buttonPos, length / 2, 'NE');
 
     let shape = () => {
-      this.rightCuboid(x, y, width, height, 'pink', length);
-      this.borderedCircle(...buttonPos, 5, 'pink');
+      this.drawRightCuboid(x, y, width, height, 'pink', length);
+      this.drawBorderedCircle(...buttonPos, 5, 'pink');
     }
     
-    this.repeatShape(2, ...this.changeXY(width), shape);
+    this.repeatShape(2, ...this.changeInXY(width), shape);
   }
 
-  borderedCircle(x,y, radius, color) {
+  drawBorderedCircle(x,y, radius, color) {
     this.room.fillStyle = color;
     this.room.beginPath();
     this.room.moveTo(x,y);
@@ -97,16 +97,16 @@ export default class Room {
     this.room.fill();
   }
 
-  rectangle(type, x, y, width, height, color) {
+  drawRect(type, x, y, width, height, color) {
     let direction = (type === 'right') ? 'SE' : 'SW';
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x, y); //top left corner
 
-    let downPos = this.changedPos(x, y, height, 'down');
+    let downPos = this.nextCornerPos(x, y, height, 'down');
     this.room.lineTo(...downPos);
-    this.room.lineTo(...this.changedPos(downPos[0], downPos[1], width, direction));
-    this.room.lineTo(...this.changedPos(x, y, width, direction));
+    this.room.lineTo(...this.nextCornerPos(downPos[0], downPos[1], width, direction));
+    this.room.lineTo(...this.nextCornerPos(x, y, width, direction));
 
     this.room.closePath();
     this.room.stroke();
@@ -114,29 +114,29 @@ export default class Room {
   }
 
   
-  floorRectangle(x, y, width, height, color) {
+  drawFloorRect(x, y, width, height, color) {
     this.room.fillStyle = color;
     this.room.beginPath();//slope ~ 1/2
     this.room.moveTo(x, y); //top corner
 
-    let rightPos = this.changedPos(x, y, width, 'SE');
+    let rightPos = this.nextCornerPos(x, y, width, 'SE');
     this.room.lineTo(...rightPos);
-    this.room.lineTo(...this.changedPos(rightPos[0], rightPos[1], height, 'SW'));
-    this.room.lineTo(...this.changedPos(x, y, height, 'SW'));
+    this.room.lineTo(...this.nextCornerPos(rightPos[0], rightPos[1], height, 'SW'));
+    this.room.lineTo(...this.nextCornerPos(x, y, height, 'SW'));
     
     this.room.closePath();
     this.room.stroke();
     this.room.fill();
   }
 
-  changeXY(length) {
+  changeInXY(length) {
     let changeY = ((length ** 2) / 5) ** 0.5;
     let changeX = 2 * changeY;
     return [changeX, changeY];
   }
 
-  changedPos(x, y, length, direction) {
-    let [changeX, changeY] = this.changeXY(length);
+  nextCornerPos(x, y, length, direction) {
+    let [changeX, changeY] = this.changeInXY(length);
     switch(direction) {
       case 'NE':
         return [x + changeX, y - changeY];
@@ -153,28 +153,28 @@ export default class Room {
     }
   }
 
-  rightCuboid(x,y,width,height,color, sideWidth){
-    this.rectangle('right',x -2, y +2, width, height, color);
+  drawRightCuboid(x,y,width,height,color, sideWidth){
+    this.drawRect('right',x -2, y +2, width, height, color);
 
-    let topPanelPos = this.changedPos(x,y,sideWidth, 'NE'); //top right of top panel
-    this.floorRectangle(topPanelPos[0] - 2, topPanelPos[1], width, sideWidth, color);
+    let topPanelPos = this.nextCornerPos(x,y,sideWidth, 'NE'); //top right of top panel
+    this.drawFloorRect(topPanelPos[0] - 2, topPanelPos[1], width, sideWidth, color);
 
-    let sidePanelPos = this.changedPos(...topPanelPos,width,'SE'); //top right of side panel
-    this.rectangle('left', sidePanelPos[0] + 1, sidePanelPos[1] + 1, sideWidth, height, color);
+    let sidePanelPos = this.nextCornerPos(...topPanelPos,width,'SE'); //top right of side panel
+    this.drawRect('left', sidePanelPos[0] + 1, sidePanelPos[1] + 1, sideWidth, height, color);
 
   }
 
-  floorCuboid(x,y,width,height,floorColor, sideHeight, sideColor) {
-    this.floorRectangle(x,y,width,height,floorColor);
-    let leftSidePos = this.changedPos(x,y,sideHeight,'up');
-    this.rectangle('left', ...leftSidePos, height, sideHeight, sideColor);
-    this.rectangle('right', ...leftSidePos,width,sideHeight,sideColor);
+  drawFloorCuboid(x,y,width,height,floorColor, sideHeight, sideColor) {
+    this.drawFloorRect(x,y,width,height,floorColor);
+    let leftSidePos = this.nextCornerPos(x,y,sideHeight,'up');
+    this.drawRect('left', ...leftSidePos, height, sideHeight, sideColor);
+    this.drawRect('right', ...leftSidePos,width,sideHeight,sideColor);
 
-    let frontSidePos = this.changedPos(...leftSidePos, height, 'SW');
-    this.rectangle('right',...frontSidePos, width, sideHeight, sideColor);
+    let frontSidePos = this.nextCornerPos(...leftSidePos, height, 'SW');
+    this.drawRect('right',...frontSidePos, width, sideHeight, sideColor);
 
-    let rightSidePos = this.changedPos(...leftSidePos, width, 'SE');
-    this.rectangle('left', ...rightSidePos, width, sideHeight, sideColor);
+    let rightSidePos = this.nextCornerPos(...leftSidePos, width, 'SE');
+    this.drawRect('left', ...rightSidePos, width, sideHeight, sideColor);
 
   }
 
