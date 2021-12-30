@@ -76,7 +76,10 @@ canvas {
   font-size: 20px;
   font-weight: bold;
 }
-
+.bunny-image {
+  width: 20%;
+  height: auto;
+}
 /* h1:hover + .popup {
   display: flex;
 } */
