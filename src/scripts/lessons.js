@@ -5,7 +5,7 @@ export default class Lesson {
   constructor(bunny) {
     this.longDirections = '';
     this.taskBar = '';
-    // this.bunnyName = bunny.name;
+    this.bunny = bunny;
   }
 
   lesson1() {

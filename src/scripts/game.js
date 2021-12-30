@@ -11,8 +11,8 @@ export default class Game {
     this.play();
   }
   play() {
-    this.welcome();
-    this.bunny = new Bunny(color);
+    this.welcomeMessage();
+    this.createBunny();
   }
   
   togglePopup() {
@@ -24,11 +24,15 @@ export default class Game {
     console.log(this.popup.style.display)
   }
   
-  welcome() {
-    const welcome = 'Welcome to Bunny Prep! This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. To begin, please choose which bunny you would like to adopt:'
+  welcomeMessage() {
+    const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
-    this.submit.innerHTML = 'Begin Game';
     this.submit.onclick = () => this.togglePopup();
+  }
+
+  createBunny() {
+    let welcomeForm = document.querySelector('.user-form')
+    this.bunny = newBunny(name, color);
   }
 
   adoptAFriend() {
