@@ -1,5 +1,5 @@
-// import Bunny from './scripts/bunny';
-// import Lesson from './scripts/lessons';
+import Bunny from './bunny.js';
+// import Lesson from './lessons.js';
 
 export default class Game {
   constructor() {
@@ -8,6 +8,7 @@ export default class Game {
     this.popup = document.getElementById('popup');
     this.question = document.getElementById('question');
     this.submit = document.getElementById('submit');
+    this.form = document.querySelector('.input-form')
     this.play();
   }
   play() {
@@ -15,24 +16,31 @@ export default class Game {
     this.createBunny();
   }
   
-  togglePopup() {
-    console.log(this.display);
+  togglePopup(event) {
+    event.preventDefault();
     let displayStyle = this.display === 'none' ? 'flex' : 'none';
     this.display = displayStyle;
-    console.log(this.display)
     this.popup.style.display = displayStyle;
-    console.log(this.popup.style.display)
+    this.checkRadioInput();
   }
   
   welcomeMessage() {
     const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
-    this.submit.onclick = () => this.togglePopup();
+    // this.form.onsubmit = (event) => this.togglePopup(event);
+    this.form.addEventListener('submit', this.togglePopup.bind(this));
+
   }
 
   createBunny() {
-    let welcomeForm = document.querySelector('.user-form')
-    this.bunny = newBunny(name, color);
+    let name = document.querySelector('[name=bunny-name]').value;
+    // let color = document.querySelector()
+    // this.bunny = new Bunny(name, color);
+  }
+
+  checkRadioInput() {
+    let radioInputs = document.querySelectorAll('radio');
+    radioInputs.forEach()
   }
 
   adoptAFriend() {
