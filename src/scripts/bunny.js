@@ -8,6 +8,7 @@ export default class Bunny {
     // this.loadBunnyImg();
     this.drawBunny();
     this.displayBunnyInfo();
+    this.loadBunnyImg();
   }
 
   loadBunnyImg() {
@@ -20,6 +21,7 @@ export default class Bunny {
         img.src = `./images/${color}/${color}_${emotion}.png`;
         img.id = `${color}-${emotion}`;
         img.alt = `${color} bunny`;
+        img.width = '20';
         img.classList = 'bunny-image';
         hiddenImgs.appendChild(img);
       })
@@ -34,21 +36,30 @@ export default class Bunny {
     const bunnyImg = new Image();
     bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     bunnyImg.classList ='bunny-image';
-    bunnyImg.width = '20';
-    console.log(bunnyImg);
-
+    console.log(bunnyImg)
     this.ctx.drawImage(bunnyImg, 200, 250, 80, 80);
   }
 
   emotion() {
-    return 'happy';
+    if(this.happyMeter < 3) {
+      return 'mad';
+    } else if (this.happyMeter > 8) {
+      return 'happy';
+    } else {
+      return 'sad';
+    }
   }
 
   hay() {
     
   }
   displayBunnyInfo() {
+    let bunnyName = document.getElementById('bunny-name');
+    let nameText = document.createElement('p');
+    nameText.innerHTML = `${this.name}`;
+    bunnyName.appendChild(nameText);
     let bunnyDisplay = document.getElementById('bunny-display');
+
     for(let i = 0; i < 10; i++) {
       let heartImg = document.createElement('img');
       if (i < this.happyMeter) {
@@ -65,7 +76,7 @@ export default class Bunny {
   }
 
   changeHappiness(change=0) {
-    this.happyMeter = (this.happyMeter + change) % 10;
+    this.happyMeter = (this.happyMeter + change) % 11;
     if (this.happyMeter < 0) this.happyMeter = 0;
   }
 

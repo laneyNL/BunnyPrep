@@ -8,8 +8,12 @@ export default class Lesson {
     this.bunny = bunny;
   }
 
+  lesson0() {
+    this.longDirections = `You can move ${this.bunny.name} around with your cursor or the w,a,s,d keys. Trying moving ${this.bunny.name} to the litterbox.`
+    this.taskBar = `Move ${this.bunny.name} to the litterbox.`
+  }
   lesson1() {
-    this.longDirections = `${this.name} is hungry.`;
+    this.longDirections = `${this.bunny.name} is hungry.`;
     this.taskBar = ``;
   }
 

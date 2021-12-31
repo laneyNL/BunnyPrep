@@ -9,11 +9,11 @@ export default class Game {
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
-    this.play();
+    this.currentLesson = 0;
+    this.welcomeMessage();
   }
 
   play() {
-    this.welcomeMessage();
     
   }
   
@@ -23,6 +23,7 @@ export default class Game {
     this.form.addEventListener('submit', (event) => {
       this.togglePopup.bind(this)(event);
       this.createBunny();
+      this.play();
     });
   }
 
@@ -37,6 +38,7 @@ export default class Game {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.ctx);
+    this.lesson = new Lesson(this.bunny);
   }
 
   checkRadioInput() {
