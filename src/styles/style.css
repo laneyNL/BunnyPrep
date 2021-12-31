@@ -80,6 +80,19 @@ canvas {
   width: 20%;
   height: auto;
 }
+.heart-image {
+  width: 10px;
+  height: auto;
+}
+
+@media screen and (max-width: 1150px) {
+  .right-sidebar{
+    display: none;
+  }
+}
+/* .hiddenImgs {
+  display: none;
+} */
 /* h1:hover + .popup {
   display: flex;
 } */
