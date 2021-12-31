@@ -9,12 +9,22 @@ export default class Game {
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
-    this.currentLesson = 0;
-    this.welcomeMessage();
+    eval(`this.welcomeMessage`).bind(this)();
   }
 
   play() {
-    
+    this.currentLesson = 0;
+    this.lesson = new Lesson(this, this.bunny);
+    // while(!this.isGameOver()) {
+      eval(`this.lesson.lesson${this.currentLesson}`).bind(this)();
+      // this.togglePopup();
+      // if() {
+      //   this.currentLesson += 1;
+      // }
+        this.currentLesson += 1;
+
+    // }
+
   }
   
   welcomeMessage() {
@@ -23,12 +33,11 @@ export default class Game {
     this.form.addEventListener('submit', (event) => {
       this.togglePopup.bind(this)(event);
       this.createBunny();
-      this.play();
     });
   }
 
   togglePopup(event) {
-    event.preventDefault();
+    if (event !== undefined) event.preventDefault();
     this.display = this.display === 'none' ? 'flex' : 'none';
     this.popup.style.display = this.display;
     this.checkRadioInput();
@@ -38,7 +47,7 @@ export default class Game {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.ctx);
-    this.lesson = new Lesson(this.bunny);
+    this.play();
   }
 
   checkRadioInput() {
@@ -48,6 +57,10 @@ export default class Game {
       if (input.checked) radioInput = input.id;
     })
     return radioInput;
+  }
+
+  isGameOver() {
+    return this.currentLesson > 12 || this.bunny.happyMeter <=0
   }
 
   adoptAFriend() {

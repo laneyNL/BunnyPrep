@@ -2,11 +2,14 @@
 
 export default class Lesson {
 
-  constructor(bunny) {
+  constructor(game, bunny) {
     this.longDirections = '';
     this.taskBar = '';
+    this.game = game;
     this.bunny = bunny;
   }
+
+  
 
   lesson0() {
     this.longDirections = `You can move ${this.bunny.name} around with your cursor or the w,a,s,d keys. Trying moving ${this.bunny.name} to the litterbox.`
