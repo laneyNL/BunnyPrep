@@ -11,7 +11,6 @@ export default class Bunny {
     this.displayBunnyInfo();
     this.moveRabbitListener();
     this.key;
-    this.isMoving;
   }
 
   drawBunny() {
@@ -61,15 +60,16 @@ export default class Bunny {
       this.key = event.keyCode;
     })
     window.addEventListener('keyup', () => {
-      this.isMoving = false;
+      this.key = false;
     })
   }
 
   updatePosition() {
-    if (this.isMoving && this.key === 37) this.x -= 1; //37 = left arrow
-    if (this.isMoving && this.key === 38) this.y -= 1; //37 = up arrow
-    if (this.isMoving && this.key === 39) this.x += 1; //37 = right arrow
-    if (this.isMoving && this.key === 20) this.y += 1; //37 = down arrow
+    console.log(this.x, this.y);
+    if (this.key === 37) this.x -= 1; //37 = left arrow
+    if (this.key === 38) this.y -= 1; //37 = up arrow
+    if (this.key === 39) this.x += 1; //37 = right arrow
+    if (this.key === 40) this.y += 1; //37 = down arrow
   }
   
   hay() {

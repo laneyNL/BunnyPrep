@@ -18,6 +18,7 @@ export default class Game {
     this.lesson = new Lesson(this, this.bunny);
     this.form.removeEventListener('submit', this.beingListenerBinded, false);
     this.runLesson(); 
+    this.moveRabbit();
   }
   
   welcomeMessage() {
@@ -31,6 +32,7 @@ export default class Game {
     this.togglePopup(event);
     this.createBunny();
   }
+
   togglePopup(event) {
     if (event !== undefined) event.preventDefault();
     this.display = this.display === 'none' ? 'flex' : 'none';
@@ -44,6 +46,16 @@ export default class Game {
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.ctx);
     this.play();
+  }
+
+  moveRabbit() {
+    setInterval(
+      () => {
+      this.bunny.updatePosition();
+      this.room.clearRoom();
+      this.room.drawRoom();
+      this.bunny.drawBunny();
+      } , 50);
   }
 
   checkRadioInput() {
