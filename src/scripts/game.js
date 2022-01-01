@@ -10,15 +10,13 @@ export default class Game {
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
-    this.room = new Room(this.ctx);
-    this.room.drawRoom();
-    // eval(`this.welcomeMessage`).bind(this)();
+    this.room = new Room(canvas);
+    eval(`this.welcomeMessage`).bind(this)();
   }
 
   play() {
     this.room.drawRoom();
-    this.currentLesson = 0;
-    this.lesson = new Lesson(this, this.bunny);
+    
     // while(!this.isGameOver()) {
       eval(`this.lesson.lesson${this.currentLesson}`).bind(this)();
       // this.togglePopup();
@@ -65,6 +63,11 @@ export default class Game {
 
   isGameOver() {
     return this.currentLesson > 12 || this.bunny.happyMeter <=0
+  }
+
+  runLesson(){
+    this.currentLesson = 0;
+    this.lesson = new Lesson(this, this.bunny);
   }
 
   adoptAFriend() {

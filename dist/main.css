@@ -68,7 +68,7 @@ canvas {
 
 #popup {
   position: absolute;
-  display: none;
+  display: flex;
   /* z-index: 1; */
   width: 50%;
   height: 50%;

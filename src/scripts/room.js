@@ -1,6 +1,8 @@
 export default class Room {
-  constructor(ctx) {
-    this.room = ctx;
+  constructor(canvas) {
+    this.room = canvas.getContext("2d");
+    this.height = canvas.height;
+    this.width = canvas.width;
   }
 
   drawRoom() {
@@ -16,6 +18,10 @@ export default class Room {
     this.drawWater();
     this.drawCouch(115, 330, 70, 40, 60);
     this.drawWindow();
+  }
+
+  clearRoom() {
+    this.room.clearRect(0,0,this.width, this.height);
   }
   
   drawBackground() {
