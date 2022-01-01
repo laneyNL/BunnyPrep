@@ -6,7 +6,6 @@ export default class Game {
   constructor(canvas) {
     this.totalCost = 0;
     this.display = 'flex';
-    this.popup = document.getElementById('popup');
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
@@ -16,36 +15,31 @@ export default class Game {
 
   play() {
     this.room.drawRoom();
-    
-    // while(!this.isGameOver()) {
-      eval(`this.lesson.lesson${this.currentLesson}`).bind(this)();
-      // this.togglePopup();
-      // if() {
-      //   this.currentLesson += 1;
-      // }
-        this.currentLesson += 1;
-
-    // }
-
+    this.lesson = new Lesson(this, this.bunny);
+    this.form.removeEventListener('submit', this.beingListenerBinded, false);
+    this.runLesson(); 
   }
   
   welcomeMessage() {
     const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. <br>To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
-    this.form.addEventListener('submit', (event) => {
-      this.togglePopup.bind(this)(event);
-      this.createBunny();
-    });
+    this.beingListenerBinded = this.beginListener.bind(this);
+    this.form.addEventListener('submit', this.beingListenerBinded);
   }
 
+  beginListener(event) {
+    this.togglePopup(event);
+    this.createBunny();
+  }
   togglePopup(event) {
     if (event !== undefined) event.preventDefault();
     this.display = this.display === 'none' ? 'flex' : 'none';
-    this.popup.style.display = this.display;
-    this.checkRadioInput();
+    const popup = document.getElementById('popup');
+    popup.style.display = this.display;
+    // this.checkRadioInput();
   }
   
-  createBunny() {
+  createBunny(event) {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.ctx);
@@ -67,7 +61,15 @@ export default class Game {
 
   runLesson(){
     this.currentLesson = 0;
-    this.lesson = new Lesson(this, this.bunny);
+    eval(`this.lesson.lesson${this.currentLesson}`).bind(this.lesson)();
+    this.question.innerHTML = this.lesson.longDirections;
+    // this.form = 
+    this.togglePopup();
+    this.form.onsubmit = (event) => {
+      this.togglePopup.bind(this)(event);
+      this.currentLesson += 1;
+      // this.runLesson();
+    }
   }
 
   adoptAFriend() {

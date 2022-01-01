@@ -32,11 +32,11 @@ export default class Bunny {
   }
 
   displayBunnyInfo() {
-    let bunnyName = document.getElementById('bunny-name');
+    const bunnyName = document.getElementById('bunny-name');
     let nameText = document.createElement('p');
     nameText.innerHTML = `${this.name}`;
     bunnyName.appendChild(nameText);
-    let bunnyDisplay = document.getElementById('bunny-display');
+    const bunnyDisplay = document.getElementById('bunny-display');
     
     for(let i = 0; i < 10; i++) {
       let heartImg = document.createElement('img');
@@ -54,7 +54,7 @@ export default class Bunny {
   }
   
   updatePosition() {
-    
+
   }
   
   hay() {
