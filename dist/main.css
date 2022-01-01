@@ -1,3 +1,155 @@
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/style.css ***!
+  \****************************************************************************************************/
+body {
+  background-color: 'white';
+  
+}
+
+h1 {
+  font-size: larger;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  color: rgb(59, 169, 169);
+  font-size: 50px;
+  position: relative;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-column-gap: 10px;
+  margin: 30px;
+}
+
+.room {
+  margin: auto;
+}
+
+
+.left-sidebar, .right-sidebar, #popup, .links a{
+  border: 5px solid black;
+  margin: auto;
+  border-radius: 5px;
+  height: 500px;
+  background-color: rgb(59, 169, 169);
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.right-sidebar {
+  width: 150px;
+}
+
+.left-sidebar{
+  width: 200px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.links a {
+  padding: 5px;
+  color: black;
+  height: auto;
+  text-decoration: none;
+}
+
+canvas {
+  margin: auto;
+}
+
+#popup {
+  position: absolute;
+  display: flex;
+  /* z-index: 1; */
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  background-color: bisque;
+  padding: 5%;
+  font-size: 20px;
+  font-weight: bold;
+}
+.bunny-image {
+  width: 20%;
+  height: auto;
+}
+.heart-image {
+  width: 10px;
+  height: auto;
+}
+
+@media screen and (max-width: 1150px) {
+  .right-sidebar{
+    display: none;
+  }
+}
+/* .hiddenImgs {
+  display: none;
+} */
+/* h1:hover + .popup {
+  display: flex;
+} */
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
+  \****************************************************************************************************/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

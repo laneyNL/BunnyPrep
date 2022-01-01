@@ -15,9 +15,7 @@ export default class Bunny {
     bunnyImg.classList ='bunny-image';
     bunnyImg.alt = `${this.emotion()} ${this.color} bunny`
 
-    bunnyImg.addEventListener('load', () => {
-      this.ctx.drawImage(bunnyImg, 200, 250, 80, 80);
-    })
+    bunnyImg.onload = () => this.ctx.drawImage(bunnyImg, 200, 250, 80, 80);
   }
 
   emotion() {
