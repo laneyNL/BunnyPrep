@@ -11,7 +11,8 @@ export default class Game {
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
     this.room = new Room(this.ctx);
-    eval(`this.welcomeMessage`).bind(this)();
+    this.room.drawRoom();
+    // eval(`this.welcomeMessage`).bind(this)();
   }
 
   play() {

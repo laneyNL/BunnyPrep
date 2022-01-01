@@ -1,7 +1,6 @@
 export default class Room {
   constructor(ctx) {
     this.room = ctx;
-    this.drawRoom();
   }
 
   drawRoom() {
@@ -20,9 +19,9 @@ export default class Room {
   }
   
   drawBackground() {
-    this.drawRect('right', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
+    this.drawRect('right', 352, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
-    this.drawFloorRect(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');
+    this.drawFloorRect(350, 167, 370, 370, 'rgba(242, 236, 207, 0.8)');
 
   }
   
@@ -151,27 +150,27 @@ export default class Room {
   }
 
   drawRightCuboid(x,y,width,height,color, sideWidth){
-    this.drawRect('right',x -2, y +2, width, height, color);
+    this.drawRect('right',x, y, width, height, color); //front panel
 
-    let topPanelPos = this.nextCornerPos(x,y,sideWidth, 'NE'); //top right of top panel
-    this.drawFloorRect(topPanelPos[0] - 2, topPanelPos[1], width, sideWidth, color);
+    let topPanelPos = this.nextCornerPos(x+1,y-2,sideWidth, 'NE'); //top right of top panel
+    this.drawFloorRect(topPanelPos[0], topPanelPos[1], width, sideWidth, color);
 
     let sidePanelPos = this.nextCornerPos(...topPanelPos,width,'SE'); //top right of side panel
-    this.drawRect('left', sidePanelPos[0] + 1, sidePanelPos[1] + 1, sideWidth, height, color);
+    this.drawRect('left', sidePanelPos[0]+1, sidePanelPos[1]+2, sideWidth, height, color);
 
   }
 
   drawFloorCuboid(x,y,width,height,floorColor, sideHeight, sideColor) {
     this.drawFloorRect(x,y,width,height,floorColor);
     let leftSidePos = this.nextCornerPos(x,y,sideHeight,'up');
-    this.drawRect('left', ...leftSidePos, height, sideHeight, sideColor);
-    this.drawRect('right', ...leftSidePos,width,sideHeight,sideColor);
+    this.drawRect('left', leftSidePos[0]-1, leftSidePos[1]-2, height, sideHeight, sideColor);
+    this.drawRect('right', leftSidePos[0] + 1, leftSidePos[1] - 2,width,sideHeight,sideColor);
 
     let frontSidePos = this.nextCornerPos(...leftSidePos, height, 'SW');
-    this.drawRect('right',...frontSidePos, width, sideHeight, sideColor);
+    this.drawRect('right', frontSidePos[0]-1, frontSidePos[1]+1, width, sideHeight, sideColor);
 
     let rightSidePos = this.nextCornerPos(...leftSidePos, width, 'SE');
-    this.drawRect('left', ...rightSidePos, width, sideHeight, sideColor);
+    this.drawRect('left', rightSidePos[0]+1, rightSidePos[1]+1, width, sideHeight, sideColor);
 
   }
 
