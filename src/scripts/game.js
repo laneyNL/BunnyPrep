@@ -39,7 +39,7 @@ export default class Game {
     // this.checkRadioInput();
   }
   
-  createBunny(event) {
+  createBunny() {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.ctx);
