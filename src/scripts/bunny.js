@@ -5,6 +5,8 @@ export default class Bunny {
     this.color = color;
     this.ctx = ctx;
     this.happyMeter = 5;
+    this.x = 200;
+    this.y = 250;
     this.drawBunny();
     this.displayBunnyInfo();
   }
@@ -15,29 +17,27 @@ export default class Bunny {
     bunnyImg.classList ='bunny-image';
     bunnyImg.alt = `${this.emotion()} ${this.color} bunny`
 
-    bunnyImg.onload = () => this.ctx.drawImage(bunnyImg, 200, 250, 80, 80);
+    bunnyImg.onload = () => this.ctx.drawImage(bunnyImg, this.x, this.y, 200,200);
   }
 
   emotion() {
-    if(this.happyMeter < 3) {
-      return 'mad';
-    } else if (this.happyMeter > 8) {
-      return 'happy';
-    } else {
-      return 'sad';
-    }
+    if (this.happyMeter < 3) return 'mad';
+    if (this.happyMeter > 8) return 'happy';
+    return 'sad';
+  }
+  
+  changeHappiness(change=0) {
+    this.happyMeter = (this.happyMeter + change) % 11;
+    if (this.happyMeter < 0) this.happyMeter = 0;
   }
 
-  hay() {
-    
-  }
   displayBunnyInfo() {
     let bunnyName = document.getElementById('bunny-name');
     let nameText = document.createElement('p');
     nameText.innerHTML = `${this.name}`;
     bunnyName.appendChild(nameText);
     let bunnyDisplay = document.getElementById('bunny-display');
-
+    
     for(let i = 0; i < 10; i++) {
       let heartImg = document.createElement('img');
       if (i < this.happyMeter) {
@@ -50,12 +50,11 @@ export default class Bunny {
       heartImg.width = '15';
       bunnyDisplay.appendChild(heartImg);
     }
-
+    
   }
-
-  changeHappiness(change=0) {
-    this.happyMeter = (this.happyMeter + change) % 11;
-    if (this.happyMeter < 0) this.happyMeter = 0;
+  
+  
+  hay() {
+    
   }
-
 }
