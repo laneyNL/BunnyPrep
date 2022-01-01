@@ -53,6 +53,9 @@ export default class Bunny {
     
   }
   
+  updatePosition() {
+    
+  }
   
   hay() {
     

@@ -5,7 +5,6 @@ import Room from './scripts/room';
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  const room = document.getElementById('room');
-  new Room(room);
-  let game = new Game(room);
+  const canvas = document.getElementById('canvas');
+  let game = new Game(canvas);
 });

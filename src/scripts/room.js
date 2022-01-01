@@ -1,7 +1,6 @@
 export default class Room {
-  constructor(canvas) {
-    this.room = canvas.getContext("2d");
-    this.dimensions = { width: canvas.width, height: canvas.height };
+  constructor(ctx) {
+    this.room = ctx;
     this.drawRoom();
   }
 
@@ -21,8 +20,6 @@ export default class Room {
   }
   
   drawBackground() {
-    // this.room.fillStyle = "white";
-    // this.room.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
     this.drawRect('right', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawFloorRect(350, 165, 370, 370, 'rgba(242, 236, 207, 0.8)');

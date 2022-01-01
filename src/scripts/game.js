@@ -1,5 +1,6 @@
 import Bunny from './bunny.js';
 import Lesson from './lessons.js';
+import Room from './room.js';
 
 export default class Game {
   constructor(canvas) {
@@ -9,10 +10,12 @@ export default class Game {
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
+    this.room = new Room(this.ctx);
     eval(`this.welcomeMessage`).bind(this)();
   }
 
   play() {
+    this.room.drawRoom();
     this.currentLesson = 0;
     this.lesson = new Lesson(this, this.bunny);
     // while(!this.isGameOver()) {
