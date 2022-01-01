@@ -62,6 +62,10 @@ export default class Bunny {
     window.addEventListener('keyup', () => {
       this.key = false;
     })
+    window.addEventListener('mousemove', (event) => {
+      this.x = event.pageX;
+      this.y = event.pageY;
+    })
   }
 
   updatePosition() {

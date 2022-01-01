@@ -10,7 +10,7 @@ export default class Lesson {
   }
 
   lesson0() {
-    this.longDirections = `You can move ${this.bunny.name} around with your cursor or the w,a,s,d keys. Trying moving ${this.bunny.name} to the litterbox.`;
+    this.longDirections = `You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
   }
   lesson1() {
