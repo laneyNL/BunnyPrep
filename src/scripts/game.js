@@ -55,6 +55,13 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
+
+    this.room.furnishings.forEach(furniture => {
+      if (this.bunny.isCollidedWith(furniture)) {
+        console.log(furniture.name);
+      }
+    })
+
     let that = this.moveRabbit.bind(this);
     window.requestAnimationFrame(that);
   }

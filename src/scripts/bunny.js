@@ -73,7 +73,7 @@ export default class Bunny extends ConnectingObject {
       this.x = event.pageX - offsetWidth;
       this.y = event.pageY - offsetHeight;
       // console.log(`event`, event.pageX, event.pageY);
-      // console.log(this.x,this.y);
+      console.log(this.x,this.y);
     })
   }
 

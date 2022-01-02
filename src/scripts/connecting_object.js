@@ -5,18 +5,29 @@ export default class ConnectingObject {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.rightX = this.x + this.width;
-    this.bottomY = this.y + this.height;
     this.length = length;
   }
 
   isCollidedWith(otherObj) {
     let isCollided = true;
-    
-    if (this.x > otherObj.rightX) isCollided = false;
-    if (this.rightX < otherObj.x) isCollided = false;
-    if (this.y > otherObj.bottomY) isCollided = false;
-    if (this.bottomY < otherObj.Y) isCollided = false;
+    let rightx = this.x + this.width;
+    let bottomy = this.y + this.height;
+    let otherBottomy = otherObj.y + otherObj.height;
+    let otherRightx = otherObj.x + otherObj.width;
+    // if (this.x > otherObj.rightx) isCollided = false;
+    // if (this.rightx < otherObj.x) isCollided = false;
+    // if (this.y > otherObj.bottomy) isCollided = false;
+    // if (this.bottomy < otherObj.y) isCollided = false;
+
+    if (this.x > otherRightx) {
+      isCollided = false
+    } else if (rightx < otherObj.x) {
+      isCollided = false
+    } else if (this.y > otherBottomy) {
+      isCollided = false
+    } else if (bottomy< otherObj.y) {
+      isCollided = false
+    };
 
     return isCollided;
   }
