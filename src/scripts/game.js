@@ -1,6 +1,8 @@
 import Bunny from './bunny.js';
 import Lesson from './lessons.js';
 import Room from './room.js';
+import ConnectingObject from './connecting_object.js';
+import Furniture from "./furniture";
 
 export default class Game {
   constructor(canvas) {
@@ -10,6 +12,7 @@ export default class Game {
     this.form = document.querySelector('.input-form');
     this.ctx = canvas.getContext("2d");
     this.room = new Room(canvas);
+    this.allFurniture = [];
     eval(`this.welcomeMessage`).bind(this)();
   }
 

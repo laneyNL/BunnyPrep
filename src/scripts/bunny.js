@@ -1,14 +1,14 @@
-export default class Bunny {
+import ConnectingObject from './connecting_object';
+import Furniture from './furniture';
+
+export default class Bunny extends ConnectingObject {
   
   constructor(name, color, ctx) {
-    this.name = name;
+    super(200, 250, 100, 100);
     this.color = color;
+    this.name = name;
     this.ctx = ctx;
     this.happyMeter = 5;
-    this.x = 200;
-    this.y = 250;
-    this.width = 100;
-    this.height = 100;
     this.keys = {};
     this.loadBunny();
   }
@@ -64,11 +64,16 @@ export default class Bunny {
     })
     window.addEventListener('keyup', () => {
       this.keys[event.keyCode] = false;
-
     })
+    
     window.addEventListener('mousedown', (event) => {
-      this.x = event.pageX - 280;
-      this.y = event.pageY - 80;
+      let offsetWidth = document.querySelector('.left-sidebar').scrollWidth;
+      let offsetHeight = document.querySelector('h1').offsetHeight;
+      // console.log('off', offsetWidth, offsetHeight);
+      this.x = event.pageX - offsetWidth;
+      this.y = event.pageY - offsetHeight;
+      // console.log(`event`, event.pageX, event.pageY);
+      // console.log(this.x,this.y);
     })
   }
 
@@ -77,6 +82,15 @@ export default class Bunny {
     if (this.keys[38]) this.y -= 1; //38 = up arrow
     if (this.keys[39]) this.x += 1; //39 = right arrow
     if (this.keys[40]) this.y += 1; //40 = down arrow
+  }
+
+  wrapXY() {
+    if (this.x > 0 && this.y > 0) {
+      this.x = this.x % this.maxWidth;
+      this.y = this.y % this.maxHeight
+    }
+    if (this.x < 0) this.x = 0;
+    if (this.y < 0) this.y = 0;
   }
   
   isCollidedWith(otherObj) {
@@ -90,6 +104,7 @@ export default class Bunny {
     // }
     return isCollided;
   }
+
   hay() {
     
   }

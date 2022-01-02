@@ -1,22 +1,29 @@
+import Furniture from "./furniture";
+
 export default class Room {
   constructor(canvas) {
     this.room = canvas.getContext("2d");
     this.width = canvas.width;
     this.height = canvas.height;
+    this.door = new Furniture(115, 175, 50, 105);
+    this.drawer = new Furniture(330, 130, 110, 75, 30);
+    this.litterBox = new Furniture(565, 287, 70, 70, 10);
+    this.couch = new Furniture(115, 330, 70, 40,60);
+    this.water = new Furniture(400, 400, 20);
   }
 
   drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
     this.drawBackground();
-    this.drawDoor();
-    this.drawDrawer();
+    this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
+    this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
     this.drawTV();
     // this.drawRug();
     this.drawMat();
-    this.drawBox();
-    this.drawWater();
-    this.drawCouch(115, 330, 70, 40, 60);
+    this.drawLitterBox(this.litterBox.x, this.litterBox.y, this.litterBox.width, this.litterBox.height, this.litterBox.length);
+    this.drawWater(this.water.x, this.water.y, this.water.width);
+    this.drawCouch(this.couch.x, this.couch.y, this.couch.width, this.couch.height, this.couch.length);
     this.drawWindow();
   }
 
@@ -25,6 +32,8 @@ export default class Room {
   }
   
   drawBackground() {
+    // this.room.fillStyle = 'blue';
+    // this.room.fillRect(0,0, this.width, this.height);
     this.drawRect('right', 352, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawFloorRect(350, 167, 370, 370, 'rgba(242, 236, 207, 0.8)');
@@ -40,14 +49,14 @@ export default class Room {
     this.repeatShape(2, 56, 28, shape);
   }
 
-  drawDoor() {
-    this.drawRect('left',115,175,50,105,'white');
+  drawDoor(x, y, width, height) {
+    this.drawRect('left', x, y, width, height,'white');
     this.drawRect('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
     this.drawBorderedCircle(100,240,5,'yellow');
   }
 
-  drawDrawer() {
-    this.drawRightCuboid(330, 130, 110, 75, "rgba(77, 67, 56)",30);
+  drawDrawer(x, y, width, height, length) {
+    this.drawRightCuboid(x, y, width, height, "rgba(77, 67, 56)",length);
     let shape = () => {
       this.drawRect('right',344,152, 80, 20, 'white');
       this.drawRect('right',375,175, 10, 5, "rgba(77, 67, 56)");
@@ -68,13 +77,13 @@ export default class Room {
     this.drawFloorRect(500,250,170,110,'pink');
   }
   
-  drawBox() {
-    this.drawFloorCuboid(565,287,70,70,'lightyellow', 10, 'grey');
+  drawLitterBox(x, y, width, height, length) {
+    this.drawFloorCuboid(x, y, width, height,'lightyellow', length, 'grey');
   }
 
-  drawWater() {
-    this.drawBorderedCircle(500,280,20,'grey');
-    this.drawBorderedCircle(500,280,15,'blue');
+  drawWater(x, y, width) {
+    this.drawBorderedCircle(x+width,y+width,width,'grey');
+    this.drawBorderedCircle(x + width, y + width, width-5,'blue');
   }
 
   drawCouch(x, y, width, height, length) {

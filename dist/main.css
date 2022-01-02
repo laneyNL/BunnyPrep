@@ -20,7 +20,7 @@ h1 {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-column-gap: 10px;
-  margin: 30px;
+  /* margin: 30px; */
 }
 
 .room {
