@@ -5,6 +5,7 @@ export default class Lesson {
   constructor(game, bunny) {
     this.longDirections = '';
     this.taskBar = '';
+    this.info = '';
     this.game = game;
     this.bunny = bunny;
   }
@@ -12,6 +13,7 @@ export default class Lesson {
   lesson0() {
     this.longDirections = `You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
+    this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`
   }
   lesson1() {
     this.longDirections = `${this.bunny.name} is hungry.`;

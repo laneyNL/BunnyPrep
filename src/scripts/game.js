@@ -10,9 +10,11 @@ export default class Game {
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
+    this.currentLessonNum = 0;
+    this.info = [];
     this.room = new Room(canvas);
     this.allFurniture = [];
-    eval(`this.welcomeMessage`).bind(this)();
+    this.welcomeMessage();
   }
 
   play() {
@@ -21,7 +23,6 @@ export default class Game {
     this.form.removeEventListener('submit', this.beingListenerBinded, false);
     this.runLesson(); 
     this.moveRabbit();
-    // this.endGame();
   }
   
   welcomeMessage() {
@@ -76,17 +77,24 @@ export default class Game {
   }
 
   isGameOver() {
-    return this.currentLesson > 12 || this.bunny.happyMeter <=0
+    return this.currentLesson > 12 || this.bunny.happyMeter <= 0;
   }
 
   endGame() {
-    clearInterval(this.moveRabbit);
+    this.togglePopup();
+    if (this.currentLesson > 12) {
+      this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
+    } else {
+      this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
+    }
   }
 
   runLesson(){
-    this.currentLesson = 0;
-    eval(`this.lesson.lesson${this.currentLesson}`).bind(this.lesson)();
+    const task = document.getElementById('task-details');
+    const infoBar = document.getElementById('info-learned');
+    eval(`this.lesson.lesson${this.currentLessonNum}`).bind(this.lesson)();
     this.question.innerHTML = this.lesson.longDirections;
+    task.innerHTML = this.lesson.taskBar;
     // this.form = 
     this.togglePopup();
     this.form.onsubmit = (event) => {
