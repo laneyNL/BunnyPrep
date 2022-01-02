@@ -13,6 +13,11 @@ export default class Room {
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water]
   }
 
+  drawConnection(x, y, width, height) {
+    this.room.fillStyle = 'blue';
+    this.room.fillRect(x, y, width, height);
+  }
+
   drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
@@ -51,6 +56,7 @@ export default class Room {
   }
 
   drawDoor(x, y, width, height) {
+    this.drawConnection(x, y, width, height);
     this.drawRect('left', x, y, width, height,'white');
     this.drawRect('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
     this.drawBorderedCircle(100,240,5,'yellow');
@@ -63,6 +69,7 @@ export default class Room {
       this.drawRect('right',375,175, 10, 5, "rgba(77, 67, 56)");
     }
     this.repeatShape(2, 0, 30, shape);
+    this.drawConnection(x, y, width, height);
   }
 
   drawTV() {
@@ -79,10 +86,12 @@ export default class Room {
   }
   
   drawLitterBox(x, y, width, height, length) {
+    this.drawConnection(x, y, width, height);
     this.drawFloorCuboid(x, y, width, height,'lightyellow', length, 'grey');
   }
 
   drawWater(x, y, width) {
+    this.drawConnection(x, y, width, width);
     this.drawBorderedCircle(x+width,y+width,width,'grey');
     this.drawBorderedCircle(x + width, y + width, width-5,'blue');
   }
@@ -90,13 +99,14 @@ export default class Room {
   drawCouch(x, y, width, height, length) {
     let buttonPos = this.nextCornerPos(x, y, width / 2, 'SE');
     buttonPos = this.nextCornerPos(...buttonPos, length / 2, 'NE');
-
+    
     let shape = () => {
       this.drawRightCuboid(x, y, width, height, 'pink', length);
       this.drawBorderedCircle(...buttonPos, 5, 'pink');
     }
     
     this.repeatShape(2, ...this.changeInXY(width), shape);
+    this.drawConnection(x, y, width, height);
   }
 
   drawBorderedCircle(x,y, radius, color) {
