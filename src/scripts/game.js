@@ -2,7 +2,6 @@ import Bunny from './bunny.js';
 import Lesson from './lessons.js';
 import Room from './room.js';
 import ConnectingObject from './connecting_object.js';
-import Furniture from "./furniture";
 
 export default class Game {
   constructor(canvas) {
@@ -10,7 +9,7 @@ export default class Game {
     this.display = 'flex';
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
-    this.ctx = canvas.getContext("2d");
+    this.canvas = canvas;
     this.room = new Room(canvas);
     this.allFurniture = [];
     eval(`this.welcomeMessage`).bind(this)();
@@ -48,7 +47,7 @@ export default class Game {
   createBunny() {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
-    this.bunny = new Bunny(name, color, this.ctx);
+    this.bunny = new Bunny(name, color, this.canvas);
     this.play();
   }
 

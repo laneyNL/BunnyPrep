@@ -1,4 +1,3 @@
-import Furniture from "./furniture";
 import ConnectingObject from "./connecting_object";
 
 export default class Room {
@@ -11,6 +10,7 @@ export default class Room {
     this.litterBox = new ConnectingObject('litter box', 565, 287, 70, 70, 10);
     this.couch = new ConnectingObject('couch', 115, 330, 70, 40,60);
     this.water = new ConnectingObject('water', 400, 400, 20);
+    this.furniture = [this.door, this.drawer, this.litterBox, this.couch, this.water]
   }
 
   drawRoom() {

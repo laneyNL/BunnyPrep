@@ -1,12 +1,13 @@
 import ConnectingObject from './connecting_object';
-import Furniture from './furniture';
 
 export default class Bunny extends ConnectingObject {
   
-  constructor(name, color, ctx) {
+  constructor(name, color, canvas) {
     super(name, 200, 250, 100, 100);
     this.color = color;
-    this.ctx = ctx;
+    this.maxWidth = canvas.width;
+    this.maxHeight = canvas.height;
+    this.ctx = canvas.getContext("2d");;
     this.happyMeter = 5;
     this.keys = {};
     this.loadBunny();
@@ -77,17 +78,16 @@ export default class Bunny extends ConnectingObject {
   }
 
   updatePosition() {
-    if (this.keys[37]) this.x -= 1; //37 = left arrow
-    if (this.keys[38]) this.y -= 1; //38 = up arrow
-    if (this.keys[39]) this.x += 1; //39 = right arrow
-    if (this.keys[40]) this.y += 1; //40 = down arrow
+    if (this.keys[37]) this.x -= 2; //37 = left arrow
+    if (this.keys[38]) this.y -= 2; //38 = up arrow
+    if (this.keys[39]) this.x += 2; //39 = right arrow
+    if (this.keys[40]) this.y += 2; //40 = down arrow
+    this.wrapXY();
   }
 
   wrapXY() {
-    if (this.x > 0 && this.y > 0) {
-      this.x = this.x % this.maxWidth;
-      this.y = this.y % this.maxHeight
-    }
+    if (this.x + this.width >= this.maxWidth) this.x = this.maxWidth - this.width;
+    if (this.y + this.height >= this.maxHeight) this.y = this.maxHeight - this.height;
     if (this.x < 0) this.x = 0;
     if (this.y < 0) this.y = 0;
   }
