@@ -3,31 +3,35 @@ import ConnectingObject from './connecting_object';
 export default class Bunny extends ConnectingObject {
   
   constructor(name, color, canvas) {
-    super(name, 200, 250, 70, 70);
+    super(name, 200, 250);
     this.color = color;
     this.maxWidth = canvas.width;
     this.maxHeight = canvas.height;
     this.ctx = canvas.getContext("2d");;
     this.happyMeter = 5;
     this.keys = {};
-    this.loadBunny();
     this.canvas = canvas;
+    this.loadBunny();
   }
   
   loadBunny() {
-    this.moveBunnyListener();
-    this.displayBunnyInfo();
-
     this.bunnyImg = new Image();
     this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.classList = 'bunny-image';
     this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
-    this.bunnyImg.onload = this.drawBunny.bind(this);
+    this.bunnyImg.onload = () => {
+      this.width = this.bunnyImg.width/5;
+      this.height = this.bunnyImg.height/5;
+      this.drawBunny.bind(this);
+      this.moveBunnyListener();
+      this.displayBunnyInfo();
+    }
   }
 
   drawBunny() {
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
+    // this.ctx.imageSmoothingEnabled = false;
   }
 
   emotion() {

@@ -59,7 +59,7 @@ export default class Game {
 
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture)) {
-        console.log(furniture.name);
+        // console.log(furniture.name);
       }
     })
 
