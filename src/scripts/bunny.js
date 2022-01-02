@@ -3,7 +3,7 @@ import ConnectingObject from './connecting_object';
 export default class Bunny extends ConnectingObject {
   
   constructor(name, color, canvas) {
-    super(name, 200, 250, 100, 100);
+    super(name, 200, 250, 70, 70);
     this.color = color;
     this.maxWidth = canvas.width;
     this.maxHeight = canvas.height;

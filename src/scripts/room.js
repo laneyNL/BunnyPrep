@@ -5,10 +5,10 @@ export default class Room {
     this.room = canvas.getContext("2d");
     this.width = canvas.width;
     this.height = canvas.height;
-    this.door = new ConnectingObject('door', 115, 175, 50, 105);
+    this.door = new ConnectingObject('door', 65, 175, 50, 105);
     this.drawer = new ConnectingObject('drawer', 330, 130, 110, 75, 30);
     this.litterBox = new ConnectingObject('litter box', 565, 287, 70, 70, 10);
-    this.couch = new ConnectingObject('couch', 115, 330, 70, 40,60);
+    this.couch = new ConnectingObject('couch', 115, 330, 140, 40,60);
     this.water = new ConnectingObject('water', 400, 400, 20);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water]
   }
@@ -57,6 +57,7 @@ export default class Room {
 
   drawDoor(x, y, width, height) {
     this.drawConnection(x, y, width, height);
+    x = x + width;
     this.drawRect('left', x, y, width, height,'white');
     this.drawRect('left',110, 185, 40, 100, "rgba(147, 96, 38, 0.8)");
     this.drawBorderedCircle(100,240,5,'yellow');
@@ -97,6 +98,7 @@ export default class Room {
   }
 
   drawCouch(x, y, width, height, length) {
+    width = width/2;
     let buttonPos = this.nextCornerPos(x, y, width / 2, 'SE');
     buttonPos = this.nextCornerPos(...buttonPos, length / 2, 'NE');
     
@@ -106,7 +108,7 @@ export default class Room {
     }
     
     this.repeatShape(2, ...this.changeInXY(width), shape);
-    this.drawConnection(x, y, width, height);
+    this.drawConnection(x, y, width*2, height);
   }
 
   drawBorderedCircle(x,y, radius, color) {
