@@ -19,6 +19,7 @@ export default class Game {
     this.form.removeEventListener('submit', this.beingListenerBinded, false);
     this.runLesson(); 
     this.moveRabbit();
+    // this.endGame();
   }
   
   welcomeMessage() {
@@ -49,13 +50,11 @@ export default class Game {
   }
 
   moveRabbit() {
-    setInterval(
-      () => {
-      this.bunny.updatePosition();
-      this.room.clearRoom();
-      this.room.drawRoom();
-      this.bunny.drawBunny();
-      } , 50);
+    this.room.clearRoom();
+    this.room.drawRoom();
+    this.bunny.drawBunny();
+    let that = this.moveRabbit.bind(this);
+    window.requestAnimationFrame(that);
   }
 
   checkRadioInput() {
@@ -69,6 +68,10 @@ export default class Game {
 
   isGameOver() {
     return this.currentLesson > 12 || this.bunny.happyMeter <=0
+  }
+
+  endGame() {
+    clearInterval(this.moveRabbit);
   }
 
   runLesson(){

@@ -1,8 +1,8 @@
 export default class Room {
   constructor(canvas) {
     this.room = canvas.getContext("2d");
-    this.height = canvas.height;
     this.width = canvas.width;
+    this.height = canvas.height;
   }
 
   drawRoom() {
