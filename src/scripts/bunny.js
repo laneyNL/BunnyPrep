@@ -11,6 +11,7 @@ export default class Bunny extends ConnectingObject {
     this.happyMeter = 5;
     this.keys = {};
     this.loadBunny();
+    this.canvas = canvas;
   }
   
   loadBunny() {
@@ -67,13 +68,9 @@ export default class Bunny extends ConnectingObject {
     })
     
     window.addEventListener('mousedown', (event) => {
-      let offsetWidth = document.querySelector('.left-sidebar').scrollWidth;
-      let offsetHeight = document.querySelector('h1').offsetHeight;
-      // console.log('off', offsetWidth, offsetHeight);
-      this.x = event.pageX - offsetWidth;
-      this.y = event.pageY - offsetHeight;
-      // console.log(`event`, event.pageX, event.pageY);
-      console.log(this.x,this.y);
+      let offset = this.canvas.getBoundingClientRect();
+      this.x = event.pageX - offset.left - (this.width/2);
+      this.y = event.pageY - offset.top - (this.height/2);
     })
   }
 

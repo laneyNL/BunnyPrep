@@ -70,5 +70,9 @@ export default class Lesson {
     this.longDirections = ``;
     this.taskBar = ``;
   }
+  
+  adoptAFriend() {
+    this.prompt = `Congratuations! You have made ${this.bunny.name} super happy. As you have become a good pet owner, would you like to adopt a friend for ${this.bunny.name}.`
+  }
 
 }
