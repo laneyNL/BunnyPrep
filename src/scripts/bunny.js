@@ -16,13 +16,13 @@ export default class Bunny extends ConnectingObject {
   
   loadBunny() {
     this.bunnyImg = new Image();
+    // this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
-    this.bunnyImg.classList = 'bunny-image';
     this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
     this.bunnyImg.onload = () => {
-      this.width = this.bunnyImg.width/5;
-      this.height = this.bunnyImg.height/5;
-      this.drawBunny.bind(this);
+      this.width = Math.floor(this.bunnyImg.width/8);
+      this.height = Math.floor(this.bunnyImg.height/8);
+      this.drawBunny.bind(this)();
       this.moveBunnyListener();
       this.displayBunnyInfo();
     }
@@ -31,7 +31,6 @@ export default class Bunny extends ConnectingObject {
   drawBunny() {
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
-    // this.ctx.imageSmoothingEnabled = false;
   }
 
   emotion() {
@@ -93,9 +92,28 @@ export default class Bunny extends ConnectingObject {
     if (this.y < 0) this.y = 0;
   }
   
-  
+  loadHay() {
+    const hay = new Image();
+    // hay.src = `./images/hay.svg`;
+    hay.src = `./images/heart.png`;
+    hay.alt = `hay`;
+    return hay;
+  }
 
-  hay() {
+  drawHay() {
+    // let hay = this.loadHay();
+    // hay.addEventListener('load', () => {
+    //   this.ctx.drawImage(hay, 0, 0);
+    //   console.log(hay);
+    // })
+    
+    const hay = new Image();
+    hay.src = `./images/hay.svg`;
+    // hay.src = `./images/heart.png`;
+    hay.alt = `hay`;
+    hay.onload = () => {
+      this.ctx.drawImage(hay, 0, 0, hay.width/5, hay.height/5);
+    }
     
   }
 }
