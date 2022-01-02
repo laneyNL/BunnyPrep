@@ -1,15 +1,16 @@
 import Furniture from "./furniture";
+import ConnectingObject from "./connecting_object";
 
 export default class Room {
   constructor(canvas) {
     this.room = canvas.getContext("2d");
     this.width = canvas.width;
     this.height = canvas.height;
-    this.door = new Furniture(115, 175, 50, 105);
-    this.drawer = new Furniture(330, 130, 110, 75, 30);
-    this.litterBox = new Furniture(565, 287, 70, 70, 10);
-    this.couch = new Furniture(115, 330, 70, 40,60);
-    this.water = new Furniture(400, 400, 20);
+    this.door = new ConnectingObject('door', 115, 175, 50, 105);
+    this.drawer = new ConnectingObject('drawer', 330, 130, 110, 75, 30);
+    this.litterBox = new ConnectingObject('litter box', 565, 287, 70, 70, 10);
+    this.couch = new ConnectingObject('couch', 115, 330, 70, 40,60);
+    this.water = new ConnectingObject('water', 400, 400, 20);
   }
 
   drawRoom() {

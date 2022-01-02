@@ -4,9 +4,8 @@ import Furniture from './furniture';
 export default class Bunny extends ConnectingObject {
   
   constructor(name, color, ctx) {
-    super(200, 250, 100, 100);
+    super(name, 200, 250, 100, 100);
     this.color = color;
-    this.name = name;
     this.ctx = ctx;
     this.happyMeter = 5;
     this.keys = {};
@@ -93,17 +92,7 @@ export default class Bunny extends ConnectingObject {
     if (this.y < 0) this.y = 0;
   }
   
-  isCollidedWith(otherObj) {
-    let isCollided = true;
-    let rightX = this.x + this.width;
-    let bottomY = this.y + this.height;
-
-
-    // if() {
-    //   isCollided = false;
-    // }
-    return isCollided;
-  }
+  
 
   hay() {
     
