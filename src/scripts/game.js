@@ -35,35 +35,32 @@ export default class Game {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.canvas, this);
-    this.play();
+    this.startGame();
   }
   
-  play() {
+  startGame() {
     this.room.drawRoom();
     this.lesson = new Lesson(this, this.bunny);
     this.form.removeEventListener('submit', this.createBunny);
     this.form.addEventListener('submit', (event) => this.togglePopup(event));
     this.runLesson(); 
-    this.drawGame();
+    this.runGame();
   }
 
-  drawGame() {
+  runGame() {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
     this.lesson.displayLessons();
+
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
         this.lesson.lessonComplete();
       }
     })
 
-    let that = this.drawGame.bind(this);
-    if (this.isGameOver()) {
-      this.endGame(); 
-    } else {
-      window.requestAnimationFrame(that);
-    }
+    let that = this.runGame.bind(this);
+    this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
   }
 
   checkRadioInput() {

@@ -62,12 +62,14 @@ export default class Lesson {
     
     <input type='checkbox' id='iceberg' name='vegetables'> <label for='iceberg'>Iceberg Lettuce</label><br>
 
-    <input type='checkbox' id='carrot-leaf' name='vegetables'> <label for='carrot-leaf'>Carrot Leaf</label><br>
+    <input type='checkbox' id='blackberry-leaf' name='vegetables'> <label for='blackberry-leaf'>Blackberry Leaf</label><br>
     
+    <input type='checkbox' id='basil' name='vegetables'> <label for='basil'>Basil</label><br>
+
     <input type="submit" value='Feed Vegetables'>`;
     this.taskBar = ``;
     this.info = ``;
-    this.target = ``;
+    this.target = [cilantro, blackberry-leaf, basil];
   }
   
   
