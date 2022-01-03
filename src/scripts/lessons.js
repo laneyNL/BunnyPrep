@@ -10,7 +10,7 @@ export default class Lesson {
     this.info = '';
     this.game = game;
     this.bunny = bunny;
-    this.targetFurniture = '';
+    this.target = '';
   }
 
   lessonComplete(event) {
@@ -32,7 +32,7 @@ export default class Lesson {
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.info = `Bunnies can be trained to use the litterbox just like cats.`;
-    this.targetFurniture = 'litter box';
+    this.target = 'litter box';
   }
   
   
@@ -41,7 +41,7 @@ export default class Lesson {
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
-    this.targetFurniture = '';
+    this.target = '';
 
     const addHay = document.getElementById('add-hay');
     this.lessonCompleteBinded = this.lessonComplete.bind(this);
@@ -62,12 +62,12 @@ export default class Lesson {
     
     <input type='checkbox' id='iceberg' name='vegetables'> <label for='iceberg'>Iceberg Lettuce</label>
 
-    <input type='checkbox' id='carrot-leaf' name='vegetables' required> <label for='carrot-leaf'>Carrot Leaf</label>
+    <input type='checkbox' id='carrot-leaf' name='vegetables' required> <label for='carrot-leaf'>Carrot Leaf</label><br>
     
     <input type="submit" value='Feed Vegetables'>`;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
   
   
@@ -76,7 +76,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
     
   }
   
@@ -85,7 +85,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
   
   lesson5() {
@@ -95,7 +95,7 @@ export default class Lesson {
     <input type='radio' id='wipe' name='clean-method'> <label for='wipe'>Wipe ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
   
   lesson6() {
@@ -103,7 +103,7 @@ export default class Lesson {
     // this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
  
 
@@ -112,7 +112,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
 
   lesson8() {
@@ -120,7 +120,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = `House bunnies should be kept indoors. When outside bunnies are exposed to diseases and predators.`
-    this.targetFurniture = `door`;
+    this.target = `door`;
   }
 
   lesson9() {
@@ -128,7 +128,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
 
   lesson10() {
@@ -136,7 +136,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
 
   lesson11() {
@@ -144,7 +144,7 @@ export default class Lesson {
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
-    this.targetFurniture = ``;
+    this.target = ``;
   }
 
   adoptAFriend() {

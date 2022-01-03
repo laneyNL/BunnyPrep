@@ -5,7 +5,7 @@ import ConnectingObject from './connecting_object.js';
 
 export default class Game {
   constructor(canvas) {
-    this.totalCost = 0;
+    this.budget = 500;
     this.display = 'flex';
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
@@ -53,7 +53,7 @@ export default class Game {
     this.bunny.drawBunny();
     this.lesson.displayLessons();
     this.room.furnishings.forEach(furniture => {
-      if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.targetFurniture) {
+      if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
         this.lesson.lessonComplete();
       }
     })
@@ -76,7 +76,7 @@ export default class Game {
   }
 
   isGameOver() {
-    return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0;
+    return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0 || this.budget <= 0;
   }
 
   endGame() {

@@ -49,11 +49,11 @@ export default class Bunny extends ConnectingObject {
   displayBunnyInfo() {
     const bunnyName = document.getElementById('bunny-name');
     const bunnyHeart = document.getElementById('bunny-heart');
-    const cost = document.getElementById('cost');
+    const budget = document.getElementById('budget');
     bunnyName.innerHTML = `${this.name}`;
     if (this.friend) bunnyName.innerHTML = `${this.name}<br>Friend's Name:<br>${this.friend.name}`;
     bunnyHeart.innerHTML = '';
-    cost.innerHTML = `${this.game.totalCost}`;
+    budget.innerHTML = `${this.game.budget}`;
     
     for(let i = 0; i < 10; i++) {
       let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
@@ -106,7 +106,7 @@ export default class Bunny extends ConnectingObject {
     const addHay = document.getElementById('add-hay');
     addHay.addEventListener('click', () => {
       this.hayPieces = 20
-      this.game.totalCost += 5;
+      this.game.budget -= 5;
     });
     setInterval(() => {
       this.hayPieces -= 1;
