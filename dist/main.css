@@ -49,13 +49,12 @@ body {
 }
 
 .right-sidebar {
-  width: 150px;
-  display: block;
-
+  width: 80%;
+  display: inline-block;
 }
 
 .left-sidebar{
-  width: 200px;
+  width: 90%;
 }
 
 .links {
