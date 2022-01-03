@@ -10,12 +10,13 @@ export default class Room {
     this.litterBox = new ConnectingObject('litter box', 380, 410, 70, 100, 10);
     this.couch = new ConnectingObject('couch', 115, 330, 140, 40,60);
     this.water = new ConnectingObject('water', 480, 270, 20);
-    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water]
+    this.foodBowl = new ConnectingObject('food-bowl', 600, 315, 20, 20, 5);
+    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
   }
 
   drawConnection(x, y, width, height) {
-    // this.room.fillStyle = 'blue';
-    // this.room.fillRect(x, y, width, height);
+    this.room.fillStyle = 'blue';
+    this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {
@@ -25,12 +26,13 @@ export default class Room {
     this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
     this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
     this.drawTV();
-    // this.drawRug();
     this.drawMat();
     this.drawLitterBox(this.litterBox.x, this.litterBox.y, this.litterBox.width, this.litterBox.height, this.litterBox.length);
+    this.drawFoodBowl(this.foodBowl.x, this.foodBowl.y, this.foodBowl.width, this.foodBowl.height, this.foodBowl.length);
     this.drawWater(this.water.x, this.water.y, this.water.width);
     this.drawCouch(this.couch.x, this.couch.y, this.couch.width, this.couch.height, this.couch.length);
     this.drawWindow();
+  
   }
 
   clearRoom() {
@@ -89,6 +91,11 @@ export default class Room {
   drawLitterBox(x, y, width, height, length) {
     this.drawConnection(x, y, width, height);
     this.drawFloorCuboid(x, y, width, height,'lightyellow', length, 'grey');
+  }
+
+  drawFoodBowl(x, y, width, height, length) {
+    this.drawConnection(x, y, width, height);
+    this.drawFloorCuboid(x, y, width, height, 'grey', length, 'grey');
   }
 
   drawWater(x, y, width) {
