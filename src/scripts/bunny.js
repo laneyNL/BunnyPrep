@@ -7,16 +7,16 @@ export default class Bunny extends ConnectingObject {
     this.color = color;
     this.maxWidth = canvas.width;
     this.maxHeight = canvas.height;
-    this.ctx = canvas.getContext("2d");;
+    this.ctx = canvas.getContext("2d");
     this.happyMeter = 5;
     this.keys = {};
     this.canvas = canvas;
     this.loadBunny();
+    this.hayPieces = [];
   }
   
   loadBunny() {
     this.bunnyImg = new Image();
-    // this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
     this.bunnyImg.onload = () => {
@@ -31,6 +31,7 @@ export default class Bunny extends ConnectingObject {
   drawBunny() {
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
+    this.drawHay();
   }
 
   emotion() {
@@ -101,19 +102,25 @@ export default class Bunny extends ConnectingObject {
   }
 
   drawHay() {
-    // let hay = this.loadHay();
-    // hay.addEventListener('load', () => {
-    //   this.ctx.drawImage(hay, 0, 0);
-    //   console.log(hay);
-    // })
-    
-    const hay = new Image();
+    let numHay = 10;
+    let hay = new Image();
     hay.src = `./images/hay.svg`;
-    // hay.src = `./images/heart.png`;
     hay.alt = `hay`;
-    hay.onload = () => {
-      this.ctx.drawImage(hay, 0, 0, hay.width/5, hay.height/5);
-    }
     
+    for (let i = 0; i < numHay; i++) {
+      this.multiplyHay(hay, 25*i);
+    }
+  }
+
+  multiplyHay(hay, degree) {
+    let hayPos = [300, 450];
+    let newCenterPos = [hayPos[0] + (hay.width / 16), hayPos[1] + (hay.height / 16)]
+    this.ctx.save();
+
+    this.ctx.translate(...newCenterPos);
+    this.ctx.rotate((degree) * (Math.PI / 180));
+    this.ctx.translate(-newCenterPos[0], -newCenterPos[1]);
+    this.ctx.drawImage(hay, ...hayPos, hay.width / 8, hay.height / 8);
+    this.ctx.restore();
   }
 }

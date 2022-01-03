@@ -7,9 +7,9 @@ export default class Room {
     this.height = canvas.height;
     this.door = new ConnectingObject('door', 65, 175, 50, 105);
     this.drawer = new ConnectingObject('drawer', 330, 130, 110, 75, 30);
-    this.litterBox = new ConnectingObject('litter box', 565, 287, 70, 70, 10);
+    this.litterBox = new ConnectingObject('litter box', 380, 410, 70, 100, 10);
     this.couch = new ConnectingObject('couch', 115, 330, 140, 40,60);
-    this.water = new ConnectingObject('water', 400, 400, 20);
+    this.water = new ConnectingObject('water', 480, 270, 20);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water]
   }
 
@@ -198,7 +198,7 @@ export default class Room {
     this.drawRect('right', frontSidePos[0]-1, frontSidePos[1]+1, width, sideHeight, sideColor);
 
     let rightSidePos = this.nextCornerPos(...leftSidePos, width, 'SE');
-    this.drawRect('left', rightSidePos[0]+1, rightSidePos[1]+1, width, sideHeight, sideColor);
+    this.drawRect('left', rightSidePos[0]+1, rightSidePos[1]+1, height, sideHeight, sideColor);
 
   }
 

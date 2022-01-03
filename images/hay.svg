@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="186.38397mm"
+   height="48.317535mm"
+   viewBox="0 0 186.38397 48.317535"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
@@ -24,12 +24,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.46769781"
-     inkscape:cx="488.56333"
-     inkscape:cy="219.15861"
+     inkscape:cx="418.00495"
+     inkscape:cy="274.75006"
      inkscape:window-width="1537"
      inkscape:window-height="967"
      inkscape:window-x="1424"
-     inkscape:window-y="34"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -57,7 +57,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-18.571711,-75.912618)">
     <path
        style="fill:#5aa02c;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 19.234285,123.32572 29.417142,-26.022862 20.93143,-13.01143 28.285713,-7.354286 38.46857,7.354286 35.07428,7.354286 33.37715,5.657142 L 154.44,96.171431 c 0,0 -29.97678,-2.663832 -44.69143,-5.657148 -19.344479,-3.935136 -39.034286,5.091429 -39.034286,5.091429 L 49.217143,109.18286 Z"
