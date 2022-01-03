@@ -2,18 +2,20 @@ import ConnectingObject from './connecting_object';
 
 export default class Bunny extends ConnectingObject {
   
-  constructor(name, color, canvas) {
+  constructor(name, color, canvas, game) {
     super(name, 200, 250);
     this.color = color;
     this.maxWidth = canvas.width;
     this.maxHeight = canvas.height;
+    this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
+    this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.canvas = canvas;
     this.loadHay();
     this.loadBunny();
     this.hayPieces = 20;
+    this.friend = false;
   }
   
   loadBunny() {
@@ -49,9 +51,12 @@ export default class Bunny extends ConnectingObject {
 
   displayBunnyInfo() {
     const bunnyName = document.getElementById('bunny-name');
-    bunnyName.innerHTML = `Name:<br>${this.name}`;
     const bunnyHeart = document.getElementById('bunny-heart');
+    const cost = document.getElementById('cost');
+    bunnyName.innerHTML = `Name:<br>${this.name}`;
+    if (this.friend) bunnyName.innerHTML = `Name:<br>${this.name}<br>Friend's Name:<br>${this.friend.name}`;
     bunnyHeart.innerHTML = '';
+    cost.innerHTML = `Total Cost:<br>${this.game.totalCost}`;
     
     for(let i = 0; i < 10; i++) {
       let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
@@ -102,7 +107,10 @@ export default class Bunny extends ConnectingObject {
     this.hay.alt = `hay`;
 
     const addHay = document.getElementById('add-hay');
-    addHay.onclick = () => (this.hayPieces = 20) ;
+    addHay.onclick = () => {
+      this.hayPieces = 20
+      this.game.totalCost += 5;
+    };
     setInterval(() => {
       this.hayPieces -= 1;
       if (this.hayPieces <= 0) {
