@@ -12,13 +12,16 @@ export default class Bunny extends ConnectingObject {
     this.keys = {};
     this.canvas = canvas;
     this.loadBunny();
-    this.hayPieces = [];
+    this.hayPieces = 20;
   }
   
   loadBunny() {
     this.bunnyImg = new Image();
     this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
+    this.hay = new Image();
+    this.hay.src = `./images/hay.svg`;
+    this.hay.alt = `hay`;
     this.bunnyImg.onload = () => {
       this.width = Math.floor(this.bunnyImg.width/8);
       this.height = Math.floor(this.bunnyImg.height/8);
@@ -72,8 +75,10 @@ export default class Bunny extends ConnectingObject {
     
     window.addEventListener('mousedown', (event) => {
       let offset = this.canvas.getBoundingClientRect();
-      this.x = event.pageX - offset.left - (this.width/2);
-      this.y = event.pageY - offset.top - (this.height/2);
+      if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom) {
+        this.x = event.pageX - offset.left - (this.width/2);
+        this.y = event.pageY - offset.top - (this.height/2);
+      }
     })
   }
 
@@ -100,25 +105,22 @@ export default class Bunny extends ConnectingObject {
     return hay;
   }
 
-  drawHay() {
-    let numHay = 10;
-    let hay = new Image();
-    hay.src = `./images/hay.svg`;
-    hay.alt = `hay`;
+  multiplyHay() {
+    const dir =[-16, -17, -12, -8, -7, -4, -3, -1, 2, 6, 8, 13, -15, -6, 0, 3, 9, 11, 14, 16, ];
     
-    for (let i = 0; i < numHay; i++) {
-      this.multiplyHay(hay, 10*i, [300+i,450+i+5]);
+    for (let i = 0; i < this.hayPieces; i++) {
+      this.drawHay(45*dir[i], [290 + dir[i],440 + dir[i]]);
     }
   }
   
-  multiplyHay(hay, degree, hayPos, i) {
-    let newCenterPos = [hayPos[0] + (hay.width/16), hayPos[1] +(hay.height/16)]
+  drawHay(degree, hayPos) {
+    let newCenterPos = [hayPos[0] + (this.hay.width/16), hayPos[1] +(this.hay.height/16)]
     this.ctx.save();
     
     this.ctx.translate(...newCenterPos);
     this.ctx.rotate(degree * (Math.PI / 180));
     this.ctx.translate(-newCenterPos[0], -newCenterPos[1]);
-    this.ctx.drawImage(hay, ...hayPos, hay.width / 8, hay.height / 8);
+    this.ctx.drawImage(this.hay, ...hayPos, this.hay.width / 8, this.hay.height / 8);
     this.ctx.restore();
   }
 }
