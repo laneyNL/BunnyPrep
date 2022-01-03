@@ -70,23 +70,16 @@ export default class Lesson {
     this.targetFurniture = ``;
   }
   
-  lesson6() {
-    this.longDirections = ``;
-    // this.form = ``;
-    this.taskBar = ``;
-    this.info = ``;
-    this.targetFurniture = ``;
-  }
-
+  
   lesson3() {
-    this.longDirections = ``;
+    this.longDirections = `Oh no. ${this.bunny.name} has been peeing around the home. It turns out she wasn't spayed. If you would like to spay ${this.bunny.name} click the spay button at any time. This procedure will cost $200 and prevent you from playing with ${this.bunny.name} for 120 seconds.`;
     this.form = ``;
     this.taskBar = ``;
     this.info = ``;
     this.targetFurniture = ``;
-
+    
   }
-
+  
   lesson4() {
     this.longDirections = ``;
     this.form = ``;
@@ -94,17 +87,24 @@ export default class Lesson {
     this.info = ``;
     this.targetFurniture = ``;
   }
-
+  
   lesson5() {
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
     this.form = 
-      `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
+    `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
     <input type='radio' id='wipe' name='clean-method'> <label for='wipe'>Wipe ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
     this.taskBar = ``;
     this.info = ``;
     this.targetFurniture = ``;
   }
-
+  
+  lesson6() {
+    this.longDirections = ``;
+    // this.form = ``;
+    this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
+  }
  
 
   lesson7() {
