@@ -14,8 +14,8 @@ export default class Room {
   }
 
   drawConnection(x, y, width, height) {
-    this.room.fillStyle = 'blue';
-    this.room.fillRect(x, y, width, height);
+    // this.room.fillStyle = 'blue';
+    // this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {
@@ -95,6 +95,8 @@ export default class Room {
     this.drawConnection(x, y, width, width);
     this.drawBorderedCircle(x+width,y+width,width,'grey');
     this.drawBorderedCircle(x + width, y + width, width-5,'blue');
+    // this.drawFloorCuboid(x,y,width,width, 'grey', 5, 'grey');
+    // this.drawFloorRect(x+1,y-2,width-2,width-2, 'blue');
   }
 
   drawCouch(x, y, width, height, length) {
