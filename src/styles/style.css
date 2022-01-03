@@ -71,12 +71,12 @@ canvas {
 }
 
 #popup {
-  position: absolute;
+  position: fixed;
   display: flex;
-  width: 50%;
-  height: 50%;
-  top: 25%;
-  left: 25%;
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
   background-color: bisque;
   padding: 5%;
   font-size: 20px;

@@ -17,7 +17,7 @@ export default class Game {
   }
 
   welcomeMessage() {
-    const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. <br>To begin, please choose which bunny you would like to adopt:'
+    const welcome = "Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. You will loss the game if your bunnie's happiness or the budget reaches 0. <br>To begin, please choose which bunny you would like to adopt:"
     this.question.innerHTML = welcome;
     this.createBunny = this.createBunny.bind(this);
     this.form.addEventListener('submit', this.createBunny);
@@ -82,6 +82,8 @@ export default class Game {
   endGame() {
     if (this.lesson.currentLessonNum > 12) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
+    } else if (this.budget <= 0) {
+      this.question.innerHTML = `Your budget has reached $0. You have lost the game.`
     } else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }

@@ -37,7 +37,7 @@ export default class Lesson {
   
   
   lesson1() {
-    this.longDirections = `Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. ${this.bunny.name} will lose hearts if the hay is gone.`;
+    this.longDirections = `Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.bunny.name} will lose hearts if the hay is gone.`;
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
@@ -53,16 +53,16 @@ export default class Lesson {
   lesson2() {
     const addHay = document.getElementById('add-hay');
     addHay.removeEventListener('click', this.lessonCompleteBinded);
-    this.longDirections = `It's mealtime! ${this.bunny.name} would like to eat some fresh veggies. Which items would you like to feed ${this.bunny.name}?`;
-    this.form = `<input type='checkbox' id='leeks' name='vegetables' required> <label for='leeks'>Leeks</label>
+    this.longDirections = `Great job on adding hay! Now it's time to feed ${this.bunny.name} some fresh veggies. Which items would you like to feed ${this.bunny.name}?`;
+    this.form = `<input type='checkbox' id='leeks' name='vegetables'> <label for='leeks'>Leeks</label><br>
     
-    <input type='checkbox' id='tomato-leaf' name='vegetables'> <label for='tomato-leaf'>Tomato Leaf</label>
+    <input type='checkbox' id='tomato-leaf' name='vegetables'> <label for='tomato-leaf'>Tomato Leaf</label><br>
     
-    <input type='checkbox' id='cilantro' name='vegetables'> <label for='cilantro'>Cilantro</label>
+    <input type='checkbox' id='cilantro' name='vegetables'> <label for='cilantro'>Cilantro</label><br>
     
-    <input type='checkbox' id='iceberg' name='vegetables'> <label for='iceberg'>Iceberg Lettuce</label>
+    <input type='checkbox' id='iceberg' name='vegetables'> <label for='iceberg'>Iceberg Lettuce</label><br>
 
-    <input type='checkbox' id='carrot-leaf' name='vegetables' required> <label for='carrot-leaf'>Carrot Leaf</label><br>
+    <input type='checkbox' id='carrot-leaf' name='vegetables'> <label for='carrot-leaf'>Carrot Leaf</label><br>
     
     <input type="submit" value='Feed Vegetables'>`;
     this.taskBar = ``;
