@@ -52,19 +52,22 @@ export default class Game {
   }
 
   moveRabbit() {
-    // if (this.isGameOver()) this.endGame();
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
 
+    
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture)) {
         // console.log(furniture.name);
       }
     })
-
     let that = this.moveRabbit.bind(this);
-    window.requestAnimationFrame(that);
+    if (this.isGameOver()) {
+      this.endGame(); 
+    } else {
+      window.requestAnimationFrame(that);
+    }
   }
 
   checkRadioInput() {
@@ -81,15 +84,12 @@ export default class Game {
   }
 
   endGame() {
-    window.cancelAnimationFrame(this.moveRabbit);
-    document.getElementById('popup').style.display = 'flex';
     if (this.lesson.currentLessonNum > 12) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
-
     } else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
-
     }
+    this.togglePopup();  
   }
 
   runLesson(){

@@ -19,12 +19,20 @@ export default class Bunny extends ConnectingObject {
   }
   
   loadBunny() {
-    this.bunnyImg = new Image();
-    this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
-    this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
-    this.bunnyImg.onload = () => {
-      this.width = Math.floor(this.bunnyImg.width/8);
-      this.height = Math.floor(this.bunnyImg.height/8);
+    const COLORS = ['brown', 'black', 'grey'];
+    const EMOTIONS = ['happy', 'sad', 'mad', 'sleepy']
+    this.bunnyImages = {};
+    COLORS.forEach(color => {
+      EMOTIONS.forEach(emotion => {
+        this.bunnyImages[`${color}-${emotion}Img`] = new Image();
+        this.bunnyImages[`${color}-${emotion}Img`].src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
+        this.bunnyImages[`${color}-${emotion}Img`].alt = `${this.emotion()} ${this.color} bunny`;
+      })
+    })
+    this.bunnyImages['grey-sleepyImg'].onload = () => {
+      console.log(this.bunnyImages);
+      this.width = Math.floor(this.bunnyImages[`${this.color}-${this.emotion()}Img`].width/8);
+      this.height = Math.floor(this.bunnyImages[`${this.color}-${this.emotion()}Img`].height/8);
       this.drawBunny.bind(this)();
       this.moveBunnyListener();
       this.displayBunnyInfo();
@@ -33,14 +41,14 @@ export default class Bunny extends ConnectingObject {
 
   drawBunny() {
     this.updatePosition();
-    this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.bunnyImages[`${this.color}-${this.emotion()}Img`], this.x, this.y, this.width, this.height);
     this.multiplyHay();
     this.displayBunnyInfo();
   }
 
   emotion() {
-    if (this.happyMeter < 3) return 'mad';
-    if (this.happyMeter > 8) return 'happy';
+    if (this.happyMeter < 2) return 'mad';
+    if (this.happyMeter > 4) return 'happy';
     return 'sad';
   }
   
