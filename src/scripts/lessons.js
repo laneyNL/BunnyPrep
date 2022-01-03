@@ -14,7 +14,7 @@ export default class Lesson {
   }
 
   lessonComplete(event) {
-    if (event !== undefined) event.preventDefault();
+    if (event) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
   }
@@ -42,7 +42,7 @@ export default class Lesson {
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
     this.targetFurniture = '';
-    
+
     const addHay = document.getElementById('add-hay');
     this.lessonCompleteBinded = this.lessonComplete.bind(this);
     addHay.addEventListener('click', this.lessonCompleteBinded);
@@ -53,53 +53,83 @@ export default class Lesson {
     const addHay = document.getElementById('add-hay');
     addHay.removeEventListener('click', this.lessonCompleteBinded);
     this.longDirections = ``;
+    // this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson3() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
+
   }
 
   lesson4() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson5() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson6() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson7() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson8() {
     this.longDirections = `${this.name} is bored and would like to go outside. Would you like to allow ${this.name} to go outside to play?`;
+    this.form = ``;
     this.taskBar = ``;
     this.info = `House bunnies should be kept indoors. When outside bunnies are exposed to diseases and predators.`
+    this.targetFurniture = `door`;
   }
 
   lesson9() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson10() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   lesson11() {
     this.longDirections = ``;
+    this.form = ``;
     this.taskBar = ``;
+    this.info = ``;
+    this.targetFurniture = ``;
   }
 
   adoptAFriend() {

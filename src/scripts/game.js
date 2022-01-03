@@ -44,10 +44,10 @@ export default class Game {
     this.form.removeEventListener('submit', this.createBunny);
     this.form.addEventListener('submit', (event) => this.togglePopup(event));
     this.runLesson(); 
-    this.moveRabbit();
+    this.drawGame();
   }
 
-  moveRabbit() {
+  drawGame() {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
@@ -58,7 +58,7 @@ export default class Game {
       }
     })
 
-    let that = this.moveRabbit.bind(this);
+    let that = this.drawGame.bind(this);
     if (this.isGameOver()) {
       this.endGame(); 
     } else {

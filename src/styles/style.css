@@ -24,7 +24,6 @@ body {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-column-gap: 10px;
-  /* margin: 30px; */
 }
 
 .room {
@@ -48,6 +47,8 @@ body {
 
 .right-sidebar {
   width: 150px;
+  display: block;
+
 }
 
 .left-sidebar{
@@ -86,10 +87,11 @@ canvas {
   width: 20%;
   height: auto;
 }
-/* .heart-image {
-  width: 10px;
-  height: auto;
-} */
+
+#info-learned {
+  list-style-type: circle;
+  list-style-position: inside;
+}
 
 @media screen and (max-width: 1150px) {
   .right-sidebar{
