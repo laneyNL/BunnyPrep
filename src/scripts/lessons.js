@@ -10,14 +10,15 @@ export default class Lesson {
     this.info = '';
     this.game = game;
     this.bunny = bunny;
+    this.targetFurniture = '';
   }
 
   lessonComplete(event) {
-    console.log('lesson')
     if (event !== undefined) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
   }
+
   displayLessons() {
     const infoList = document.getElementById('info-learned');
     infoList.innerHTML = '';
@@ -30,7 +31,8 @@ export default class Lesson {
     this.longDirections = `You added hay to the pile! You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.form = `<input type="submit" value='Continue'>`;
-    this.info = `Bunnies can be trained to use the litterbox just like cats.`
+    this.info = `Bunnies can be trained to use the litterbox just like cats.`;
+    this.targetFurniture = 'litter box';
   }
   
   
@@ -38,7 +40,9 @@ export default class Lesson {
     this.longDirections = `Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. ${this.bunny.name} will lose hearts if the hay is gone.`;
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
-    this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`
+    this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
+    this.targetFurniture = '';
+    
     const addHay = document.getElementById('add-hay');
     this.lessonCompleteBinded = this.lessonComplete.bind(this);
     addHay.addEventListener('click', this.lessonCompleteBinded);
