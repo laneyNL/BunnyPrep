@@ -55,13 +55,14 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
-
+    this.lesson.displayLessons();
     
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture)) {
         // console.log(furniture.name);
       }
     })
+
     let that = this.moveRabbit.bind(this);
     if (this.isGameOver()) {
       this.endGame(); 
@@ -100,6 +101,7 @@ export default class Game {
     this.question.innerHTML = this.lesson.longDirections;
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
+    this.info.push(this.lesson.info);
     this.togglePopup();
     this.form.addEventListener('submit', (event) => this.togglePopup(event));
   }
