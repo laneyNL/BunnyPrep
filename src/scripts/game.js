@@ -6,7 +6,6 @@ import ConnectingObject from './connecting_object.js';
 export default class Game {
   constructor(canvas) {
     this.budget = 500;
-    this.display = 'flex';
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
@@ -25,9 +24,8 @@ export default class Game {
   
   togglePopup(event) {
     if (event !== undefined) event.preventDefault();
-    this.display = this.display === 'none' ? 'flex' : 'none';
     const popup = document.getElementById('popup');
-    popup.style.display = this.display;
+    popup.classList.toggle('hidden');
   }
   
   createBunny(event) {
@@ -95,9 +93,8 @@ export default class Game {
     } else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
-    this.display = 'flex';
     const popup = document.getElementById('popup');
-    popup.style.display = this.display;
+    popup.classList = '';
   }
 
   runLesson(){
