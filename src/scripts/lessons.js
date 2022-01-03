@@ -3,7 +3,9 @@
 export default class Lesson {
 
   constructor(game, bunny) {
+    this.currentLessonNum = 0;
     this.longDirections = '';
+    this.form = ``;
     this.taskBar = '';
     this.info = '';
     this.game = game;
@@ -12,11 +14,22 @@ export default class Lesson {
 
   lesson0() {
     this.longDirections = `Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. ${this.bunny.name} will lose hearts if the hay is gone.`;
+    this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`
+    const addHay = document.getElementById('add-hay');
+    addHay.onclick = lessonComplete;
+      
+  }
+
+  lessonComplete() {
+    this.currentLessonNum += 1;
+    this.game.runLesson();
   }
 
   lesson1(){
+    const addHay = document.getElementById('add-hay');
+    addHay.removeEventListener('click', lessonComplete);
     this.longDirections = `You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.info = `Bunnies can be trained to use the litterbox just like cats.`
