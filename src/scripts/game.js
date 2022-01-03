@@ -96,7 +96,7 @@ export default class Game {
     this.question.innerHTML = this.lesson.longDirections;
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
-    this.info.push(this.lesson.info);
+    this.info.push(`🥕 ${this.lesson.info}`);
     this.togglePopup();
     
   }

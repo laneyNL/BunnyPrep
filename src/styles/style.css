@@ -89,8 +89,7 @@ canvas {
 }
 
 #info-learned {
-  list-style-type: circle;
-  list-style-position: inside;
+  /* list-style-position: inside; */
 }
 
 @media screen and (max-width: 1150px) {
