@@ -19,14 +19,8 @@ export default class Game {
   welcomeMessage() {
     const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. <br>To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
-    // this.beingListenerBinded = this.beginListener.bind(this);
     this.createBunny = this.createBunny.bind(this);
     this.form.addEventListener('submit', this.createBunny);
-  }
-  
-  beginListener(event) {
-    this.togglePopup(event);
-    this.createBunny();
   }
   
   togglePopup(event) {
@@ -37,7 +31,6 @@ export default class Game {
   }
   
   createBunny(event) {
-    console.log(this);
     if (event) event.preventDefault();
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
@@ -48,7 +41,6 @@ export default class Game {
   play() {
     this.room.drawRoom();
     this.lesson = new Lesson(this, this.bunny);
-
     this.form.removeEventListener('submit', this.createBunny);
     this.form.addEventListener('submit', (event) => this.togglePopup(event));
     this.runLesson(); 
