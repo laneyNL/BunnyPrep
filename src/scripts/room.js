@@ -9,7 +9,7 @@ export default class Room {
     this.drawer = new ConnectingObject('drawer', 330, 130, 110, 75, 30);
     this.litterBox = new ConnectingObject('litter box', 380, 410, 70, 100, 10);
     this.couch = new ConnectingObject('couch', 115, 330, 140, 40,60);
-    this.water = new ConnectingObject('water', 480, 270, 20);
+    this.water = new ConnectingObject('water', 510, 270, 20);
     this.foodBowl = new ConnectingObject('food-bowl', 600, 315, 20, 20, 5);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
   }
@@ -40,12 +40,9 @@ export default class Room {
   }
   
   drawBackground() {
-    // this.room.fillStyle = 'blue';
-    // this.room.fillRect(0,0, this.width, this.height);
     this.drawRect('right', 352, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawFloorRect(350, 167, 370, 370, 'rgba(242, 236, 207, 0.8)');
-
   }
   
   drawWindow() {
@@ -99,10 +96,10 @@ export default class Room {
   }
 
   drawWater(x, y, width) {
-    this.drawConnection(x, y, width, width);
-    this.drawBorderedCircle(x+width,y+width,width,'grey');
-    this.drawBorderedCircle(x + width, y + width, width-5,'blue');
-    // this.drawFloorCuboid(x,y,width,width, 'grey', 5, 'grey');
+    // this.drawConnection(x, y, width, width);
+    // this.drawBorderedCircle(x+width,y+width,width,'grey');
+    // this.drawBorderedCircle(x + width, y + width, width-5,'blue');
+    this.drawFloorCuboid(x,y,width,width, 'blue', 5, 'grey');
     // this.drawFloorRect(x+1,y-2,width-2,width-2, 'blue');
   }
 
