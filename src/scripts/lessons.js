@@ -77,12 +77,12 @@ export default class Lesson {
     let userBadVegs = this.bunny.checkVegetables();
     this.longDirections = ``;
     if (userBadVegs.length <= 0) {
-      this.longDirections = `Nom nom nom. ${this.name} is super happy.`;
+      this.longDirections = `Nom nom nom. ${this.bunny.name} is super happy.`;
     } else {
-      this.longDirections = `Oh no! ${this.name} was fed some dangerous vegetables.`;
+      this.longDirections = `Oh no! ${this.bunny.name} was fed some dangerous vegetables.`;
       if (userBadVegs.includes('leeks')) this.longDirections += `<br>Vegetables in the onion family including leeks are poisionous to bunnies.`;
       if (userBadVegs.includes('tomato-leaf')) this.longDirections += `<br>Tomato leaves are toxic to bunnies.`;
-      if (userBadVegs.includes('iceberg')) this.longDirections += `<br>Iceberg lettuce can have toxins that are dangeous to bunnies. Feeding darker leaf lettuces are better.`;
+      if (userBadVegs.includes('iceberg')) this.longDirections += `<br>Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
     }
       
     this.form = `<input type="submit" value='Continue'>`;
