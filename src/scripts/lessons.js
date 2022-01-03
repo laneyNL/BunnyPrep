@@ -53,8 +53,8 @@ export default class Lesson {
   lesson2() {
     const addHay = document.getElementById('add-hay');
     addHay.removeEventListener('click', this.lessonCompleteBinded);
-    
-    this.longDirections = `Great job on adding hay! Now it's time to feed ${this.bunny.name} some fresh veggies. Which items would you like to feed ${this.bunny.name}?`;
+
+    this.longDirections = `Great job on adding hay! Now it's time to feed ${this.bunny.name} some fresh veggies. Which items would you like to feed ${this.bunny.name}? Each vegetable will cost $1.`;
     this.form = `<input type='checkbox' id='leeks' name='vegetables'> <label for='leeks'>Leeks</label><br>
     
     <input type='checkbox' id='tomato-leaf' name='vegetables'> <label for='tomato-leaf'>Tomato Leaf</label><br>
@@ -70,11 +70,27 @@ export default class Lesson {
     <input type="submit" value='Feed Vegetables'>`;
     this.taskBar = ``;
     this.info = ``;
-    this.target = ['cilantro', 'blackberry-leaf', 'basil'];
+    this.target = 'food-bowl'
   }
   
-  
   lesson3() {
+    let userBadVegs = this.bunny.checkVegetables();
+    this.longDirections = ``;
+    if (userBadVegs.length <= 0) {
+      this.longDirections = `Nom nom nom. ${this.name} is super happy.`;
+    } else {
+      this.longDirections = `Oh no! ${this.name} was fed some dangerous vegetables.`;
+      if (userBadVegs.includes('leeks')) this.longDirections += `<br>Vegetables in the onion family including leeks are poisionous to bunnies.`;
+      if (userBadVegs.includes('tomato-leaf')) this.longDirections += `<br>Tomato leaves are toxic to bunnies.`;
+      if (userBadVegs.includes('iceberg')) this.longDirections += `<br>Iceberg lettuce can have toxins that are dangeous to bunnies. Feeding darker leaf lettuces are better.`;
+    }
+      
+    this.form = `<input type="submit" value='Continue'>`;
+    this.taskBar = ``;
+    this.info = ``;
+    this.target = ``;
+  
+  lesson4() {
     this.longDirections = `Oh no. ${this.bunny.name} has been peeing around the home. It turns out she wasn't spayed. If you would like to spay ${this.bunny.name} click the spay button at any time. This procedure will cost $200 and prevent you from playing with ${this.bunny.name} for 120 seconds.`;
     this.form = ``;
     this.taskBar = ``;
@@ -83,12 +99,6 @@ export default class Lesson {
     
   }
   
-  lesson4() {
-    this.longDirections = ``;
-    this.form = ``;
-    this.taskBar = ``;
-    this.info = ``;
-    this.target = ``;
   }
   
   lesson5() {

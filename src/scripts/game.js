@@ -11,7 +11,6 @@ export default class Game {
     this.canvas = canvas;
     this.info = [];
     this.room = new Room(canvas);
-    this.allFurniture = [];
     this.welcomeMessage();
   }
 
@@ -94,7 +93,7 @@ export default class Game {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
     const popup = document.getElementById('popup');
-    popup.classList = '';
+    popup.classList = 'flex';
   }
 
   runLesson(){

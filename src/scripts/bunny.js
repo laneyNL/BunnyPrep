@@ -132,5 +132,30 @@ export default class Bunny extends ConnectingObject {
     this.ctx.drawImage(this.hay, ...hayPos, this.hay.width / 8, this.hay.height / 8);
     this.ctx.restore();
   }
+
+  checkVegetables() {
+    const goodVegs = ['cilantro', 'blackberry-leaf', 'basil'];
+    const badVegs = ['leeks', 'tomato-leaf', 'iceberg'];
+
+    let userVegs = this.game.checkboxInput();
+    let numVegs = userVegs.length;
+    this.game.budget -= numVegs * 1;
+
+    let userGoodVegs = userVegs.filter(veg => goodVegs.includes(veg));
+    let userBadVegs = userVegs.filter(veg => badVegs.includes(veg));
+    
+    if (userBadVegs.length > 0)  {
+      this.changeHappiness(-1);
+    } else if (userGoodVegs.length > 0) {
+      this.changeHappiness(1);
+    }
+
+    return userBadVegs;
+
+    window.setTimeout( () => {
+      
+    }, 5000);
+    
+  }
     
 }
