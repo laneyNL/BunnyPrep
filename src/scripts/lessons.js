@@ -17,6 +17,7 @@ export default class Lesson {
     if (event) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
+    console.log('lescomplet', this.currentLessonNum)
   }
 
   displayLessons() {
@@ -28,7 +29,7 @@ export default class Lesson {
   }
 
   lesson0(){
-    this.longDirections = `You added hay to the pile! You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
+    this.longDirections = `You can move ${this.bunny.name} around with your cursor or the arrow keys. Trying moving ${this.bunny.name} to the litterbox.`;
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.info = `Bunnies can be trained to use the litterbox just like cats.`;
@@ -69,7 +70,7 @@ export default class Lesson {
     <input type="submit" value='Feed Vegetables'>`;
     this.taskBar = ``;
     this.info = ``;
-    this.target = [cilantro, blackberry-leaf, basil];
+    this.target = ['cilantro', 'blackberry-leaf', 'basil'];
   }
   
   

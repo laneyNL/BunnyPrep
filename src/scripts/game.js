@@ -31,7 +31,7 @@ export default class Game {
   }
   
   createBunny(event) {
-    if (event) event.preventDefault();
+    if (event) this.togglePopup(event);
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.checkRadioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.canvas, this);
@@ -96,6 +96,7 @@ export default class Game {
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
     this.info.push(`🥕 ${this.lesson.info}`);
+    console.log('run', this.lesson.currentLessonNum)
     this.togglePopup();
     
   }
