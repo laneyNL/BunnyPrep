@@ -53,10 +53,10 @@ export default class Bunny extends ConnectingObject {
     const bunnyName = document.getElementById('bunny-name');
     const bunnyHeart = document.getElementById('bunny-heart');
     const cost = document.getElementById('cost');
-    bunnyName.innerHTML = `Name:<br>${this.name}`;
-    if (this.friend) bunnyName.innerHTML = `Name:<br>${this.name}<br>Friend's Name:<br>${this.friend.name}`;
+    bunnyName.innerHTML = `${this.name}`;
+    if (this.friend) bunnyName.innerHTML = `${this.name}<br>Friend's Name:<br>${this.friend.name}`;
     bunnyHeart.innerHTML = '';
-    cost.innerHTML = `Total Cost:<br>${this.game.totalCost}`;
+    cost.innerHTML = `${this.game.totalCost}`;
     
     for(let i = 0; i < 10; i++) {
       let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
@@ -114,7 +114,7 @@ export default class Bunny extends ConnectingObject {
     setInterval(() => {
       this.hayPieces -= 1;
       if (this.hayPieces <= 0) {
-        this.happyMeter -= 1;
+        this.changeHappiness(-1);
       }
     }, 5000);
   }
