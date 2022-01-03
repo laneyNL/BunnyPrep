@@ -31,7 +31,6 @@ export default class Bunny extends ConnectingObject {
   drawBunny() {
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
-    this.drawHay();
   }
 
   emotion() {
@@ -108,17 +107,16 @@ export default class Bunny extends ConnectingObject {
     hay.alt = `hay`;
     
     for (let i = 0; i < numHay; i++) {
-      this.multiplyHay(hay, 25*i);
+      this.multiplyHay(hay, 10*i, [300+i,450+i+5]);
     }
   }
-
-  multiplyHay(hay, degree) {
-    let hayPos = [300, 450];
-    let newCenterPos = [hayPos[0] + (hay.width / 16), hayPos[1] + (hay.height / 16)]
+  
+  multiplyHay(hay, degree, hayPos, i) {
+    let newCenterPos = [hayPos[0] + (hay.width/16), hayPos[1] +(hay.height/16)]
     this.ctx.save();
-
+    
     this.ctx.translate(...newCenterPos);
-    this.ctx.rotate((degree) * (Math.PI / 180));
+    this.ctx.rotate(degree * (Math.PI / 180));
     this.ctx.translate(-newCenterPos[0], -newCenterPos[1]);
     this.ctx.drawImage(hay, ...hayPos, hay.width / 8, hay.height / 8);
     this.ctx.restore();
