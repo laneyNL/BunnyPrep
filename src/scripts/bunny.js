@@ -107,10 +107,10 @@ export default class Bunny extends ConnectingObject {
     this.hay.alt = `hay`;
 
     const addHay = document.getElementById('add-hay');
-    addHay.onclick = () => {
+    addHay.addEventListener('click', () => {
       this.hayPieces = 20
       this.game.totalCost += 5;
-    };
+    });
     setInterval(() => {
       this.hayPieces -= 1;
       if (this.hayPieces <= 0) {

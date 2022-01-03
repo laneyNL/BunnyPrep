@@ -18,11 +18,12 @@ export default class Lesson {
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`
     const addHay = document.getElementById('add-hay');
-    addHay.onclick = lessonComplete;
+    addHay.addEventListener('click', this.lessonComplete);
       
   }
 
-  lessonComplete() {
+  lessonComplete(event) {
+    if (event !== undefined) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
   }

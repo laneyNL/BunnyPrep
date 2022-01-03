@@ -16,32 +16,23 @@ export default class Game {
     this.welcomeMessage();
   }
 
-  play() {
-    this.room.drawRoom();
-    this.lesson = new Lesson(this, this.bunny);
-    this.form.removeEventListener('submit', this.beingListenerBinded, false);
-    this.runLesson(); 
-    this.moveRabbit();
-  }
-  
   welcomeMessage() {
     const welcome = 'Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. <br>To begin, please choose which bunny you would like to adopt:'
     this.question.innerHTML = welcome;
     this.beingListenerBinded = this.beginListener.bind(this);
     this.form.addEventListener('submit', this.beingListenerBinded);
   }
-
+  
   beginListener(event) {
     this.togglePopup(event);
     this.createBunny();
   }
-
+  
   togglePopup(event) {
     if (event !== undefined) event.preventDefault();
     this.display = this.display === 'none' ? 'flex' : 'none';
     const popup = document.getElementById('popup');
     popup.style.display = this.display;
-    // this.checkRadioInput();
   }
   
   createBunny() {
@@ -50,8 +41,18 @@ export default class Game {
     this.bunny = new Bunny(name, color, this.canvas, this);
     this.play();
   }
+  
+  play() {
+    this.room.drawRoom();
+    this.lesson = new Lesson(this, this.bunny);
+
+    this.form.removeEventListener('submit', this.beingListenerBinded);
+    this.runLesson(); 
+    this.moveRabbit();
+  }
 
   moveRabbit() {
+    // if (this.isGameOver()) this.endGame();
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
@@ -76,15 +77,18 @@ export default class Game {
   }
 
   isGameOver() {
-    return this.lesson.currentLesson > 12 || this.bunny.happyMeter <= 0;
+    return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0;
   }
 
   endGame() {
-    this.togglePopup();
-    if (this.lesson.currentLesson > 12) {
+    window.cancelAnimationFrame(this.moveRabbit);
+    document.getElementById('popup').style.display = 'flex';
+    if (this.lesson.currentLessonNum > 12) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
+
     } else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
+
     }
   }
 
@@ -92,11 +96,12 @@ export default class Game {
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
-    
+
     this.question.innerHTML = this.lesson.longDirections;
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
     this.togglePopup();
+    this.form.addEventListener('submit', (event) => this.togglePopup(event));
   }
 
 
