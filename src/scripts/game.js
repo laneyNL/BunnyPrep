@@ -56,7 +56,6 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
-    this.bunny.multiplyHay();
 
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture)) {

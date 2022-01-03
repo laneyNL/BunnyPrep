@@ -11,6 +11,7 @@ export default class Bunny extends ConnectingObject {
     this.happyMeter = 5;
     this.keys = {};
     this.canvas = canvas;
+    this.loadHay();
     this.loadBunny();
     this.hayPieces = 20;
   }
@@ -19,9 +20,6 @@ export default class Bunny extends ConnectingObject {
     this.bunnyImg = new Image();
     this.bunnyImg.src = `./images/${this.color}/${this.color}_${this.emotion()}.png`;
     this.bunnyImg.alt = `${this.emotion()} ${this.color} bunny`;
-    this.hay = new Image();
-    this.hay.src = `./images/hay.svg`;
-    this.hay.alt = `hay`;
     this.bunnyImg.onload = () => {
       this.width = Math.floor(this.bunnyImg.width/8);
       this.height = Math.floor(this.bunnyImg.height/8);
@@ -34,6 +32,8 @@ export default class Bunny extends ConnectingObject {
   drawBunny() {
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
+    this.multiplyHay();
+    this.displayBunnyInfo();
   }
 
   emotion() {
@@ -49,10 +49,9 @@ export default class Bunny extends ConnectingObject {
 
   displayBunnyInfo() {
     const bunnyName = document.getElementById('bunny-name');
-    let nameText = document.createElement('p');
-    nameText.innerHTML = `${this.name}`;
-    bunnyName.appendChild(nameText);
-    const bunnyDisplay = document.getElementById('bunny-display');
+    bunnyName.innerHTML = `Name:<br>${this.name}`;
+    const bunnyHeart = document.getElementById('bunny-heart');
+    bunnyHeart.innerHTML = '';
     
     for(let i = 0; i < 10; i++) {
       let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
@@ -61,7 +60,7 @@ export default class Bunny extends ConnectingObject {
       heartImg.alt = `${heartType}`;
       heartImg.width = '15';
 
-      bunnyDisplay.appendChild(heartImg);
+      bunnyHeart.appendChild(heartImg);
     }
   }
 
@@ -98,16 +97,22 @@ export default class Bunny extends ConnectingObject {
   }
   
   loadHay() {
-    const hay = new Image();
-    // hay.src = `./images/hay.svg`;
-    hay.src = `./images/heart.png`;
-    hay.alt = `hay`;
-    return hay;
+    this.hay = new Image();
+    this.hay.src = `./images/hay.svg`;
+    this.hay.alt = `hay`;
+
+    const addHay = document.getElementById('add-hay');
+    addHay.onclick = () => (this.hayPieces = 20) ;
+    setInterval(() => {
+      this.hayPieces -= 1;
+      if (this.hayPieces <= 0) {
+        this.happyMeter -= 1;
+      }
+    }, 5000);
   }
 
   multiplyHay() {
     const dir =[-16, -17, -12, -8, -7, -4, -3, -1, 2, 6, 8, 13, -15, -6, 0, 3, 9, 11, 14, 16, ];
-    
     for (let i = 0; i < this.hayPieces; i++) {
       this.drawHay(45*dir[i], [290 + dir[i],440 + dir[i]]);
     }
@@ -116,11 +121,11 @@ export default class Bunny extends ConnectingObject {
   drawHay(degree, hayPos) {
     let newCenterPos = [hayPos[0] + (this.hay.width/16), hayPos[1] +(this.hay.height/16)]
     this.ctx.save();
-    
     this.ctx.translate(...newCenterPos);
     this.ctx.rotate(degree * (Math.PI / 180));
     this.ctx.translate(-newCenterPos[0], -newCenterPos[1]);
     this.ctx.drawImage(this.hay, ...hayPos, this.hay.width / 8, this.hay.height / 8);
     this.ctx.restore();
   }
+    
 }
