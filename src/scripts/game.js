@@ -33,7 +33,7 @@ export default class Game {
   createBunny(event) {
     if (event) this.togglePopup(event);
     let name = document.querySelector('input[name=bunny-name]').value;
-    let color = this.checkRadioInput().split('-')[0];
+    let color = this.radioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.canvas, this);
     this.startGame();
   }
@@ -63,7 +63,7 @@ export default class Game {
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
   }
 
-  checkRadioInput() {
+  radioInput() {
     let radioInputs = document.querySelectorAll('input[type=radio]');
     let radioInput = '';
     radioInputs.forEach(input => {
@@ -72,11 +72,22 @@ export default class Game {
     return radioInput;
   }
 
+  checkboxInput() {
+    let checkboxes = document.querySelectorAll('input[type=checkbox]');
+    let checkboxInputs = [];
+    checkboxes.forEach(input => {
+      if (input.checked) checkboxInputs.push(input.id);
+    })
+    return checkboxInputs;
+  }
+
   isGameOver() {
     return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0 || this.budget <= 0;
   }
 
   endGame() {
+    this.form.innerHTML = `<input type="submit" value='Game Over'>`;
+    
     if (this.lesson.currentLessonNum > 12) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
     } else if (this.budget <= 0) {
@@ -84,7 +95,9 @@ export default class Game {
     } else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
-    this.togglePopup();  
+    this.display = 'flex';
+    const popup = document.getElementById('popup');
+    popup.style.display = this.display;
   }
 
   runLesson(){
@@ -96,7 +109,6 @@ export default class Game {
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
     this.info.push(`🥕 ${this.lesson.info}`);
-    console.log('run', this.lesson.currentLessonNum)
     this.togglePopup();
     
   }

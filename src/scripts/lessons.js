@@ -17,7 +17,6 @@ export default class Lesson {
     if (event) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
-    console.log('lescomplet', this.currentLessonNum)
   }
 
   displayLessons() {
@@ -38,7 +37,7 @@ export default class Lesson {
   
   
   lesson1() {
-    this.longDirections = `Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.bunny.name} will lose hearts if the hay is gone.`;
+    this.longDirections = `You have moved ${this.bunny.name} to the litter box! Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.bunny.name} will lose hearts if the hay is gone. Try clicking 'Add Hay' button.`;
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
@@ -54,6 +53,7 @@ export default class Lesson {
   lesson2() {
     const addHay = document.getElementById('add-hay');
     addHay.removeEventListener('click', this.lessonCompleteBinded);
+    
     this.longDirections = `Great job on adding hay! Now it's time to feed ${this.bunny.name} some fresh veggies. Which items would you like to feed ${this.bunny.name}?`;
     this.form = `<input type='checkbox' id='leeks' name='vegetables'> <label for='leeks'>Leeks</label><br>
     
