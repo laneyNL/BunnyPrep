@@ -35,7 +35,6 @@ export default class Lesson {
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.info = `Bunnies can be trained to use the litterbox just like cats.`;
     this.target = 'litter box';
-    this.targetType = 'furniture';
   }
   
   
@@ -45,7 +44,6 @@ export default class Lesson {
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
     this.target = '';
-    this.targetType = '';
     const addHay = document.getElementById('add-hay');
     this.lessonCompleteBinded = this.lessonComplete.bind(this);
     addHay.addEventListener('click', this.lessonCompleteBinded);
@@ -74,8 +72,8 @@ export default class Lesson {
     this.taskBar = `Select the vegetables and move ${this.bunny.name} to the food bowl.`;
     this.info = `Not all vegetables are safe for bunnies to eat.`;
     this.target = 'food-bowl';
-    this.targetType = 'furniture';
   }
+
   
   lesson3() {
     let userBadVegs = this.bunny.checkVegetables();
@@ -93,7 +91,6 @@ export default class Lesson {
     this.taskBar = `Move ${this.bunny.name} to the water bowl.`;
     this.info = `Research before introducing a new vegetable.`;
     this.target = `water`;
-    this.targetType = 'furniture';
   }
   
   lesson4() {
@@ -105,7 +102,6 @@ export default class Lesson {
     this.taskBar = `After deciding, bring ${this.bunny.name} to the couch to wait.`;
     this.info = ``;
     this.target = `couch`;
-    this.targetType = 'furniture';
   }
   
   lesson5() {
@@ -114,7 +110,6 @@ export default class Lesson {
     this.taskBar = `${this.bunny.name} will need to rest in order to recover.`;
     this.info = `Spaying/Neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
     this.target = ``;
-    this.targetType = 'adopt/spay';
   }
   
   lesson30() {
@@ -135,7 +130,6 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
-    this.targetType = '';
     this.adoptOrSpayBinded = this.game.adoptOrSpay.bind(this.game);
     this.game.form.addEventListener('submit', this.adoptOrSpayBinded);
   }
@@ -150,7 +144,6 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
-    this.targetType = '';
   }
 
   lesson6() {
@@ -161,7 +154,6 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
-    this.targetType = '';
   }
 
   lesson7() {

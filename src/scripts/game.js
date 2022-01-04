@@ -67,7 +67,7 @@ export default class Game {
     if (this.friend) this.friend.drawBunny();
     this.lesson.displayLessons();
 
-    if (this.lesson.targetType === 'furniture') this.checkFurnitureCollision(); 
+    if (this.lesson.target) this.checkFurnitureCollision(); 
 
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(this.runGame.bind(this));
   }
