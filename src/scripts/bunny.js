@@ -39,8 +39,9 @@ export default class Bunny extends ConnectingObject {
   }
 
   drawBunny() {
-    let position = this.vel[0] > 0 ? '-reverse' : '';
-    this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}${position}`);
+    let orientation = this.vel[0] > 0 ? '-reverse' : '';
+    this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}${orientation}`);
+
     this.updatePosition();
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
     this.multiplyHay();
@@ -90,8 +91,10 @@ export default class Bunny extends ConnectingObject {
       let offset = this.canvas.getBoundingClientRect();
 
       if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
-        this.x = event.pageX - offset.left - (this.width/2);
-        this.y = event.pageY - offset.top - (this.height/2);
+        let newX = event.pageX - offset.left - (this.width / 2);
+        this.vel[0] = this.x < newX ? Math.abs(this.vel[0]) : -Math.abs(this.vel[0]);
+        this.x = newX;
+        this.y = event.pageY - offset.top - (this.height / 2);
       }
     })
   }
@@ -211,8 +214,8 @@ export default class Bunny extends ConnectingObject {
 
   drawFriend() {
     this.happyMeter = this.mainBunny.happyMeter;
-    let position = this.vel[0] > 0 ? '-reverse' : '';
-    this.friendImg = document.getElementById(`${this.color}-${this.emotion()}${position}`);
+    let orientation = this.vel[0] > 0 ? '-reverse' : '';
+    this.friendImg = document.getElementById(`${this.color}-${this.emotion()}${orientation}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
   }
 }
