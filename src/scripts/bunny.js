@@ -189,16 +189,8 @@ export default class Bunny extends ConnectingObject {
   drawFriend() {
     this.happyMeter = this.mainBunny.happyMeter;
     if (this.vel[0] > 0) {
-      this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
-    } else {
-      this.ctx.save();
-      this.ctx.translate((this.maxWidth/2), 0);
-      this.ctx.scale(-1, 1);
-      this.ctx.drawImage(this.friendImg, this.x, this.y, -this.width, this.height);
-      console.log(this.x, this.y)
-      this.ctx.restore();
-    }
-  }
+    } 
+    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
     
 
     

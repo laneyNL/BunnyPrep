@@ -118,9 +118,9 @@ export default class Game {
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
     this.currentLessonNum = 100;
-    console.log(this.room.room);
+    this.room.room.fillStyle = 'black';
     this.room.room.font = '70px sans-serif';
-    let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2)
+    let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2);
     this.room.room.fillText('Game Over', midWidth, this.canvas.height / 2);
   }
   
