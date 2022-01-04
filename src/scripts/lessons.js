@@ -11,12 +11,14 @@ export default class Lesson {
     this.game = game;
     this.bunny = bunny;
     this.target = '';
+    this.targetType = '';
   }
 
   lessonComplete(event) {
     if (event) event.preventDefault();
     this.currentLessonNum += 1;
     this.game.runLesson();
+    console.log('lesscom', this.currentLessonNum);
   }
 
   displayLessons() {
@@ -33,6 +35,7 @@ export default class Lesson {
     this.taskBar = `Move ${this.bunny.name} to the litterbox.`;
     this.info = `Bunnies can be trained to use the litterbox just like cats.`;
     this.target = 'litter box';
+    this.targetType = 'furniture';
   }
   
   
@@ -42,7 +45,7 @@ export default class Lesson {
     this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
     this.target = '';
-
+    this.targetType = '';
     const addHay = document.getElementById('add-hay');
     this.lessonCompleteBinded = this.lessonComplete.bind(this);
     addHay.addEventListener('click', this.lessonCompleteBinded);
@@ -71,6 +74,7 @@ export default class Lesson {
     this.taskBar = `Select the vegetables and move ${this.bunny.name} to the food bowl.`;
     this.info = `Not all vegetables are safe for bunnies to eat.`;
     this.target = 'food-bowl';
+    this.targetType = 'furniture';
   }
   
   lesson3() {
@@ -84,19 +88,23 @@ export default class Lesson {
       if (userBadVegs.includes('tomato-leaf')) this.longDirections += `<br>Tomato leaves are toxic to bunnies.`;
       if (userBadVegs.includes('iceberg')) this.longDirections += `<br>Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
     }
-      
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = ``;
     this.info = `Research before introducing a new vegetable.`;
     this.target = ``;
+    this.targetType = '';
+    this.game.form.addEventListener('submit', this.lessonCompleteBinded);
   }
   
   lesson4() {
-    this.longDirections = `Oh no. ${this.bunny.name} has been peeing around the home. It turns out she wasn't spayed. If you would like to spay ${this.bunny.name} click the spay button at any time. This procedure will cost $200 and prevent you from playing with ${this.bunny.name} for 120 seconds.`;
-    this.form = ``;
+    this.game.form.removeEventListener('submit', this.lessonCompleteBinded);
+    this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
+    this.form = `<input type='radio' id='adopt' name='adopt-or-spay' required> <label for='adopt'>Adopt another Bunny</label>
+    <input type='radio' id='spay' name='adopt-or-spay'> <label for='spay'>Spay ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
+    this.targetType = '';
   }
   
   lesson5() {
@@ -107,14 +115,16 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
+    this.targetType = '';
   }
   
   lesson6() {
     this.longDirections = ``;
-    // this.form = ``;
+    this.form = ``;
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
+    this.targetType = '';
   }
  
 
@@ -156,10 +166,6 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
-  }
-
-  adoptAFriend() {
-    this.prompt = `Congratuations! You have made ${this.bunny.name} super happy. As you have become a good pet owner, would you like to adopt a friend for ${this.bunny.name}.`
   }
 
 }

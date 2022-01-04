@@ -50,11 +50,9 @@ export default class Game {
     this.bunny.drawBunny();
     this.lesson.displayLessons();
 
-    this.room.furnishings.forEach(furniture => {
-      if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
-        this.lesson.lessonComplete();
-      }
-    })
+    if(this.room.target) {
+      this.checkFurnitureCollision();
+    }
 
     let that = this.runGame.bind(this);
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
@@ -78,6 +76,13 @@ export default class Game {
     return checkboxInputs;
   }
 
+  checkFurnitureCollision() {
+    this.room.furnishings.forEach(furniture => {
+      if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
+        this.lesson.lessonComplete();
+      }
+    })
+  }
   isGameOver() {
     return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0 || this.budget <= 0;
   }

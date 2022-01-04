@@ -143,7 +143,7 @@ export default class Bunny extends ConnectingObject {
 
     let userGoodVegs = userVegs.filter(veg => goodVegs.includes(veg));
     let userBadVegs = userVegs.filter(veg => badVegs.includes(veg));
-    
+
     if (userBadVegs.length > 0)  {
       this.changeHappiness(-1);
     } else if (userGoodVegs.length > 0) {
