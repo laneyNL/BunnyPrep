@@ -3,7 +3,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 0;
+    this.currentLessonNum = 3;
     this.longDirections = '';
     this.form = ``;
     this.taskBar = '';
@@ -11,14 +11,14 @@ export default class Lesson {
     this.game = game;
     this.bunny = bunny;
     this.target = '';
-    this.targetType = '';
   }
 
   lessonComplete(event) {
     if (event) event.preventDefault();
+    console.log('lesscom', this.currentLessonNum);
     this.currentLessonNum += 1;
     this.game.runLesson();
-    console.log('lesscom', this.currentLessonNum);
+    console.log('ran lesscom', this.currentLessonNum);
   }
 
   displayLessons() {
@@ -97,19 +97,15 @@ export default class Lesson {
   }
   
   lesson4() {
-    this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
-    this.form = `<button id='adopt'>Adopt</button>
-<button id='spay'>Spay</button>`;
-    this.game.form.innerHTML = `<button id='adopt'>Adopt</button>
-<button id='spay'>Spay</button>`;
-    this.taskBar = `Select whether to adopt a new bunny or spay ${this.bunny.name}`;
+    this.game.question.innerHTML = this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
+    this.form = `<input type="radio" name="AdOrSp" id="adopt" required><label id="adopt">Adopt</label>
+    <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label>
+    <input type="submit" name="AdOrSp" value="Decide">`;
+    this.game.form.classList.replace('input-form', 'adOrSp');
+    this.taskBar = `After deciding, bring ${this.bunny.name} to the couch to wait.`;
     this.info = ``;
-    this.target = ``;
-    this.targetType = 'decision';
-    let adopt = document.getElementById('adopt');
-    let spay = document.getElementById('spay');
-    adopt.onclick = this.game.adoptOrSpay;
-    spay.onclick = this.game.adoptOrSpay;
+    this.target = `couch`;
+    this.targetType = 'furniture';
   }
   
   lesson5() {

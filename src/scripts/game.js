@@ -36,7 +36,9 @@ export default class Game {
   }
   
   togglePopup(event) {
-    if (event !== undefined) event.preventDefault();
+    if (event !== undefined) {event.preventDefault()
+      if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
+    };
     const popup = document.getElementById('popup');
     popup.classList.toggle('hidden');
   }
@@ -53,7 +55,7 @@ export default class Game {
     this.room.drawRoom();
     this.lesson = new Lesson(this, this.bunny);
     this.form.removeEventListener('submit', this.createBunny);
-    this.form.addEventListener('submit', this.togglePopup);
+    this.form.addEventListener('submit', this.togglePopup.bind(this));
     this.runLesson(); 
     this.runGame();
   }
@@ -65,10 +67,9 @@ export default class Game {
     if (this.friend) this.friend.drawBunny();
     this.lesson.displayLessons();
 
-    if (this.lesson.targetType === 'furniture') this.checkFurnitureCollision();
+    if (this.lesson.targetType === 'furniture') this.checkFurnitureCollision(); 
 
-    let that = this.runGame.bind(this);
-    this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
+    this.isGameOver() ? this.endGame() : window.requestAnimationFrame(this.runGame.bind(this));
   }
 
   radioInput() {
@@ -92,7 +93,11 @@ export default class Game {
   checkFurnitureCollision() {
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
-        this.lesson.lessonComplete();
+        if (this.lesson.target === 'couch') {
+          this.adoptOrSpay();
+        } else {
+          this.lesson.lessonComplete();
+        }
       }
     })
   }
@@ -132,10 +137,8 @@ export default class Game {
   }
   
   adoptOrSpay() {
-    console.log('aors', this);
     this.budget -= 200;
     let decision = this.radioInput();
-    console.log('adopt', decision)
     if (decision === 'adopt') {
       this.lesson.currentLessonNum = 29;
       let name = document.querySelector('input[name=bunny-name]').value;
