@@ -66,8 +66,8 @@ export default class Game {
   runGame() {
     this.room.clearRoom();
     this.room.drawRoom();
-    this.bunny.drawBunny();
     if (this.friend) this.friend.drawFriend();
+    this.bunny.drawBunny();
     this.lesson.displayLessons();
 
     if (this.lesson.target) this.checkFurnitureCollision(); 

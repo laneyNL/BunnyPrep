@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const sound = document.getElementById('volume-icon');
   const audio = document.getElementById('audio');
+  audio.volume = 0.05;
   audio.pause();
   sound.addEventListener('click', () => {
     if (sound.classList.value === 'fas fa-volume-mute') {

@@ -175,9 +175,9 @@ export default class Bunny extends ConnectingObject {
 
   loadFriend() {
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}`);
-    this.width = this.friendImg.width / 8;
-    this.height = this.friendImg.height / 8;
-    this.vel = [2,4];
+    this.width = this.friendImg.width / 5;
+    this.height = this.friendImg.height / 5;
+    this.vel = [-2,4];
     setInterval(() => {
       this.x += this.vel[0];
       this.y += this.vel[1];
@@ -188,13 +188,23 @@ export default class Bunny extends ConnectingObject {
 
   drawFriend() {
     this.happyMeter = this.mainBunny.happyMeter;
-    console.log(this.x, this.y)
-    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
+    if (this.vel[0] > 0) {
+      this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
+    } else {
+      this.ctx.save();
+      this.ctx.translate((this.maxWidth/2), 0);
+      this.ctx.scale(-1, 1);
+      this.ctx.drawImage(this.friendImg, this.x, this.y, -this.width, this.height);
+      console.log(this.x, this.y)
+      this.ctx.restore();
+    }
   }
+    
+
     
 }
 
-window.setInterval(() => {
-  const directions = [-1, 0, 1];
-  directions[Math.floor(Math.random() * 4)];
-}, 500)
+// window.setInterval(() => {
+//   const directions = [-1, 0, 1];
+//   directions[Math.floor(Math.random() * 4)];
+// }, 500)
