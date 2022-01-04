@@ -50,6 +50,12 @@ export default class Room {
     this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
     this.drawFloorRect(350, 167, 370, 370, 'rgba(242, 236, 207, 0.8)');
   }
+
+  // drawBackground() {
+  //   this.drawRect('right', this.width / 2, 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
+  //   this.drawRect('left', this.width / 2, 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
+  //   this.drawFloorRect(this.width / 2, this.width / 2 + 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
+  // }
   
   drawWindow() {
     this.drawRightCuboid(500,110,135,100, 'white', 5);

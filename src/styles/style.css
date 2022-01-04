@@ -1,6 +1,5 @@
 body {
   background-color: 'white';
-  
 }
 
 #title {
@@ -37,7 +36,7 @@ body {
   align-items: center;
 }
 
-.left-sidebar, .right-sidebar, #popup, .links a{
+.left-sidebar, .right-sidebar,#popup, .links{
   border: 5px solid black;
   margin: auto;
   border-radius: 5px;
@@ -53,8 +52,18 @@ body {
   display: inline-block;
 }
 
-.left-sidebar{
+.left-sidebar, .footer{
   width: 90%;
+}
+
+.links {
+  height: 50px;
+  width: 70%;
+  margin-top: 20px;
+}
+
+footer {
+  width: 100%;
 }
 
 .links {
