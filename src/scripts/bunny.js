@@ -18,6 +18,12 @@ export default class Bunny extends ConnectingObject {
     this.friend = false;
   }
   
+  resizeBunnyCanvas() {
+    this.canvas = this.game.canvas;
+    this.maxWidth = this.canvas.width;
+    this.maxHeight = this.canvas.height;
+    this.ctx = this.canvas.getContext("2d");
+  }
   loadBunny() {
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.width = this.bunnyImg.width/5;
@@ -32,7 +38,6 @@ export default class Bunny extends ConnectingObject {
     this.updatePosition();
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
-    console.log(this.bun)
     this.multiplyHay();
     this.displayBunnyInfo();
   }

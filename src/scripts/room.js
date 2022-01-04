@@ -1,8 +1,9 @@
 import ConnectingObject from "./connecting_object";
 
 export default class Room {
-  constructor(canvas) {
+  constructor(canvas, game) {
     this.room = canvas.getContext("2d");
+    this.game = game;
     this.width = canvas.width;
     this.height = canvas.height;
     this.door = new ConnectingObject('door', 65, 175, 50, 105);
@@ -14,6 +15,11 @@ export default class Room {
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
   }
 
+  resizeRoomCanvas() {
+    this.room = this.game.canvas.getContext("2d");
+    this.width = this.game.canvas.width;
+    this.height = this.game.canvas.height;
+  }
   drawConnection(x, y, width, height) {
     this.room.fillStyle = 'blue';
     this.room.fillRect(x, y, width, height);

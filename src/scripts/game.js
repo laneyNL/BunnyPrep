@@ -10,8 +10,22 @@ export default class Game {
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
     this.info = [];
-    this.room = new Room(canvas);
+    this.room = new Room(canvas, this);
+    // this.resizeCanvas();
     this.welcomeMessage();
+  }
+  resizeCanvas() {
+    
+    window.addEventListener('resize', () => {
+      let canvasBounds = this.canvas.getBoundingClientRect();
+      let width = canvasBounds.right - canvasBounds.left;
+      let height = canvasBounds.bottom - canvasBounds.top;
+      console.log(width, height)
+      this.canvas.width = width;
+      this.canvas.height = height;
+      this.bunny.resizeBunnyCanvas();
+      this.room.resizeRoomCanvas();
+    })
   }
 
   welcomeMessage() {
