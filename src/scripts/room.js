@@ -28,7 +28,7 @@ export default class Room {
   drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
-    this.drawBackground();
+    this.drawBackground(this.width/2, 15, this.width/2, this.height/4, 'rgba(242, 236, 207, 0.8)');
     this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
     this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
     this.drawTV();
@@ -45,18 +45,12 @@ export default class Room {
     this.room.clearRect(0,0,this.width, this.height);
   }
   
-  drawBackground() {
-    this.drawRect('right', 352, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
-    this.drawRect('left', 350, 15, 370, 150, 'rgba(242, 236, 207, 0.8)');
-    this.drawFloorRect(350, 167, 370, 370, 'rgba(242, 236, 207, 0.8)');
+  drawBackground(x,y,width,height,color) {
+    this.drawRect('right', x, y, width, height, color);
+    this.drawRect('left', x, y, width, height, color);
+    this.drawFloorRect(x, height+y, width, width, color);
   }
-
-  // drawBackground() {
-  //   this.drawRect('right', this.width / 2, 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
-  //   this.drawRect('left', this.width / 2, 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
-  //   this.drawFloorRect(this.width / 2, this.width / 2 + 15, this.width / 2, this.width / 4, 'rgba(242, 236, 207, 0.8)');
-  // }
-  
+    
   drawWindow() {
     this.drawRightCuboid(500,110,135,100, 'white', 5);
     let shape = () => { 

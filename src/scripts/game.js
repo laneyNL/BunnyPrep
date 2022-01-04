@@ -12,6 +12,7 @@ export default class Game {
     this.info = [];
     this.room = new Room(canvas, this);
     // this.resizeCanvas();
+    this.room.drawRoom();
     this.welcomeMessage();
   }
   resizeCanvas() {
