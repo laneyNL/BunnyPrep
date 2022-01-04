@@ -104,8 +104,10 @@ export default class Lesson {
     this.info = ``;
     this.target = ``;
     this.targetType = 'decision';
-    this.adoptOrSpayBinded = this.game.adoptOrSpay.bind(this.game);
-    this.game.form.addEventListener('submit', this.adoptOrSpayBinded);
+  //   this.adopt = () => {
+  //     this.currentLessonNum = 29;
+  //   }
+  //   this.game.form.addEventListener('submit', adopt);
   }
   
   lesson5() {
@@ -118,7 +120,8 @@ export default class Lesson {
   }
   
   lesson30() {
-    this.game.form.removeEventListener('submit', this.adoptOrSpayBinded);
+    // this.game.form.addEventListener('submit', this.adopt);
+
     this.longDirections = `You have chosen to adopt a friend. Please name and select which friend you would like.`;
     this.form = `<label for='input-text'>Name</label>
       <input type="text" id ='input-text' name='bunny-name' required><br>
@@ -137,10 +140,13 @@ export default class Lesson {
     this.info = ``;
     this.target = ``;
     this.targetType = '';
+    this.adoptOrSpayBinded = this.game.adoptOrSpay.bind(this.game);
+    this.game.form.addEventListener('submit', this.adoptOrSpayBinded);
   }
  
 
   lesson31() {
+    this.game.form.removeEventListener('submit', this.adoptOrSpayBinded);
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
     this.form =
       `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>

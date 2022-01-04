@@ -104,7 +104,7 @@ export default class Game {
   endGame() {
     this.form.innerHTML = `<input type="submit" value='Game Over'>`;
     
-    if (this.lesson.currentLessonNum > 12) {
+    if (this.lesson.currentLessonNum > 40) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
     } else if (this.budget <= 0) {
       this.question.innerHTML = `Your budget has reached $0. You have lost the game.`
@@ -113,6 +113,7 @@ export default class Game {
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
+    this.currentLessonNum = 100;
   }
   
   runLesson(){
@@ -133,16 +134,16 @@ export default class Game {
   adoptOrSpay() {
     this.budget -= 200;
     let decision = this.radioInput();
+    console.log('adopt', decision)
     if (decision === 'adopt') {
       this.lesson.currentLessonNum = 29;
       let name = document.querySelector('input[name=bunny-name]').value;
       let color = this.radioInput().split('-')[0];
       this.friend = new Bunny(name, color, this.canvas, this);
       this.bunny.friend = true;
-    } else {
-      this.lesson.lessonComplete();
-      this.bunny.happyMeter += 1;
     }
+    this.bunny.happyMeter += 1;
+    this.lesson.lessonComplete();
   }
   
 }
