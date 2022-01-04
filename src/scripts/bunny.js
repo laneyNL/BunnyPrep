@@ -16,6 +16,7 @@ export default class Bunny extends ConnectingObject {
     this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
     this.mainBunny = mainBunny;
+    this.vel
   }
   
   // resizeBunnyCanvas() {
@@ -102,10 +103,18 @@ export default class Bunny extends ConnectingObject {
   }
 
   wrapXY() {
-    if (this.x + this.width >= this.maxWidth) this.x = this.maxWidth - this.width;
-    if (this.y + this.height >= this.maxHeight) this.y = this.maxHeight - this.height;
-    if (this.x < 0) this.x = 0;
-    if (this.y < 0) this.y = 0;
+    if (this.x + this.width >= this.maxWidth) {
+      this.x = this.maxWidth - this.width;
+    }
+    if (this.y + this.height >= this.maxHeight) {
+      this.y = this.maxHeight - this.height;
+    }
+    if (this.x < 0) {
+      this.x = 0;
+    }
+    if (this.y < 0) {
+      this.y = 0;
+    }
   }
   
   loadHay() {
