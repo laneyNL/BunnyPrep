@@ -13,8 +13,7 @@ export default class Bunny extends ConnectingObject {
     this.happyMeter = 5;
     this.keys = {};
     this.isFriend = isFriend;
-    if (!this.isFriend) this.loadBunny();
-    if (this.isFriend) this.loadFriend();
+    this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
     this.mainBunny = mainBunny;
   }
