@@ -7,11 +7,11 @@ export default class Room {
     this.width = canvas.width;
     this.height = canvas.height;
     this.door = new ConnectingObject('door', 75, 225, 70, 130);
-    this.drawer = new ConnectingObject('drawer', 600, 200, 150, 75, 30);
+    this.drawer = new ConnectingObject('drawer', 630, 215, 150, 75, 30);
     this.litterBox = new ConnectingObject('litter box', 520, 520, 80, 110, 10);
-    this.couch = new ConnectingObject('couch', 400, 330, 140, 40,60);
-    this.water = new ConnectingObject('water', 320, 490, 20);
-    this.foodBowl = new ConnectingObject('food-bowl', 250, 450, 20, 20, 5);
+    this.couch = new ConnectingObject('couch', 460, 370, 140, 40,60);
+    this.water = new ConnectingObject('water', 320, 490, 30);
+    this.foodBowl = new ConnectingObject('food-bowl', 230, 440, 30, 30, 5);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
   }
 
@@ -21,24 +21,24 @@ export default class Room {
     this.height = this.game.canvas.height;
   }
   drawConnection(x, y, width, height) {
-    // this.room.fillStyle = 'blue';
-    // this.room.fillRect(x, y, width, height);
+    this.room.fillStyle = 'blue';
+    this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
     this.drawBackground(this.width/2, 15, this.width/2, this.height/4, 'rgba(242, 236, 207, 0.8)');
+    this.drawWindow(510, 40, 135, 100, 'white', 5);
+    this.drawWindow(810, 190, 135, 100, 'white', 5);
     this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
     this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
-    this.drawTV(625, 100, 130, 100, 'gray', 4);
+    this.drawTV(650, 110, 130, 100, 'gray', 4);
     this.drawMat(270, 400, 170, 110, 'pink');
     this.drawLitterBox(this.litterBox.x, this.litterBox.y, this.litterBox.width, this.litterBox.height, this.litterBox.length);
     this.drawFoodBowl(this.foodBowl.x, this.foodBowl.y, this.foodBowl.width, this.foodBowl.height, this.foodBowl.length);
     this.drawWater(this.water.x, this.water.y, this.water.width);
     this.drawCouch(this.couch.x, this.couch.y, this.couch.width, this.couch.height, this.couch.length);
-    this.drawWindow(500, 110, 135, 100, 'white', 5);
-  
   }
 
   clearRoom() {
@@ -59,14 +59,6 @@ export default class Room {
     };
     this.repeatShape(2, width * 0.4, width * 0.2, shape);
   }
-  // drawWindow(x, y, width, height, color, length) {
-  //   this.drawRightCuboid(500,110,135,100, 'white', 5);
-  //   let shape = () => { 
-  //     this.drawRect('right', 510, 130, 50, 30, 'skyblue');
-  //     this.drawRect('right', 510, 170, 50, 30, 'skyblue');
-  //   };
-  //   this.repeatShape(2, 56, 28, shape);
-  // }
 
   drawDoor(x, y, width, height) {
     this.drawConnection(x, y, width, height);

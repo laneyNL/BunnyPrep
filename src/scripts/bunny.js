@@ -126,7 +126,7 @@ export default class Bunny extends ConnectingObject {
   multiplyHay() {
     const dir =[-16, -17, -12, -8, -7, -4, -3, -1, 2, 6, 8, 13, -15, -6, 0, 3, 9, 11, 14, 16, ];
     for (let i = 0; i < this.hayPieces; i++) {
-      this.drawHay(45*dir[i], [290 + dir[i],440 + dir[i]]);
+      this.drawHay(45*dir[i], [500 + dir[i], 500 + dir[i]]);
     }
   }
   
