@@ -41,7 +41,7 @@ export default class Game {
     if (event) {
       event.preventDefault();
       if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
-      if (event.target.classList.value === 'adopt') this.adoptFriend();
+      // if (event.target.classList.value === 'adopt') this.adoptFriend();
 
     };
   }
@@ -96,11 +96,7 @@ export default class Game {
   checkFurnitureCollision() {
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
-        if (this.lesson.target === 'couch') {
-          this.adoptOrSpay();
-        } else {
-          this.lesson.lessonComplete();
-        }
+        this.lesson.lessonComplete();
       }
     })
   }
@@ -144,15 +140,18 @@ export default class Game {
     let decision = this.radioInput();
     if (decision === 'adopt') this.lesson.currentLessonNum = 29;
     this.bunny.happyMeter += 1;
+    this.form.classList.replace('adOrSp', 'input-form');
     this.lesson.lessonComplete();
   }
 
   adoptFriend() {
     let name = document.querySelector('input[name=bunny-name]').value;
-    let color = this.radioInput().split('-')[0];
+    let selectedColor = this.radioInput().split('-')[0];
     const colors = ['brown', 'grey', 'black'];
-    let friendColor = colors.find(ele => ele !== color && ele !== this.bunny.color);
-    friendColor = friendColor || color;
+    let friendColor = colors[Math.floor(Math.random() * colors.length)];
+    while (friendColor === selectedColor) {
+      friendColor = colors[Math.floor(Math.random() * colors.length)];
+    }
     this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny);  
     this.bunny.name += ` and ${this.friend.name}`;
   }

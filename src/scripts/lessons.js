@@ -3,7 +3,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 0;
+    this.currentLessonNum = 4;
     this.longDirections = '';
     this.form = ``;
     this.taskBar = '';
@@ -100,9 +100,9 @@ export default class Lesson {
     <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label>
     <input type="submit" name="AdOrSp" value="Decide">`;
     this.game.form.classList.replace('input-form', 'adOrSp');
-    this.taskBar = `After deciding, bring ${this.bunny.name} to the couch to wait.`;
+    this.taskBar = ``;
     this.info = ``;
-    this.target = `couch`;
+    this.target = ``;
   }
   
   lesson5() {
@@ -126,23 +126,23 @@ export default class Lesson {
 
       <input type='radio' id='black-bunny' name='bunny-color'>
       <label for='black-bunny'><img src="./images/black/black_happy.png" alt="black bunny pictures" class='bunny-image'></label><br>
-
       <input type="submit" value='Play Game'>`;
-      this.game.form.classList.replace('adOrSp', 'adopt');
-      this.taskBar = `Choose a bunny to adopt.`;
+      this.taskBar = `After deciding, bring ${this.bunny.name} to the couch to wait.`;
       this.info = ``;
-      this.target = ``;
-    }
+      this.target = `couch`;
+  }
     
-    lesson31() {
-      this.longDirections = `It turns out ${this.bunny.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours.`;
-      this.form = ``;
-      this.taskBar = ``;
-      this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
-      this.target = ``;
-    }
-
   lesson31() {
+    this.game.adoptFriend();
+    this.longDirections = `It turns out ${this.bunny.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours.`;
+    // this.game.form.classList.replace('input-form', 'adopt');
+    this.form = `<input type="submit" value='Continue'>`;
+    this.taskBar = ``;
+    this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
+    this.target = ``;
+  }
+
+  lesson32() {
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
     this.form =
       `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
@@ -188,3 +188,9 @@ export default class Lesson {
   }
 
 }
+
+
+
+
+
+

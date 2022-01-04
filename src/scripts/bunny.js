@@ -166,19 +166,15 @@ export default class Bunny extends ConnectingObject {
 
   loadFriend() {
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}`);
-    this.width = this.friendImg.width / 5;
-    this.height = this.friendImg.height / 5;
-    // this.vel = [1, 1];
+    this.width = this.friendImg.width / 8;
+    this.height = this.friendImg.height / 8;
+    this.vel = [2,4];
     setInterval(() => {
-      const directions = [-2, -1, 0, 1, 2];
-      // this.vel[0] = directions[Math.floor(Math.random()*4)];
-      // this.vel[0] = directions[Math.floor(Math.random()*4)];
-      this.x += directions[Math.floor(Math.random() * 4)];
-      this.y += directions[Math.floor(Math.random() * 4)];
-      // this.x = directions[Math.floor(Math.random() * 4)] + this.x || this.x;
-      // this.y = directions[Math.floor(Math.random() * 4)] +this.y || this.y;
+      this.x += this.vel[0];
+      this.y += this.vel[1];
+      this.vel[1] = -this.vel[1];
       this.wrapXY();
-    }, 1000);
+    }, 500);
   }
 
   drawFriend() {
