@@ -16,6 +16,7 @@ export default class Lesson {
   lessonComplete(event) {
     if (event) event.preventDefault();
     console.log('lesscom', this.currentLessonNum);
+    this.game.budget += 5;
     this.currentLessonNum += 1;
     this.game.runLesson();
     console.log('ran lesscom', this.currentLessonNum);
@@ -127,16 +128,21 @@ export default class Lesson {
       <label for='black-bunny'><img src="./images/black/black_happy.png" alt="black bunny pictures" class='bunny-image'></label><br>
 
       <input type="submit" value='Play Game'>`;
-    this.taskBar = ``;
-    this.info = ``;
-    this.target = ``;
-    this.adoptOrSpayBinded = this.game.adoptOrSpay.bind(this.game);
-    this.game.form.addEventListener('submit', this.adoptOrSpayBinded);
-  }
- 
+      this.game.form.classList.replace('adOrSp', 'adopt');
+      this.taskBar = `Choose a bunny to adopt.`;
+      this.info = ``;
+      this.target = ``;
+    }
+    
+    lesson31() {
+      this.longDirections = `It turns out ${this.bunny.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours.`;
+      this.form = ``;
+      this.taskBar = ``;
+      this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
+      this.target = ``;
+    }
 
   lesson31() {
-    this.game.form.removeEventListener('submit', this.adoptOrSpayBinded);
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
     this.form =
       `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
@@ -164,13 +170,6 @@ export default class Lesson {
     this.target = `door`;
   }
 
-  lesson8() {
-    this.longDirections = ``;
-    this.form = ``;
-    this.taskBar = ``;
-    this.info = ``;
-    this.target = ``;
-  }
 
   lesson10() {
     this.longDirections = ``;

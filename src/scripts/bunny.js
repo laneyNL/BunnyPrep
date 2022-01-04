@@ -15,7 +15,6 @@ export default class Bunny extends ConnectingObject {
     this.loadHay();
     this.loadBunny();
     this.hayPieces = 20;
-    this.friend = false;
   }
   
   resizeBunnyCanvas() {
@@ -58,7 +57,6 @@ export default class Bunny extends ConnectingObject {
     const bunnyHeart = document.getElementById('bunny-heart');
     const budget = document.getElementById('budget');
     bunnyName.innerHTML = `${this.name}`;
-    if (this.friend) bunnyName.innerHTML = `${this.name}<br>Friend's Name:<br>${this.friend.name}`;
     bunnyHeart.innerHTML = '';
     budget.innerHTML = `${this.game.budget}`;
     
@@ -165,6 +163,15 @@ export default class Bunny extends ConnectingObject {
       
     }, 5000);
     
+  }
+
+  drawFriend() {
+    this.friendImg = document.getElementById(`${this.game.friendColor}-${this.emotion()}`);
+    let width = this.friendImg.width / 5;
+    let height = this.friendImg.height / 5;
+    let x = 200 + vel;
+    let y = 200 + vel;
+    this.ctx.drawImage(this.friendImg, x, y, width, height);
   }
     
 }

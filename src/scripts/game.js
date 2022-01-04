@@ -36,11 +36,15 @@ export default class Game {
   }
   
   togglePopup(event) {
-    if (event !== undefined) {event.preventDefault()
-      if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
-    };
     const popup = document.getElementById('popup');
     popup.classList.toggle('hidden');
+    if (event) {
+      event.preventDefault();
+
+      if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
+      if (event.target.classList.value === 'adopt') this.adoptFriend();
+
+    };
   }
   
   createBunny(event) {
@@ -64,7 +68,7 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
-    if (this.friend) this.friend.drawBunny();
+    if (this.friendColor) this.bunny.drawFriend;
     this.lesson.displayLessons();
 
     if (this.lesson.target) this.checkFurnitureCollision(); 
@@ -122,7 +126,7 @@ export default class Game {
   }
   
   runLesson(){
-    console.log('run')
+    console.log('run', this.lesson.currentLessonNum);
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
@@ -139,15 +143,16 @@ export default class Game {
   adoptOrSpay() {
     this.budget -= 200;
     let decision = this.radioInput();
-    if (decision === 'adopt') {
-      this.lesson.currentLessonNum = 29;
-      let name = document.querySelector('input[name=bunny-name]').value;
-      let color = this.radioInput().split('-')[0];
-      this.friend = new Bunny(name, color, this.canvas, this);
-      this.bunny.friend = true;
-    }
+    if (decision === 'adopt') this.lesson.currentLessonNum = 29;
     this.bunny.happyMeter += 1;
     this.lesson.lessonComplete();
+  }
+
+  adoptFriend() {
+    let name = document.querySelector('input[name=bunny-name]').value;
+    let color = this.radioInput().split('-')[0];
+    const colors = ['brown', 'grey', 'black'];
+    this.friendColor = colors.find(ele => ele !== color && ele !== this.bunny.color);
   }
   
 }
