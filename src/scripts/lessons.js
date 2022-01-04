@@ -98,16 +98,18 @@ export default class Lesson {
   
   lesson4() {
     this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
-    this.form = `<input type='radio' id='adopt' name='adopt-or-spay' required> <label for='adopt'>Adopt another Bunny</label>
-    <input type='radio' id='spay' name='adopt-or-spay'> <label for='spay'>Spay ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
+    this.form = `<button id='adopt'>Adopt</button>
+<button id='spay'>Spay</button>`;
+    this.game.form.innerHTML = `<button id='adopt'>Adopt</button>
+<button id='spay'>Spay</button>`;
     this.taskBar = `Select whether to adopt a new bunny or spay ${this.bunny.name}`;
     this.info = ``;
     this.target = ``;
     this.targetType = 'decision';
-  //   this.adopt = () => {
-  //     this.currentLessonNum = 29;
-  //   }
-  //   this.game.form.addEventListener('submit', adopt);
+    let adopt = document.getElementById('adopt');
+    let spay = document.getElementById('spay');
+    adopt.onclick = this.game.adoptOrSpay;
+    spay.onclick = this.game.adoptOrSpay;
   }
   
   lesson5() {
@@ -120,8 +122,6 @@ export default class Lesson {
   }
   
   lesson30() {
-    // this.game.form.addEventListener('submit', this.adopt);
-
     this.longDirections = `You have chosen to adopt a friend. Please name and select which friend you would like.`;
     this.form = `<label for='input-text'>Name</label>
       <input type="text" id ='input-text' name='bunny-name' required><br>

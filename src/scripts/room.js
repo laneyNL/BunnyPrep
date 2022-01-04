@@ -21,8 +21,8 @@ export default class Room {
     this.height = this.game.canvas.height;
   }
   drawConnection(x, y, width, height) {
-    this.room.fillStyle = 'blue';
-    this.room.fillRect(x, y, width, height);
+    // this.room.fillStyle = 'blue';
+    // this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {

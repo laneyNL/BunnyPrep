@@ -132,6 +132,7 @@ export default class Game {
   }
   
   adoptOrSpay() {
+    console.log('aors', this);
     this.budget -= 200;
     let decision = this.radioInput();
     console.log('adopt', decision)

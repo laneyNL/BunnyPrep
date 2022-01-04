@@ -86,12 +86,13 @@ canvas {
 #popup {
   position: fixed;
   width: 60%;
-  height: 60%;
-  top: 20%;
+  height: auto;
+  top: 10%;
   left: 20%;
   background-color: bisque;
   padding: 5%;
   font-size: 20px;
+  font-size: 2vw;
   font-weight: bold;
 }
 .bunny-image {
