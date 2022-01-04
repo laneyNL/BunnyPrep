@@ -101,26 +101,36 @@ export default class Lesson {
     this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
     this.form = `<input type='radio' id='adopt' name='adopt-or-spay' required> <label for='adopt'>Adopt another Bunny</label>
     <input type='radio' id='spay' name='adopt-or-spay'> <label for='spay'>Spay ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
-    this.taskBar = ``;
+    this.taskBar = `Select whether to adopt a new bunny or spay ${this.bunny.name}`;
     this.info = ``;
     this.target = ``;
-    this.targetType = '';
+    this.targetType = 'decision';
   }
   
   lesson5() {
-    this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
-    this.form = 
-    `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
-    <input type='radio' id='wipe' name='clean-method'> <label for='wipe'>Wipe ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
-    this.taskBar = ``;
-    this.info = ``;
+    this.longDirections = `Congrats on spaying ${this.bunny.name}! `;
+    this.form = `<input type="submit" value='Continue'>`;
+    this.taskBar = `${this.bunny.name} will need to rest in order to recover.`;
+    this.info = `Spaying/Neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
     this.target = ``;
-    this.targetType = '';
+    this.targetType = 'adopt/spay';
   }
   
-  lesson6() {
-    this.longDirections = ``;
-    this.form = ``;
+  lesson30() {
+    this.longDirections = `You have chosen to adopt a friend. Please name and select which friend you would like.`;
+    this.form = `label for='input-text'>Name</label>
+      <input type="text" id ='input-text' name='bunny-name' required><br>
+
+      <input type='radio' id='brown-bunny' name='bunny-color' required>
+      <label for='brown-bunny'><img src="./images/brown/brown_happy.png" alt="brown bunny pictures" class='bunny-image'></label>
+
+      <input type='radio' id='grey-bunny' name='bunny-color'>
+      <label for='grey-bunny'><img src="./images/grey/grey_happy.png" alt="grey bunny pictures" class='bunny-image'></label>
+
+      <input type='radio' id='black-bunny' name='bunny-color'>
+      <label for='black-bunny'><img src="./images/black/black_happy.png" alt="black bunny pictures" class='bunny-image'></label><br>
+
+      <input type="submit" value='Play Game'>`;
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
@@ -128,12 +138,17 @@ export default class Lesson {
   }
  
 
+
+
   lesson7() {
-    this.longDirections = ``;
-    this.form = ``;
+    this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
+    this.form =
+      `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
+    <input type='radio' id='wipe' name='clean-method'> <label for='wipe'>Wipe ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
+    this.targetType = '';
   }
 
   lesson8() {

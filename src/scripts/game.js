@@ -5,7 +5,7 @@ import ConnectingObject from './connecting_object.js';
 
 export default class Game {
   constructor(canvas) {
-    this.budget = 500;
+    this.budget = 300;
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
@@ -48,11 +48,11 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
+    if (this.friend) this.friend.drawBunny();
     this.lesson.displayLessons();
 
-    if(this.room.target) {
-      this.checkFurnitureCollision();
-    }
+    if (this.lesson.targetType === 'furniture') this.checkFurnitureCollision();
+    if (this.lesson.targetType === 'decision') this.adoptOrSpay();
 
     let that = this.runGame.bind(this);
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
@@ -83,10 +83,13 @@ export default class Game {
       }
     })
   }
+
+  
+  
   isGameOver() {
     return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0 || this.budget <= 0;
   }
-
+  
   endGame() {
     this.form.innerHTML = `<input type="submit" value='Game Over'>`;
     
@@ -100,19 +103,36 @@ export default class Game {
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
   }
-
+  
   runLesson(){
+    console.log('run')
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
+    console.log(this);
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
-
+  
+    
     this.question.innerHTML = this.lesson.longDirections;
     this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
-    this.info.push(`🥕 ${this.lesson.info}`);
+    if (this.info) this.info.push(`🥕 ${this.lesson.info}`);
     this.togglePopup();
     
   }
-
-
+  
+  adoptOrSpay() {
+    this.budget -= 200;
+    let decision = this.radioInput();
+    if (decision === 'adopt') {
+      this.lesson.currentLessonNum = 29;
+      let name = document.querySelector('input[name=bunny-name]').value;
+      let color = this.radioInput().split('-')[0];
+      this.friend = new Bunny(name, color, this.canvas, this);
+      this.bunny.friend = true;
+    } else {
+      this.lesson.lessonComplete();
+      this.bunny.happyMeter += 1;
+    }
+  }
+  
 }
