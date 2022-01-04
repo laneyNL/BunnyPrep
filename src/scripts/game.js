@@ -14,19 +14,19 @@ export default class Game {
     // this.resizeCanvas();
     this.welcomeMessage();
   }
-  resizeCanvas() {
-    
-    window.addEventListener('resize', () => {
-      let canvasBounds = this.canvas.getBoundingClientRect();
-      let width = canvasBounds.right - canvasBounds.left;
-      let height = canvasBounds.bottom - canvasBounds.top;
-      console.log(width, height)
-      this.canvas.width = width;
-      this.canvas.height = height;
-      this.bunny.resizeBunnyCanvas();
-      this.room.resizeRoomCanvas();
-    })
-  }
+
+  // resizeCanvas() {
+  //   window.addEventListener('resize', () => {
+  //     let canvasBounds = this.canvas.getBoundingClientRect();
+  //     let width = canvasBounds.right - canvasBounds.left;
+  //     let height = canvasBounds.bottom - canvasBounds.top;
+  //     console.log(width, height)
+  //     this.canvas.width = width;
+  //     this.canvas.height = height;
+  //     this.bunny.resizeBunnyCanvas();
+  //     this.room.resizeRoomCanvas();
+  //   })
+  // }
 
   welcomeMessage() {
     const welcome = "Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. You will loss the game if your bunnie's happiness or the budget reaches 0. <br>To begin, please choose which bunny you would like to adopt:"
@@ -40,7 +40,6 @@ export default class Game {
     popup.classList.toggle('hidden');
     if (event) {
       event.preventDefault();
-
       if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
       if (event.target.classList.value === 'adopt') this.adoptFriend();
 
@@ -51,7 +50,7 @@ export default class Game {
     if (event) this.togglePopup(event);
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.radioInput().split('-')[0];
-    this.bunny = new Bunny(name, color, this.canvas, this);
+    this.bunny = new Bunny(name, color, this.canvas, this, false);
     this.startGame();
   }
   
@@ -68,7 +67,7 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     this.bunny.drawBunny();
-    if (this.friendColor) this.bunny.drawFriend;
+    if (this.friend) this.friend.drawFriend();
     this.lesson.displayLessons();
 
     if (this.lesson.target) this.checkFurnitureCollision(); 
@@ -152,7 +151,10 @@ export default class Game {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.radioInput().split('-')[0];
     const colors = ['brown', 'grey', 'black'];
-    this.friendColor = colors.find(ele => ele !== color && ele !== this.bunny.color);
+    let friendColor = colors.find(ele => ele !== color && ele !== this.bunny.color);
+    friendColor = friendColor || color;
+    this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny);  
+    this.bunny.name += ` and ${this.friend.name}`;
   }
   
 }

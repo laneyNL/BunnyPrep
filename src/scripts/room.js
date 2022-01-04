@@ -15,11 +15,12 @@ export default class Room {
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
   }
 
-  resizeRoomCanvas() {
-    this.room = this.game.canvas.getContext("2d");
-    this.width = this.game.canvas.width;
-    this.height = this.game.canvas.height;
-  }
+  // resizeRoomCanvas() {
+  //   this.room = this.game.canvas.getContext("2d");
+  //   this.width = this.game.canvas.width;
+  //   this.height = this.game.canvas.height;
+  // }
+  
   drawConnection(x, y, width, height) {
     // this.room.fillStyle = 'blue';
     // this.room.fillRect(x, y, width, height);

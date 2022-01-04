@@ -2,7 +2,7 @@ import ConnectingObject from './connecting_object';
 
 export default class Bunny extends ConnectingObject {
   
-  constructor(name, color, canvas, game) {
+  constructor(name, color, canvas, game, isFriend, mainBunny) {
     super(name, 200, 250);
     this.color = color;
     this.maxWidth = canvas.width;
@@ -12,18 +12,22 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.loadHay();
-    this.loadBunny();
+    this.isFriend = isFriend;
+    if (!this.isFriend) this.loadBunny();
+    if (this.isFriend) this.loadFriend();
     this.hayPieces = 20;
+    this.mainBunny = mainBunny;
   }
   
-  resizeBunnyCanvas() {
-    this.canvas = this.game.canvas;
-    this.maxWidth = this.canvas.width;
-    this.maxHeight = this.canvas.height;
-    this.ctx = this.canvas.getContext("2d");
-  }
+  // resizeBunnyCanvas() {
+  //   this.canvas = this.game.canvas;
+  //   this.maxWidth = this.canvas.width;
+  //   this.maxHeight = this.canvas.height;
+  //   this.ctx = this.canvas.getContext("2d");
+  // }
+
   loadBunny() {
+    this.loadHay();
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.width = this.bunnyImg.width/5;
     this.height = this.bunnyImg.height/5;
@@ -159,19 +163,34 @@ export default class Bunny extends ConnectingObject {
 
     return userBadVegs;
 
-    window.setTimeout( () => {
-      
-    }, 5000);
-    
+  }
+
+  loadFriend() {
+    this.friendImg = document.getElementById(`${this.color}-${this.emotion()}`);
+    this.width = this.friendImg.width / 5;
+    this.height = this.friendImg.height / 5;
+    // this.vel = [1, 1];
+    setInterval(() => {
+      const directions = [-2, -1, 0, 1, 2];
+      // this.vel[0] = directions[Math.floor(Math.random()*4)];
+      // this.vel[0] = directions[Math.floor(Math.random()*4)];
+      this.x += directions[Math.floor(Math.random() * 4)];
+      this.y += directions[Math.floor(Math.random() * 4)];
+      // this.x = directions[Math.floor(Math.random() * 4)] + this.x || this.x;
+      // this.y = directions[Math.floor(Math.random() * 4)] +this.y || this.y;
+      this.wrapXY();
+    }, 1000);
   }
 
   drawFriend() {
-    this.friendImg = document.getElementById(`${this.game.friendColor}-${this.emotion()}`);
-    let width = this.friendImg.width / 5;
-    let height = this.friendImg.height / 5;
-    let x = 200 + vel;
-    let y = 200 + vel;
-    this.ctx.drawImage(this.friendImg, x, y, width, height);
+    this.happyMeter = this.mainBunny.happyMeter;
+    console.log(this.x, this.y)
+    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
   }
     
 }
+
+window.setInterval(() => {
+  const directions = [-1, 0, 1];
+  directions[Math.floor(Math.random() * 4)];
+}, 500)
