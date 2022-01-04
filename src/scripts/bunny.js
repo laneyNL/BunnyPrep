@@ -12,11 +12,12 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
+    this.vel = [2, 3]
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
     this.mainBunny = mainBunny;
-    this.vel
+    this.hopVel = 5;
   }
   
   // resizeBunnyCanvas() {
@@ -29,8 +30,8 @@ export default class Bunny extends ConnectingObject {
   loadBunny() {
     this.loadHay();
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
-    this.width = this.bunnyImg.width/5;
-    this.height = this.bunnyImg.height/5;
+    this.width = this.bunnyImg.width/8;
+    this.height = this.bunnyImg.height/8;
     this.drawBunny.bind(this)();
     
     this.moveBunnyListener();
@@ -38,8 +39,9 @@ export default class Bunny extends ConnectingObject {
   }
 
   drawBunny() {
+    let position = this.vel[0] > 0 ? '-reverse' : '';
+    this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}${position}`);
     this.updatePosition();
-    this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
     this.multiplyHay();
     this.displayBunnyInfo();
@@ -95,22 +97,43 @@ export default class Bunny extends ConnectingObject {
   }
 
   updatePosition() {
-    if (this.keys[37]) this.x -= 2; //37 = left arrow
-    if (this.keys[38]) this.y -= 2; //38 = up arrow
-    if (this.keys[39]) this.x += 2; //39 = right arrow
-    if (this.keys[40]) this.y += 2; //40 = down arrow
+    if (this.keys[37]) {
+      this.vel[0] = -Math.abs(this.vel[0]);
+      this.x += this.vel[0];
+    } //37 = left arrow
+    if (this.keys[38]) {
+      this.vel[1] = -Math.abs(this.vel[1]);
+      this.y += this.vel[1];
+    }//38 = up arrow
+    if (this.keys[39]) {
+      this.vel[0] = Math.abs(this.vel[0]);
+      this.x += this.vel[0];
+    }//39 = right arrow
+    if (this.keys[40]) {
+      this.vel[1] = Math.abs(this.vel[1]);
+      this.y += this.vel[1];
+    } //40 = down arrow
+    
+    // if (this.keys[37] || this.keys[38] || this.keys[39] || this.keys[40]) {
+    //   this.y += this.vel[1];
+    //   this.vel = -this.vel[1];
+    // }
     this.wrapXY();
   }
 
   wrapXY() {
     if (this.x + this.width >= this.maxWidth) {
       this.x = this.maxWidth - this.width;
+      this.vel[0] = -this.vel[0];
+      if(this.isFriend) this.y += Math.floor(Math.random()*10);
     }
     if (this.y + this.height >= this.maxHeight) {
       this.y = this.maxHeight - this.height;
     }
     if (this.x < 0) {
       this.x = 0;
+      this.vel[0] = -this.vel[0];
+      if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
     }
     if (this.y < 0) {
       this.y = 0;
@@ -175,9 +198,9 @@ export default class Bunny extends ConnectingObject {
 
   loadFriend() {
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}`);
-    this.width = this.friendImg.width / 5;
-    this.height = this.friendImg.height / 5;
-    this.vel = [-2,4];
+    this.width = this.friendImg.width / 8;
+    this.height = this.friendImg.height / 8;
+    this.vel = [-5,5];
     setInterval(() => {
       this.x += this.vel[0];
       this.y += this.vel[1];
@@ -188,12 +211,10 @@ export default class Bunny extends ConnectingObject {
 
   drawFriend() {
     this.happyMeter = this.mainBunny.happyMeter;
-    if (this.vel[0] > 0) {
-    } 
+    let position = this.vel[0] > 0 ? '-reverse' : '';
+    this.friendImg = document.getElementById(`${this.color}-${this.emotion()}${position}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
-    
-
-    
+  }
 }
 
 // window.setInterval(() => {
