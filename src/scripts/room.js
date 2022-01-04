@@ -89,7 +89,7 @@ export default class Room {
   
   drawLitterBox(x, y, width, height, length) {
     this.drawConnection(x, y, width, height);
-    this.drawFloorCuboid(x, y, width, height,'lightyellow', length, 'grey');
+    this.drawFloorCuboid(x, y, width, height,'grey', length, 'grey');
   }
 
   drawFoodBowl(x, y, width, height, length) {

@@ -82,8 +82,10 @@ export default class Bunny extends ConnectingObject {
     })
     
     window.addEventListener('mousedown', (event) => {
+      const pop = document.getElementById('popup');
       let offset = this.canvas.getBoundingClientRect();
-      if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom) {
+
+      if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
         this.x = event.pageX - offset.left - (this.width/2);
         this.y = event.pageY - offset.top - (this.height/2);
       }
@@ -126,7 +128,7 @@ export default class Bunny extends ConnectingObject {
   multiplyHay() {
     const dir =[-16, -17, -12, -8, -7, -4, -3, -1, 2, 6, 8, 13, -15, -6, 0, 3, 9, 11, 14, 16, ];
     for (let i = 0; i < this.hayPieces; i++) {
-      this.drawHay(45*dir[i], [500 + dir[i], 500 + dir[i]]);
+      this.drawHay(45*dir[i], [440 + dir[i], 560 + dir[i]]);
     }
   }
   

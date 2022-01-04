@@ -88,16 +88,15 @@ export default class Lesson {
       if (userBadVegs.includes('tomato-leaf')) this.longDirections += `<br>Tomato leaves are toxic to bunnies.`;
       if (userBadVegs.includes('iceberg')) this.longDirections += `<br>Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
     }
+    this.longDirections += `<br>Bring ${this.bunny.name} to the water bowl to get some water.`
     this.form = `<input type="submit" value='Continue'>`;
-    this.taskBar = ``;
+    this.taskBar = `Move ${this.bunny.name} to the water bowl.`;
     this.info = `Research before introducing a new vegetable.`;
-    this.target = ``;
-    this.targetType = '';
-    this.game.form.addEventListener('submit', this.lessonCompleteBinded);
+    this.target = `water`;
+    this.targetType = 'furniture';
   }
   
   lesson4() {
-    this.game.form.removeEventListener('submit', this.lessonCompleteBinded);
     this.longDirections = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.bunny.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.bunny.name}?`;
     this.form = `<input type='radio' id='adopt' name='adopt-or-spay' required> <label for='adopt'>Adopt another Bunny</label>
     <input type='radio' id='spay' name='adopt-or-spay'> <label for='spay'>Spay ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
@@ -105,6 +104,8 @@ export default class Lesson {
     this.info = ``;
     this.target = ``;
     this.targetType = 'decision';
+    this.adoptOrSpayBinded = this.game.adoptOrSpay.bind(this.game);
+    this.game.form.addEventListener('submit', this.adoptOrSpayBinded);
   }
   
   lesson5() {
@@ -117,8 +118,9 @@ export default class Lesson {
   }
   
   lesson30() {
+    this.game.form.removeEventListener('submit', this.adoptOrSpayBinded);
     this.longDirections = `You have chosen to adopt a friend. Please name and select which friend you would like.`;
-    this.form = `label for='input-text'>Name</label>
+    this.form = `<label for='input-text'>Name</label>
       <input type="text" id ='input-text' name='bunny-name' required><br>
 
       <input type='radio' id='brown-bunny' name='bunny-color' required>
@@ -137,6 +139,17 @@ export default class Lesson {
     this.targetType = '';
   }
  
+
+  lesson31() {
+    this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
+    this.form =
+      `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
+    <input type='radio' id='wipe' name='clean-method'> <label for='wipe'>Wipe ${this.bunny.name}.</label><input type="submit" value='Choose'>`;
+    this.taskBar = ``;
+    this.info = ``;
+    this.target = ``;
+    this.targetType = '';
+  }
 
   lesson6() {
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;

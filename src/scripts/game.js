@@ -12,7 +12,6 @@ export default class Game {
     this.info = [];
     this.room = new Room(canvas, this);
     // this.resizeCanvas();
-    this.room.drawRoom();
     this.welcomeMessage();
   }
   resizeCanvas() {
@@ -54,7 +53,7 @@ export default class Game {
     this.room.drawRoom();
     this.lesson = new Lesson(this, this.bunny);
     this.form.removeEventListener('submit', this.createBunny);
-    this.form.addEventListener('submit', (event) => this.togglePopup(event));
+    this.form.addEventListener('submit', this.togglePopup);
     this.runLesson(); 
     this.runGame();
   }
@@ -67,7 +66,6 @@ export default class Game {
     this.lesson.displayLessons();
 
     if (this.lesson.targetType === 'furniture') this.checkFurnitureCollision();
-    if (this.lesson.targetType === 'decision') this.adoptOrSpay();
 
     let that = this.runGame.bind(this);
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(that);
@@ -98,11 +96,9 @@ export default class Game {
       }
     })
   }
-
-  
   
   isGameOver() {
-    return this.lesson.currentLessonNum > 12 || this.bunny.happyMeter <= 0 || this.budget <= 0;
+    return this.lesson.currentLessonNum > 40 || this.bunny.happyMeter <= 0 || this.budget <= 0;
   }
   
   endGame() {
@@ -123,7 +119,6 @@ export default class Game {
     console.log('run')
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
-    console.log(this);
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
   
     
