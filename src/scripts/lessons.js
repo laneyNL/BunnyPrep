@@ -138,9 +138,7 @@ export default class Lesson {
   }
  
 
-
-
-  lesson7() {
+  lesson6() {
     this.longDirections = `Oh no. ${this.bunny.name} got dirty.How do you want to clean ${this.bunny.name}?`;
     this.form =
       `<input type='radio' id='bath' name='clean-method' required> <label for='bath'>Bathe ${this.bunny.name}.</label>
@@ -151,7 +149,7 @@ export default class Lesson {
     this.targetType = '';
   }
 
-  lesson8() {
+  lesson7() {
     this.longDirections = `${this.name} is bored and would like to go outside. Would you like to allow ${this.name} to go outside to play?`;
     this.form = ``;
     this.taskBar = ``;
@@ -159,7 +157,7 @@ export default class Lesson {
     this.target = `door`;
   }
 
-  lesson9() {
+  lesson8() {
     this.longDirections = ``;
     this.form = ``;
     this.taskBar = ``;

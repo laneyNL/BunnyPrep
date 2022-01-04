@@ -20,9 +20,10 @@ export default class Bunny extends ConnectingObject {
   
   loadBunny() {
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
-    this.width = Math.floor(this.bunnyImg.width/8);
-    this.height = Math.floor(this.bunnyImg.height/8);
+    this.width = this.bunnyImg.width/5;
+    this.height = this.bunnyImg.height/5;
     this.drawBunny.bind(this)();
+    
     this.moveBunnyListener();
     this.displayBunnyInfo();
   }
@@ -31,6 +32,7 @@ export default class Bunny extends ConnectingObject {
     this.updatePosition();
     this.bunnyImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
+    console.log(this.bun)
     this.multiplyHay();
     this.displayBunnyInfo();
   }
@@ -129,7 +131,7 @@ export default class Bunny extends ConnectingObject {
     this.ctx.translate(...newCenterPos);
     this.ctx.rotate(degree * (Math.PI / 180));
     this.ctx.translate(-newCenterPos[0], -newCenterPos[1]);
-    this.ctx.drawImage(this.hay, ...hayPos, this.hay.width / 8, this.hay.height / 8);
+    this.ctx.drawImage(this.hay, ...hayPos, this.hay.width/8, this.hay.height/8);
     this.ctx.restore();
   }
 
