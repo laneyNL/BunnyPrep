@@ -12,7 +12,7 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.vel = [2, 3]
+    this.vel = [-2, 3]
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
@@ -91,7 +91,7 @@ export default class Bunny extends ConnectingObject {
       let offset = this.canvas.getBoundingClientRect();
 
       if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
-        let newX = event.pageX - offset.left - (this.width / 2);
+        let newX = event.pageX - offset.left;
         this.vel[0] = this.x < newX ? Math.abs(this.vel[0]) : -Math.abs(this.vel[0]);
         this.x = newX;
         this.y = event.pageY - offset.top - (this.height / 2);
