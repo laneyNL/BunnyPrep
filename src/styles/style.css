@@ -46,7 +46,7 @@ body {
   align-items: center;
 }
 
-.left-sidebar, .right-sidebar,#popup, .links{
+.left-sidebar, .right-sidebar,#popup, .foot{
   border: 5px solid black;
   margin: auto;
   border-radius: 5px;
@@ -62,14 +62,13 @@ body {
   display: inline-block;
 }
 
-.left-sidebar, .footer{
+.left-sidebar{
   width: 90%;
 }
 
-.links {
-  height: 50px;
+.foot {
+  height: auto;
   width: 70%;
-  margin-top: 20px;
 }
 
 footer {
@@ -82,7 +81,7 @@ footer {
 }
 
 .links a {
-  padding: 5px;
+  padding: 20px;
   color: black;
   height: auto;
   text-decoration: none;

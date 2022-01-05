@@ -17,7 +17,6 @@ export default class Bunny extends ConnectingObject {
     this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
     this.mainBunny = mainBunny;
-    this.hopVel = 5;
   }
   
   // resizeBunnyCanvas() {
@@ -36,6 +35,9 @@ export default class Bunny extends ConnectingObject {
     
     this.moveBunnyListener();
     this.displayBunnyInfo();
+    this.hopVel = 5;
+    this.isHopping = true;
+    this.resetisHopping();
   }
 
   drawBunny() {
@@ -89,41 +91,59 @@ export default class Bunny extends ConnectingObject {
     window.addEventListener('mousedown', (event) => {
       const pop = document.getElementById('popup');
       let offset = this.canvas.getBoundingClientRect();
-
       if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
         let newX = event.pageX - offset.left;
-        this.vel[0] = this.x < newX ? Math.abs(this.vel[0]) : -Math.abs(this.vel[0]);
-        this.x = newX;
-        this.y = event.pageY - offset.top - (this.height / 2);
+        let newY = event.pageY - offset.top - (this.height / 2);
+        this.cursorDirection(newX, newY);
       }
+    })
+    window.addEventListener('mouseup', (event) => {
+      this.left = this.right = this.down = this.up = false;
     })
   }
 
-  updatePosition() {
-    if (this.keys[37]) {
-      this.vel[0] = -Math.abs(this.vel[0]);
-      this.x += this.vel[0];
-    } //37 = left arrow
-    if (this.keys[38]) {
-      this.vel[1] = -Math.abs(this.vel[1]);
-      this.y += this.vel[1];
-    }//38 = up arrow
-    if (this.keys[39]) {
-      this.vel[0] = Math.abs(this.vel[0]);
-      this.x += this.vel[0];
-    }//39 = right arrow
-    if (this.keys[40]) {
-      this.vel[1] = Math.abs(this.vel[1]);
-      this.y += this.vel[1];
-    } //40 = down arrow
-    
-    // if (this.keys[37] || this.keys[38] || this.keys[39] || this.keys[40]) {
-    //   this.y += this.vel[1];
-    //   this.vel = -this.vel[1];
-    // }
-    this.wrapXY();
+  cursorDirection(newX, newY) {
+    if (newX > this.x) this.right = true;
+    if (newX < this.x) this.left = true;
+    if (newY > this.y) this.down = true;
+    if (newY < this.y) this.up = true;
   }
 
+  updatePosition() {
+    if (this.keys[37] || this.left) { //37 = left arrow
+      this.vel[0] = -Math.abs(this.vel[0]);
+      this.x += this.vel[0];
+    } 
+    if (this.keys[38] || this.up) { //38 = up arrow
+      this.vel[1] = -Math.abs(this.vel[1]);
+      this.y += this.vel[1];
+    }
+    if (this.keys[39] || this.right) { //39 = right arrow
+      this.vel[0] = Math.abs(this.vel[0]);
+      this.x += this.vel[0];
+    }
+    if (this.keys[40] || this.down) { //40 = down arrow
+      this.vel[1] = Math.abs(this.vel[1]);
+      this.y += this.vel[1];
+    } 
+    if (this.isMoving() && this.isHopping) {
+      this.y += this.hopVel;
+      this.hopVel = -this.hopVel;
+      this.isHopping = false;
+    }
+    
+    this.wrapXY();
+  }
+  isMoving() {
+    return this.keys[37] || this.keys[38] || this.keys[39] || this.keys[40] || this.left || this.right || this.down || this.up;
+  }
+
+  resetisHopping() {
+    setInterval(() => {
+      this.isHopping = true;;
+    }, 500);
+  }
+  
   wrapXY() {
     if (this.x + this.width >= this.maxWidth) {
       this.x = this.maxWidth - this.width;
@@ -218,9 +238,22 @@ export default class Bunny extends ConnectingObject {
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}${orientation}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
   }
-}
 
-// window.setInterval(() => {
-//   const directions = [-1, 0, 1];
-//   directions[Math.floor(Math.random() * 4)];
-// }, 500)
+  hopInterval() {
+    setInterval(() => {
+      this.y += this.hopVel;
+      this.hopVel = -this.hopVel;
+    }, 500);
+  }
+
+  clearhopInterval() {
+    clearInterval(this.hopInterval);
+  }
+  setHopInterval() {
+    console.log(this.hopInterval)
+    this.clearhopInterval();
+    this.hopInterval();
+    setTimeout(this.clearhopInterval, 2000);
+  }
+
+}
