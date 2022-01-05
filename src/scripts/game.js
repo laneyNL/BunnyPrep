@@ -134,7 +134,7 @@ export default class Game {
   }
   
   endGame() {
-    this.form.innerHTML = `<input type="submit" value='Game Over'>`;
+    this.form.innerHTML = `<input type="submit" value='Continue'>`;
     
     if (this.lesson.currentLessonNum === 6) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
@@ -147,13 +147,13 @@ export default class Game {
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
-    this.currentLessonNum = 100;
-    this.room.room.fillStyle = 'white';
-    this.room.room.strokeStyle = 'black';
-    this.room.room.font = '70px sans-serif';
-    let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2);
-    this.room.room.fillText('Game Over', midWidth, this.canvas.height / 2);
-    this.room.room.strokeText('Game Over', midWidth, this.canvas.height / 2);
+    // this.currentLessonNum = 100;
+    // this.room.room.fillStyle = 'white';
+    // this.room.room.strokeStyle = 'black';
+    // this.room.room.font = '70px sans-serif';
+    // let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2);
+    // this.room.room.fillText('Game Over', midWidth, this.canvas.height / 2);
+    // this.room.room.strokeText('Game Over', midWidth, this.canvas.height / 2);
   }
   
   runLesson(){

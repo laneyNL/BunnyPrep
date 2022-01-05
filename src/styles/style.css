@@ -1,5 +1,4 @@
 body {
-  /* background-color: rgb(173,216,230); */
   /* background-image: url("../images/background.jpeg");
   background-repeat: no-repeat;
   background-size:cover; */
@@ -9,13 +8,12 @@ body {
 }
 
 #title {
-  font-size: 200px;
+  font-size: 500%;
   font-weight: bold;
   text-align: center;
   padding: 10px;
-  color: rgb(173,216,230);
+  color: rgb(105, 157, 173);
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
-  font-size: 50px;
   position: relative;
 }
 
@@ -54,7 +52,7 @@ body {
   margin: auto;
   border-radius: 5px;
   height: 500px;
-  background-color: rgb(173,216,230);
+  background-color: rgb(105, 157, 173);
   box-sizing: border-box;
   text-align: center;
   
@@ -63,6 +61,10 @@ body {
 .right-sidebar {
   width: 80%;
   display: inline-block;
+  overflow-wrap: anywhere;
+}
+#info-learned li {
+  margin: 10%;
 }
 
 .left-sidebar{
@@ -100,7 +102,7 @@ canvas {
   height: auto;
   top: 10%;
   left: 20%;
-  background-color: bisque;
+  background-color: rgb(80, 116, 172);
   padding: 5%;
   font-size: 20px;
   font-size: 2vw;

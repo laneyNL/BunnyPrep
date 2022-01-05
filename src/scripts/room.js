@@ -37,8 +37,8 @@ export default class Room {
     this.drawWindow(810, 190, 135, 100, 'white', 5);
     
     this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
-    this.drawMat(270, 400, 80, 110, 'pink');
-    this.drawMat(370, 250, 110, 80, 'pink');
+    this.drawMat(270, 400, 80, 110, 'rgb(105, 157, 173)');
+    this.drawMat(370, 250, 110, 80, 'rgb(105, 157, 173)');
     this.drawLitterBox(this.litterBox.x, this.litterBox.y, this.litterBox.width, this.litterBox.height, this.litterBox.length);
     
     this.drawFoodBowl(this.foodBowl.x, this.foodBowl.y, this.foodBowl.width, this.foodBowl.height, this.foodBowl.length);
@@ -134,8 +134,8 @@ export default class Room {
     buttonPos = this.nextCornerPos(...buttonPos, length / 2, 'NE');
     
     let shape = () => {
-      this.drawRightCuboid(x, y, width, height, 'pink', length);
-      this.drawBorderedCircle(...buttonPos, 5, 'pink');
+      this.drawRightCuboid(x, y, width, height, 'rgb(170, 149, 172)', length);
+      this.drawBorderedCircle(...buttonPos, 5, 'rgb(170, 149, 172)');
     }
     
     this.repeatShape(2, ...this.changeInXY(width), shape);

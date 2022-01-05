@@ -3,7 +3,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 4;
+    this.currentLessonNum = 0;
     this.longDirections = '';
     this.form = ``;
     this.taskBar = '';
