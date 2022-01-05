@@ -51,7 +51,7 @@ export default class Game {
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.radioInput().split('-')[0];
     this.bunny = new Bunny(name, color, this.canvas, this, false, '',200, 250);
-    this.childBuns = [];
+    this.babyBuns = [];
     this.startGame();
   }
   
@@ -67,13 +67,19 @@ export default class Game {
   runGame() {
     this.room.clearRoom();
     this.room.drawRoom();
-    if (this.friend) this.friend.drawFriend();
-    if (this.childBuns.length) this.childBuns.forEach(bun => bun.drawChildBun());
-    this.bunny.drawBunny();
 
+    if (this.friend) this.friend.drawFriend();
+    if (this.babyBuns.length) this.babyBuns.forEach(bun => bun.drawBabyBun());
+    this.bunny.drawBunny();
     this.lesson.displayLessons();
 
-    if (this.lesson.target) this.checkFurnitureCollision(); 
+    if (this.lesson.target === 'dropping') {
+        this.checkDroppingCollision();
+    } else if (this.lesson.target === 'baby') {
+      this.checkBabyCollision();
+    } else if (this.lesson.target) {
+      this.checkFurnitureCollision();
+    }
 
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(this.runGame.bind(this));
   }
@@ -103,37 +109,57 @@ export default class Game {
       }
     })
   }
+
+  checkDroppingCollision() {
+    if(this.room.droppings.length === 0) this.lesson.currentLessonNum += 1;
+    this.room.droppings.forEach(drop => {
+      if (this.bunny.isCollidedWith(drop)) {
+        let indexDrop = this.room.droppings.indexOf(drop);
+        this.room.droppings.splice(indexDrop, 1);
+      }
+    })
+  }
+
+  checkBabyCollision() {
+    this.babyBuns.forEach(bun => {
+      if (this.bunny.isCollidedWith(bun)) {
+        let indexBun = this.babyBuns.indexOf(bun);
+        this.babyBuns.splice(indexBun, 1);
+      }
+    })
+  }
   
   isGameOver() {
-    return this.lesson.currentLessonNum === 6 || this.lesson.currentLessonNum > 10 || this.bunny.happyMeter <= 0 || this.budget <= 0 || this.childBuns.length > 20;
+    return this.lesson.currentLessonNum === 6 || this.lesson.currentLessonNum > 10 || this.bunny.happyMeter <= 0 || this.budget <= 0 || this.babyBuns.length > 20;
   }
   
   endGame() {
     this.form.innerHTML = `<input type="submit" value='Game Over'>`;
     
-    if (this.lesson.currentLessonNum > 40) {
+    if (this.lesson.currentLessonNum === 6) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
     } else if (this.budget <= 0) {
       this.question.innerHTML = `Your budget has reached $0. You have lost the game.`
-    } else if (this.childBuns.length){
+    } else if (this.babyBuns.length){
       this.question.innerHTML = `You have let your rabbit population get out of hand. You have lost the game.`
-    } 
-    else {
+    } else if (this.bunny.happyMeter <= 0) {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
     this.currentLessonNum = 100;
-    this.room.room.fillStyle = 'black';
+    this.room.room.fillStyle = 'white';
+    this.room.room.strokeStyle = 'black';
     this.room.room.font = '70px sans-serif';
     let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2);
     this.room.room.fillText('Game Over', midWidth, this.canvas.height / 2);
+    this.room.room.strokeText('Game Over', midWidth, this.canvas.height / 2);
   }
   
   runLesson(){
-    // console.log('run', this.lesson.currentLessonNum);
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
+    console.log(this.lesson.currentLessonNum)
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
   
     
@@ -172,9 +198,9 @@ export default class Game {
       let x = Math.floor(Math.random() * this.canvas.width);
       let y = Math.floor(Math.random() * (this.canvas.height / 2)) + Math.floor(this.canvas.height / 2);
 
-      let newBun = new Bunny('child', color, this.canvas, this, true, this.bunny, x, y)
-      this.childBuns.push(newBun);
-    }, 2000);
+      let newBun = new Bunny('baby', color, this.canvas, this, true, this.bunny, x, y)
+      this.babyBuns.push(newBun);
+    }, 1000);
   }
   
 }

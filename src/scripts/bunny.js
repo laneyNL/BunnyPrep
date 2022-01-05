@@ -12,7 +12,7 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.vel = [-2, 3]
+    this.vel = [-2, 1]
     this.newPos = [];
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
@@ -249,11 +249,11 @@ export default class Bunny extends ConnectingObject {
       this.hopVel = -this.hopVel;
     }, 500);
   }
-  drawChildBun() {
+  drawBabyBun() {
     this.happyMeter = this.mainBunny.happyMeter;
     let orientation = this.vel[0] > 0 ? '-reverse' : '';
     this.friendImg = document.getElementById(`${this.color}-${this.randEmotion}${orientation}`);
-    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width/2, this.height/2);
   }
 
 }

@@ -14,8 +14,8 @@ export default class Room {
     this.litterBox = new ConnectingObject('litter box', 520, 520, 80, 110, 10);
     this.water = new ConnectingObject('water', 320, 250, 60, 40);
     this.foodBowl = new ConnectingObject('food-bowl', 230, 440, 30, 30, 5);
-    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl]
-    
+    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl];
+    this.loadDroppings();
   }
 
   // resizeRoomCanvas() {
@@ -144,6 +144,22 @@ export default class Room {
 
   drawArt(x, y, width, height) {
     this.drawRect('left', x, y, width, height, "rgba(77, 67, 56)")
+  }
+
+  loadDroppings() {
+    this.droppings = [];
+    for (let i = 0; i < 5; i++) {
+      let x = Math.floor((Math.random() * (this.game.canvas.width / 2))) + (this.game.canvas.width / 4);
+      let y = Math.floor((Math.random() * (this.game.canvas.height / 4)) + this.game.canvas.height / 2);
+      let drop = new ConnectingObject('dropping', x, y, 5, 5);
+      this.droppings.push(drop);
+    }
+  }
+
+  drawDroppings() {
+    this.droppings.forEach(drop => {
+      this.drawBorderedCircle(drop.x, drop.y, drop.width, '#6C4747');
+    })
   }
 
   drawBorderedCircle(x,y, radius, color) {
