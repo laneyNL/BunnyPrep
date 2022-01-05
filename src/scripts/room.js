@@ -15,7 +15,7 @@ export default class Room {
     this.water = new ConnectingObject('water', 320, 250, 60, 40);
     this.foodBowl = new ConnectingObject('food-bowl', 230, 440, 30, 30, 5);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl]
-    this.drawRoom();
+    
   }
 
   // resizeRoomCanvas() {
@@ -25,8 +25,8 @@ export default class Room {
   // }
   
   drawConnection(x, y, width, height) {
-    this.room.fillStyle = 'blue';
-    this.room.fillRect(x, y, width, height);
+    // this.room.fillStyle = 'blue';
+    // this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {
@@ -91,15 +91,9 @@ export default class Room {
 
   drawTV(x, y, width, height, color, length) {
     this.drawRightCuboid(x, y, width, height, color, length);
-    // this.drawRect('right', x + (width * 0.05), y + (height * 0.1), width*0.9, height* 0.8, 'skyblue');
+    this.drawRect('right', x + (width * 0.05), y + (height * 0.1), width*0.9, height* 0.8, 'skyblue');
     const pano = document.getElementById('panorama');
-    // this.room.save();
-    // this.room.translate(x,y);
-    // this.room.rotate(10*(Math.PI/180));
-    console.log(pano);
-    this.room.drawImage(pano, x + (width * 0.05), y + (height * 0.1), width * 0.9, height * 0.8);
-
-    // this.room.restore();
+    // this.room.drawImage(pano, x , y + (height * 0.4), width, height * 0.8);
   }
 
   drawMat(x, y, width, height, color) {

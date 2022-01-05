@@ -11,6 +11,7 @@ export default class Game {
     this.canvas = canvas;
     this.info = [];
     this.room = new Room(canvas, this);
+    this.room.drawRoom();
     // this.resizeCanvas();
     this.welcomeMessage();
     
@@ -104,7 +105,7 @@ export default class Game {
   }
   
   isGameOver() {
-    return this.lesson.currentLessonNum > 40 || this.bunny.happyMeter <= 0 || this.budget <= 0;
+    return this.lesson.currentLessonNum > 40 || this.bunny.happyMeter <= 0 || this.budget <= 0 || this.childBuns.length > 20;
   }
   
   endGame() {
