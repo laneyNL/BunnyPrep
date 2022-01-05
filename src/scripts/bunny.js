@@ -81,21 +81,10 @@ export default class Bunny extends ConnectingObject {
 
   displayBunnyInfo() {
     const bunnyName = document.getElementById('bunny-name');
-    const bunnyHeart = document.getElementById('bunny-heart');
     const budget = document.getElementById('budget');
     bunnyName.innerHTML = `${this.name}`;
     bunnyHeart.innerHTML = '';
     budget.innerHTML = `${this.game.budget}`;
-    
-    for(let i = 0; i < 10; i++) {
-      let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
-      let heartImg = document.createElement('img');
-      heartImg.src = `./images/${heartType}.png`;
-      heartImg.alt = `${heartType}`;
-      heartImg.width = '15';
-
-      bunnyHeart.appendChild(heartImg);
-    }
   }
 
   moveBunnyListener() {
@@ -185,7 +174,7 @@ export default class Bunny extends ConnectingObject {
   
   loadHay() {
     this.hay = new Image();
-    this.hay.src = `./images/hay.svg`;
+    this.hay.src = `./src/images/hay.svg`;
     this.hay.alt = `hay`;
 
     const addHay = document.getElementById('add-hay');
@@ -251,7 +240,7 @@ export default class Bunny extends ConnectingObject {
     }, 500);
     const EMOTIONS = ['happy', 'sad', 'mad'];
     this.randEmotion = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
-    const VELS = [ -10, -8, -5, -3, -4, 3, 5, 7, 10, 12];
+    const VELS = [-30, -20, -10, -8, -5, -3, -4, 3, 5, 7, 10, 12, 20, 30];
     if (this.name === 'baby') this.vel = [VELS[Math.floor(Math.random() * VELS.length)], VELS[Math.floor(Math.random() * VELS.length)]];
   }
 

@@ -196,7 +196,7 @@ export default class Game {
 
       let newBun = new Bunny('baby', color, this.canvas, this, true, this.bunny, x, y)
       this.babyBuns.push(newBun);
-    }, 1000);
+    }, 500);
   }
   
 }

@@ -158,14 +158,16 @@ export default class Lesson {
   }
 
   lesson10() {
-    this.game.multiplyBuns();
     this.game.question.innerHTML = `Oh no. It looks like both ${this.name} and ${this.game.friend.name} both weren't fixed and had babies. <br>Catch each baby bunny.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Catch each baby bunny.`;
     this.info = `Pet exercise pens are great for keeping your bunnies contained or separated.`;
     this.target = `baby`;
-    setTimeout(() => {
-      this.currentLessonNum += 1;
-    }, 20000);
+    this.game.form.addEventListener('submit', () => {
+      this.game.multiplyBuns();
+      setTimeout(() => {
+        this.currentLessonNum += 1;
+      }, 20000);
+    })
   }
 }
