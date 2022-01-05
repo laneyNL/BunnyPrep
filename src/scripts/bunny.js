@@ -13,6 +13,7 @@ export default class Bunny extends ConnectingObject {
     this.happyMeter = 5;
     this.keys = {};
     this.vel = [-2, 3]
+    this.newPos = [];
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
     this.hayPieces = 20;
@@ -94,22 +95,24 @@ export default class Bunny extends ConnectingObject {
       if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
         let newX = event.pageX - offset.left;
         let newY = event.pageY - offset.top - (this.height / 2);
-        this.cursorDirection(newX, newY);
+        this.newPos = [newX, newY];
       }
     })
     window.addEventListener('mouseup', (event) => {
       this.left = this.right = this.down = this.up = false;
+      this.newPos = [];
     })
   }
 
-  cursorDirection(newX, newY) {
-    if (newX > this.x) this.right = true;
-    if (newX < this.x) this.left = true;
-    if (newY > this.y) this.down = true;
-    if (newY < this.y) this.up = true;
+  cursorDirection() {
+    if (this.newPos[0] > this.x) this.right = true;
+    if (this.newPos[0] < this.x) this.left = true;
+    if (this.newPos[1] > this.y) this.down = true;
+    if (this.newPos[1] < this.y) this.up = true;
   }
 
   updatePosition() {
+    if (this.newPos.length) this.cursorDirection();
     if (this.keys[37] || this.left) { //37 = left arrow
       this.vel[0] = -Math.abs(this.vel[0]);
       this.x += this.vel[0];
