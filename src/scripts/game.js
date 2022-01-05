@@ -105,7 +105,7 @@ export default class Game {
   }
   
   isGameOver() {
-    return this.lesson.currentLessonNum > 40 || this.bunny.happyMeter <= 0 || this.budget <= 0 || this.childBuns.length > 20;
+    return this.lesson.currentLessonNum === 6 || this.lesson.currentLessonNum > 10 || this.bunny.happyMeter <= 0 || this.budget <= 0 || this.childBuns.length > 20;
   }
   
   endGame() {
@@ -148,8 +148,7 @@ export default class Game {
   adoptOrSpay() {
     this.budget -= 200;
     let decision = this.radioInput();
-    if (decision === 'adopt') this.lesson.currentLessonNum = 29;
-    this.bunny.happyMeter += 1;
+    if (decision === 'adopt') this.lesson.currentLessonNum = 7;
     this.form.classList.replace('adOrSp', 'input-form');
     this.lesson.lessonComplete();
   }
