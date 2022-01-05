@@ -62,6 +62,7 @@ body {
   width: 80%;
   display: inline-block;
   overflow-wrap: anywhere;
+  overflow: auto;
 }
 #info-learned li {
   margin: 10%;
