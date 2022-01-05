@@ -21,4 +21,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
       audio.pause();
     }
   })
+
+  const displayCredit = document.getElementById('credit-button');
+  const credits = document.getElementById('credits');
+  displayCredit.onclick = () => {
+    credits.classList.toggle('hidden');
+    if (displayCredit.innerText === 'Display Credits') {
+      displayCredit.innerText = 'Hide Credits'
+    } else {
+      displayCredit.innerText = 'Display Credits'
+    }
+  }
 });

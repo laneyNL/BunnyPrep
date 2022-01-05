@@ -129,15 +129,19 @@ canvas {
   }
 }
 
+.credits {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hidden {
+  display: none;
+}
+
+
 /* canvas {
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-} */
-.hidden {
-  display: none;
-}
-/* h1:hover + .popup {
-  display: flex;
 } */

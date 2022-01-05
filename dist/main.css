@@ -132,18 +132,23 @@ canvas {
   }
 }
 
+.credits {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hidden {
+  display: none;
+}
+
+
 /* canvas {
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 } */
-.hidden {
-  display: none;
-}
-/* h1:hover + .popup {
-  display: flex;
-} */
+
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
   \****************************************************************************************************/
