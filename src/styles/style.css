@@ -1,11 +1,15 @@
+/* 
+grey: 
+rgba(77, 67, 56) 
+blue 
+rgb(105, 157, 173)
+
+*/
+
+
 body {
-  /* background-image: url("../images/background.jpeg");
-  background-repeat: no-repeat;
-  background-size:cover; */
-  /* background: rgb(107,119,122);
-  background: linear-gradient(90deg, rgba(107,119,122,1) 0%, rgba(130,175,199,1) 50%, rgba(107,119,122,1) 100%); */
-  background-color: lightgray;
-  
+background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37, 114, 158));
+/* background-image: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38)); */
 }
 
 #title {
@@ -13,7 +17,7 @@ body {
   font-weight: bold;
   text-align: center;
   padding: 10px;
-  color: rgb(105, 157, 173);
+  color: rgb(85, 90, 92);
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
   position: relative;
   font-family: 'Roboto', sans-serif;
@@ -25,11 +29,27 @@ body {
   margin: auto;
   border-radius: 5px;
   height: 500px;
-  background-color: rgb(105, 157, 173);
+  background-color: rgb(85, 90, 92);
+  color: white;
+  /* text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black; */
   box-sizing: border-box;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
+}
+
+button {
+  background-color: rgb(44, 41, 38);
+  border-radius: 5px;
+  /* padding: 5px; */
+  /* height: auto; */
+  color: white;
+}
+
+.fab {
+  font-size: 50px;
+  margin: 10px;
+  color: white;
 }
 
 #sound-icon {
@@ -69,6 +89,7 @@ body {
   overflow-wrap: anywhere;
   overflow: auto;
 }
+
 #info-learned li {
   margin: 10%;
 }
@@ -91,13 +112,8 @@ footer {
   justify-content: space-evenly;
 }
 
-.links a {
-  /* padding: 20px; */
-  font-size: 50px;
-  color: black;
-  height: auto;
+a {
   text-decoration: none;
-  margin: 10px;
 }
 
 canvas {
@@ -115,6 +131,8 @@ canvas {
   font-size: 20px;
   font-size: 2vw;
   font-weight: bold;
+  color: black;
+
 }
 .bunny-image {
   width: 20%;
@@ -122,7 +140,7 @@ canvas {
 }
 
 #info-learned {
-  /* list-style-position: inside; */
+  list-style-position: inside;
 }
 
 @media screen and (max-width: 1500px) {
@@ -140,12 +158,6 @@ canvas {
   display: none;
 }
 
-button {
-  background-color: lightgray;
-  border-radius: 5px;
-  padding: 5px;
-  height: auto;
-}
 /* canvas {
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
