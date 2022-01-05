@@ -92,7 +92,7 @@ export default class Room {
   drawTV(x, y, width, height, color, length) {
     this.drawRightCuboid(x, y, width, height, color, length);
     this.drawRect('right', x + (width * 0.05), y + (height * 0.1), width*0.9, height* 0.8, 'skyblue');
-    const pano = document.getElementById('panorama');
+    // const pano = document.getElementById('panorama');
     // this.room.drawImage(pano, x , y + (height * 0.4), width, height * 0.8);
   }
 
