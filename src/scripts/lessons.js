@@ -167,6 +167,7 @@ export default class Lesson {
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
+    setTimeout(this.game.endGame.bind(this.game), 20000);
   }
 
   // lesson6() {
