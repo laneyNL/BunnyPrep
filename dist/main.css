@@ -8,8 +8,7 @@ body {
   /* background: rgb(107,119,122);
   background: linear-gradient(90deg, rgba(107,119,122,1) 0%, rgba(130,175,199,1) 50%, rgba(107,119,122,1) 100%); */
   background-color: lightgray;
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Signika Negative', sans-serif;
+  
 }
 
 #title {
@@ -20,6 +19,8 @@ body {
   color: rgb(105, 157, 173);
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
   position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Signika Negative', sans-serif;
 }
 
 #sound-icon {
@@ -60,6 +61,8 @@ body {
   background-color: rgb(105, 157, 173);
   box-sizing: border-box;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Signika Negative', sans-serif;
   
 }
 
