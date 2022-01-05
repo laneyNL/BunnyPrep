@@ -1,8 +1,11 @@
 body {
   /* background-color: rgb(173,216,230); */
-  background-image: url("../images/background.jpeg");
+  /* background-image: url("../images/background.jpeg");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size:cover; */
+  /* background: rgb(107,119,122);
+  background: linear-gradient(90deg, rgba(107,119,122,1) 0%, rgba(130,175,199,1) 50%, rgba(107,119,122,1) 100%); */
+  background-color: lightgray;
 }
 
 #title {

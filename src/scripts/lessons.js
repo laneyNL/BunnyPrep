@@ -3,7 +3,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 30;
+    this.currentLessonNum = 0;
     this.longDirections = '';
     this.form = ``;
     this.taskBar = '';
@@ -14,7 +14,7 @@ export default class Lesson {
   }
 
   lessonComplete(event) {
-    if (event) event.preventDefault();
+    if (event) event.preventDefault(); 
     // console.log('lesscom', this.currentLessonNum);
     this.game.budget += 5;
     this.bunny.happyMeter += 1;
@@ -29,6 +29,7 @@ export default class Lesson {
     this.game.info.forEach(info => {
       infoList.innerHTML += `<li>${info}</li>`
     })
+    if (this.currentLessonNum === 2) this.game.room.drawLeaf();
   }
 
   lesson0(){
