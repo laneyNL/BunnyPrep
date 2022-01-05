@@ -114,7 +114,10 @@ export default class Game {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
     } else if (this.budget <= 0) {
       this.question.innerHTML = `Your budget has reached $0. You have lost the game.`
-    } else {
+    } else if (this.childBuns.length){
+      this.question.innerHTML = `You have let your rabbit population get out of hand. You have lost the game.`
+    } 
+    else {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
     const popup = document.getElementById('popup');
@@ -171,7 +174,7 @@ export default class Game {
 
       let newBun = new Bunny('child', color, this.canvas, this, true, this.bunny, x, y)
       this.childBuns.push(newBun);
-    }, 5000);
+    }, 2000);
   }
   
 }

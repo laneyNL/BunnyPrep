@@ -250,6 +250,7 @@ export default class Bunny extends ConnectingObject {
     }, 500);
   }
   drawChildBun() {
+    this.happyMeter = this.mainBunny.happyMeter;
     let orientation = this.vel[0] > 0 ? '-reverse' : '';
     this.friendImg = document.getElementById(`${this.color}-${this.randEmotion}${orientation}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);

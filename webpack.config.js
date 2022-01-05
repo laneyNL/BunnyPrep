@@ -9,7 +9,6 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'), // bundled file in dist/
     filename: 'main.js',
-    // filename: '[name].js',
   },
   module: {
     rules: [
