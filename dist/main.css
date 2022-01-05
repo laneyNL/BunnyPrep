@@ -16,7 +16,7 @@ body {
   text-align: center;
   padding: 10px;
   color: rgb(105, 157, 173);
-  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
   position: relative;
 }
 

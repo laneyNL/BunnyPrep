@@ -35,7 +35,8 @@ export default class Bunny extends ConnectingObject {
     this.drawBunny.bind(this)();
     
     this.moveBunnyListener();
-    this.displayBunnyInfo();
+    // this.displayBunnyInfo();
+    this.drawBunnyInfo();
     this.hopVel = 5;
     this.isHopping = true;
     this.resetisHopping();
@@ -49,6 +50,14 @@ export default class Bunny extends ConnectingObject {
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
     this.multiplyHay();
     this.displayBunnyInfo();
+  }
+
+  drawBunnyInfo() {
+    this.ctx.strokeStyle = 'black';
+    this.ctx.font = '70px sans-serif';
+    let text = `Name: ${this.name}`
+    // let midWidth = (this.canvas.width / 2) - (this.ctx.measureText('Game Over').width/2);
+    this.ctx.fillText('Game Over', 10, 10);
   }
 
   emotion() {

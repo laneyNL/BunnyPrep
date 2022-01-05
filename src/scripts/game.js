@@ -147,7 +147,6 @@ export default class Game {
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
-    // this.currentLessonNum = 100;
     // this.room.room.fillStyle = 'white';
     // this.room.room.strokeStyle = 'black';
     // this.room.room.font = '70px sans-serif';
@@ -159,7 +158,6 @@ export default class Game {
   runLesson(){
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
-    console.log(this.lesson.currentLessonNum)
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
   
     
