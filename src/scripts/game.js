@@ -161,8 +161,6 @@ export default class Game {
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
   
     
-    this.question.innerHTML = this.lesson.longDirections;
-    this.form.innerHTML = this.lesson.form;
     task.innerHTML = this.lesson.taskBar;
     if (this.info) this.info.push(`🥕 ${this.lesson.info}`);
     this.togglePopup();
