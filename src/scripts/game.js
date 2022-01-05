@@ -42,8 +42,6 @@ export default class Game {
     if (event) {
       event.preventDefault();
       if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
-      // if (event.target.classList.value === 'adopt') this.adoptFriend();
-
     };
   }
   
@@ -129,7 +127,7 @@ export default class Game {
   }
   
   runLesson(){
-    console.log('run', this.lesson.currentLessonNum);
+    // console.log('run', this.lesson.currentLessonNum);
     const task = document.getElementById('task-details');
     const infoBar = document.getElementById('info-learned');
     eval(`this.lesson.lesson${this.lesson.currentLessonNum}`).bind(this.lesson)();
@@ -173,7 +171,7 @@ export default class Game {
 
       let newBun = new Bunny('child', color, this.canvas, this, true, this.bunny, x, y)
       this.childBuns.push(newBun);
-    }, 10000);
+    }, 5000);
   }
   
 }

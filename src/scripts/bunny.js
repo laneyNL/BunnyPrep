@@ -112,7 +112,6 @@ export default class Bunny extends ConnectingObject {
   }
 
   updatePosition() {
-    console.log(this);
     if (this.newPos.length) this.cursorDirection();
     if (this.keys[37] || this.left) { //37 = left arrow
       this.vel[0] = -Math.abs(this.vel[0]);
@@ -251,7 +250,6 @@ export default class Bunny extends ConnectingObject {
     }, 500);
   }
   drawChildBun() {
-    console.log(this.ctx);
     let orientation = this.vel[0] > 0 ? '-reverse' : '';
     this.friendImg = document.getElementById(`${this.color}-${this.randEmotion}${orientation}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);

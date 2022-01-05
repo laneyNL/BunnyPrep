@@ -15,11 +15,12 @@ export default class Lesson {
 
   lessonComplete(event) {
     if (event) event.preventDefault();
-    console.log('lesscom', this.currentLessonNum);
+    // console.log('lesscom', this.currentLessonNum);
     this.game.budget += 5;
+    this.bunny.happyMeter += 1;
     this.currentLessonNum += 1;
     this.game.runLesson();
-    console.log('ran lesscom', this.currentLessonNum);
+    // console.log('ran lesscom', this.currentLessonNum);
   }
 
   displayLessons() {
@@ -150,18 +151,19 @@ export default class Lesson {
     
   lesson31() {
     this.game.adoptFriend();
-    this.longDirections = `It turns out ${this.bunny.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours.`;
-    // this.game.form.classList.replace('input-form', 'adopt');
+    this.longDirections = `It turns out ${this.bunny.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours. Take some time to get to know ${this.game.friend.name}`;
     this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = ``;
     this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
     this.target = ``;
+    this.currentLessonNum += 1;
+    setTimeout(this.game.runLesson.bind(this.game), 5000);
   }
 
   lesson32() {
-    this.longDirections = ``;
-    this.form =
-      `<input type="submit" value='Choose'>`;
+    this.game.multiplyBuns();
+    this.longDirections = `Oh no. It looks like both ${this.bunny.name} and ${this.game.friend.name} both weren't fixed and mated. You should prepare for the worst case scenario.`;
+    this.form = `<input type="submit" value='Continue'>`;
     this.taskBar = ``;
     this.info = ``;
     this.target = ``;
