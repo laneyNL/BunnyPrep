@@ -131,13 +131,13 @@ export default class Lesson {
       <input type="text" id ='input-text' name='bunny-name' required><br>
 
       <input type='radio' id='brown-bunny' name='bunny-color' required>
-      <label for='brown-bunny'><img src="./images/brown/brown_happy.png" alt="brown bunny pictures" class='bunny-image'></label>
+      <label for='brown-bunny'><img src="./src/images/brown/brown_happy.png" alt="brown bunny pictures" class='bunny-image'></label>
 
       <input type='radio' id='grey-bunny' name='bunny-color'>
-      <label for='grey-bunny'><img src="./images/grey/grey_happy.png" alt="grey bunny pictures" class='bunny-image'></label>
+      <label for='grey-bunny'><img src="./src/images/grey/grey_happy.png" alt="grey bunny pictures" class='bunny-image'></label>
 
       <input type='radio' id='black-bunny' name='bunny-color'>
-      <label for='black-bunny'><img src="./images/black/black_happy.png" alt="black bunny pictures" class='bunny-image'></label><br>
+      <label for='black-bunny'><img src="./src/images/black/black_happy.png" alt="black bunny pictures" class='bunny-image'></label><br>
       <input type="submit" value='Play Game'>`;
       this.taskBar = `After deciding, bring ${this.name} to the couch to wait.`;
       this.info = `Bunnies needed to be slowly introduced as they are very territorial.`;

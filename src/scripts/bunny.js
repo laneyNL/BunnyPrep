@@ -83,7 +83,6 @@ export default class Bunny extends ConnectingObject {
     const bunnyName = document.getElementById('bunny-name');
     const budget = document.getElementById('budget');
     bunnyName.innerHTML = `${this.name}`;
-    bunnyHeart.innerHTML = '';
     budget.innerHTML = `${this.game.budget}`;
   }
 
