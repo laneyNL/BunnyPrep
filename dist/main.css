@@ -9,10 +9,12 @@ rgb(105, 157, 173)
 
 */
 
+.dark {
+  background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37, 114, 158));
+}
 
-body {
-background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37, 114, 158));
-/* background-image: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38)); */
+.light {
+  background-image: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38));
 }
 
 #title {
@@ -20,7 +22,7 @@ background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37,
   font-weight: bold;
   text-align: center;
   padding: 10px;
-  color: rgb(85, 90, 92);
+  color: white;
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
   position: relative;
   font-family: 'Roboto', sans-serif;
@@ -34,39 +36,36 @@ background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37,
   height: 500px;
   background-color: rgb(85, 90, 92);
   color: white;
-  /* text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black; */
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
   box-sizing: border-box;
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
+  font-size: 20px;
 }
 
 button {
   background-color: rgb(44, 41, 38);
   border-radius: 5px;
-  /* padding: 5px; */
-  /* height: auto; */
+  padding: 10px;
   color: white;
+  font-size: 20px;
 }
 
-.fab {
+#credit-button {
+ block-size: fit-content;
+}
+
+.fab, .fas{
   font-size: 50px;
   margin: 10px;
   color: white;
 }
 
 #sound-icon {
-  font-size: 50px;
   position: absolute;
   right: 7%;
   top: 3%;
-}
-
-.heading {
-  font-size: 20px;
-  /* font-weight: bold; */
-  text-decoration: underline;
-  padding: 10px;
 }
 
 .main {
@@ -93,12 +92,21 @@ button {
   overflow: auto;
 }
 
-#info-learned li {
-  margin: 10%;
-}
-
 .left-sidebar{
   width: 90%;
+  justify-content: space-around;
+  font-size: 25px;;
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+#info-learned li {
+  margin: 10%;
 }
 
 .foot {
@@ -108,11 +116,14 @@ button {
 
 footer {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .links {
   display: flex;
   justify-content: space-evenly;
+  margin: 10px;
+  align-items: center;
 }
 
 a {
@@ -135,6 +146,7 @@ canvas {
   font-size: 2vw;
   font-weight: bold;
   color: black;
+  text-shadow: 0 0;
 
 }
 .bunny-image {

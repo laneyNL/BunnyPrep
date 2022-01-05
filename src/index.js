@@ -26,10 +26,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const credits = document.getElementById('credits');
   displayCredit.onclick = () => {
     credits.classList.toggle('hidden');
-    if (displayCredit.innerText === 'Display Credits') {
-      displayCredit.innerText = 'Hide Credits'
-    } else {
-      displayCredit.innerText = 'Display Credits'
-    }
   }
 });
