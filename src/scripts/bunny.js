@@ -2,8 +2,8 @@ import ConnectingObject from './connecting_object';
 
 export default class Bunny extends ConnectingObject {
   
-  constructor(name, color, canvas, game, isFriend, mainBunny) {
-    super(name, 200, 250);
+  constructor(name, color, canvas, game, isFriend, mainBunny, x, y) {
+    super(name, x, y);
     this.color = color;
     this.maxWidth = canvas.width;
     this.maxHeight = canvas.height;
@@ -112,6 +112,7 @@ export default class Bunny extends ConnectingObject {
   }
 
   updatePosition() {
+    console.log(this);
     if (this.newPos.length) this.cursorDirection();
     if (this.keys[37] || this.left) { //37 = left arrow
       this.vel[0] = -Math.abs(this.vel[0]);
@@ -154,7 +155,7 @@ export default class Bunny extends ConnectingObject {
       if(this.isFriend) this.y += Math.floor(Math.random()*10);
     }
     if (this.y + this.height >= this.maxHeight) {
-      this.y = this.maxHeight - this.height;
+      this.y = Math.floor(this.maxHeight - this.height);
     }
     if (this.x < 0) {
       this.x = 0;
@@ -232,6 +233,8 @@ export default class Bunny extends ConnectingObject {
       this.vel[1] = -this.vel[1];
       this.wrapXY();
     }, 500);
+    const EMOTIONS = ['happy', 'sad', 'mad'];
+    this.randEmotion = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
   }
 
   drawFriend() {
@@ -247,15 +250,11 @@ export default class Bunny extends ConnectingObject {
       this.hopVel = -this.hopVel;
     }, 500);
   }
-
-  clearhopInterval() {
-    clearInterval(this.hopInterval);
-  }
-  setHopInterval() {
-    console.log(this.hopInterval)
-    this.clearhopInterval();
-    this.hopInterval();
-    setTimeout(this.clearhopInterval, 2000);
+  drawChildBun() {
+    console.log(this.ctx);
+    let orientation = this.vel[0] > 0 ? '-reverse' : '';
+    this.friendImg = document.getElementById(`${this.color}-${this.randEmotion}${orientation}`);
+    this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);
   }
 
 }

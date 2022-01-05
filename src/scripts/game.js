@@ -13,6 +13,7 @@ export default class Game {
     this.room = new Room(canvas, this);
     // this.resizeCanvas();
     this.welcomeMessage();
+    
   }
 
   // resizeCanvas() {
@@ -50,7 +51,8 @@ export default class Game {
     if (event) this.togglePopup(event);
     let name = document.querySelector('input[name=bunny-name]').value;
     let color = this.radioInput().split('-')[0];
-    this.bunny = new Bunny(name, color, this.canvas, this, false);
+    this.bunny = new Bunny(name, color, this.canvas, this, false, '',200, 250);
+    this.childBuns = [];
     this.startGame();
   }
   
@@ -67,6 +69,7 @@ export default class Game {
     this.room.clearRoom();
     this.room.drawRoom();
     if (this.friend) this.friend.drawFriend();
+    if (this.childBuns.length) this.childBuns.forEach(bun => bun.drawChildBun());
     this.bunny.drawBunny();
 
     this.lesson.displayLessons();
@@ -157,8 +160,20 @@ export default class Game {
     while (friendColor === selectedColor) {
       friendColor = colors[Math.floor(Math.random() * colors.length)];
     }
-    this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny);  
+    this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny, 200, 250);
     this.bunny.name += ` and ${this.friend.name}`;
+  }
+
+  multiplyBuns() {
+    setInterval(()=> {
+      const COLORS = ['brown', 'grey', 'black']
+      let color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      let x = Math.floor(Math.random() * this.canvas.width);
+      let y = Math.floor(Math.random() * (this.canvas.height / 2)) + Math.floor(this.canvas.height / 2);
+
+      let newBun = new Bunny('child', color, this.canvas, this, true, this.bunny, x, y)
+      this.childBuns.push(newBun);
+    }, 10000);
   }
   
 }
