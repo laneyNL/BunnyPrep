@@ -35,8 +35,7 @@ export default class Bunny extends ConnectingObject {
     this.drawBunny.bind(this)();
     
     this.moveBunnyListener();
-    // this.displayBunnyInfo();
-    this.drawBunnyInfo();
+    this.displayBunnyInfo();
     this.hopVel = 5;
     this.isHopping = true;
     this.resetisHopping();
@@ -50,14 +49,23 @@ export default class Bunny extends ConnectingObject {
     this.ctx.drawImage(this.bunnyImg, this.x, this.y, this.width, this.height);
     this.multiplyHay();
     this.displayBunnyInfo();
+    this.drawBunnyInfo();
   }
 
   drawBunnyInfo() {
-    this.ctx.strokeStyle = 'black';
-    this.ctx.font = '70px sans-serif';
-    let text = `Name: ${this.name}`
+    this.ctx.fillStyle = 'black';
+    this.ctx.font = '30px sans-serif';
+    let text = `Budget: ${this.game.budget}`
     // let midWidth = (this.canvas.width / 2) - (this.ctx.measureText('Game Over').width/2);
-    this.ctx.fillText('Game Over', 10, 10);
+    this.ctx.fillText(text, this.canvas.width*0.7, 50);
+
+    for (let i = 0; i < 10; i++) {
+      let heartType = (i < this.happyMeter) ? 'heart' : 'empty-heart';
+      let heartImg = document.getElementById(heartType);
+      let width = 30;
+      this.ctx.drawImage(heartImg, 15 + (i*width), 30, width, width*1);
+    }
+    
   }
 
   emotion() {
