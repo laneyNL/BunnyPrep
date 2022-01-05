@@ -77,6 +77,9 @@ export default class Lesson {
     this.target = 'food-bowl';
   }
 
+  requireInputCheck() {
+    
+  }
   
   lesson3() {
     let userBadVegs = this.bunny.checkVegetables();

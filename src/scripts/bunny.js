@@ -251,8 +251,8 @@ export default class Bunny extends ConnectingObject {
     }, 500);
     const EMOTIONS = ['happy', 'sad', 'mad'];
     this.randEmotion = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
-    const VELS = [ -5, -3, -4, 3, 4, 5]
-    if (this.name === 'child') this.vel = [VELS[Math.floor(Math.random() * VELS.length)], VELS[Math.floor(Math.random() * VELS.length)]];
+    const VELS = [ -10, -8, -5, -3, -4, 3, 5, 7, 10, 12];
+    if (this.name === 'baby') this.vel = [VELS[Math.floor(Math.random() * VELS.length)], VELS[Math.floor(Math.random() * VELS.length)]];
   }
 
   drawFriend() {
