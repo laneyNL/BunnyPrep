@@ -7,12 +7,13 @@ export default class Room {
     this.width = canvas.width;
     this.height = canvas.height;
     this.door = new ConnectingObject('door', 75, 225, 70, 130);
+    this.couch1 = new ConnectingObject('couch', 460, 190, 140, 40,60);
     this.drawer = new ConnectingObject('drawer', 630, 215, 150, 75, 30);
+    this.couch2 = new ConnectingObject('couch', 740, 330, 140, 40,60);
     this.litterBox = new ConnectingObject('litter box', 520, 520, 80, 110, 10);
-    this.couch = new ConnectingObject('couch', 460, 370, 140, 40,60);
     this.water = new ConnectingObject('water', 320, 490, 30);
     this.foodBowl = new ConnectingObject('food-bowl', 230, 440, 30, 30, 5);
-    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch, this.water, this.foodBowl]
+    this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl]
   }
 
   // resizeRoomCanvas() {
@@ -22,8 +23,8 @@ export default class Room {
   // }
   
   drawConnection(x, y, width, height) {
-    // this.room.fillStyle = 'blue';
-    // this.room.fillRect(x, y, width, height);
+  //   this.room.fillStyle = 'blue';
+  //   this.room.fillRect(x, y, width, height);
   }
 
   drawRoom() {
@@ -33,13 +34,14 @@ export default class Room {
     this.drawWindow(510, 40, 135, 100, 'white', 5);
     this.drawWindow(810, 190, 135, 100, 'white', 5);
     this.drawDoor(this.door.x, this.door.y, this.door.width, this.door.height);
-    this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
-    this.drawTV(650, 110, 130, 100, 'gray', 4);
     this.drawMat(270, 400, 170, 110, 'pink');
     this.drawLitterBox(this.litterBox.x, this.litterBox.y, this.litterBox.width, this.litterBox.height, this.litterBox.length);
     this.drawFoodBowl(this.foodBowl.x, this.foodBowl.y, this.foodBowl.width, this.foodBowl.height, this.foodBowl.length);
     this.drawWater(this.water.x, this.water.y, this.water.width);
-    this.drawCouch(this.couch.x, this.couch.y, this.couch.width, this.couch.height, this.couch.length);
+    this.drawCouch(this.couch1.x, this.couch1.y, this.couch1.width, this.couch1.height, this.couch1.length);
+    this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
+    this.drawTV(650, 110, 130, 100, 'gray', 4);
+    this.drawCouch(this.couch2.x, this.couch2.y, this.couch2.width, this.couch2.height, this.couch2.length);
   }
 
   clearRoom() {

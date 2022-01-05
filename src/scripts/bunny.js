@@ -134,9 +134,9 @@ export default class Bunny extends ConnectingObject {
       this.hopVel = -this.hopVel;
       this.isHopping = false;
     }
-    
     this.wrapXY();
   }
+
   isMoving() {
     return this.keys[37] || this.keys[38] || this.keys[39] || this.keys[40] || this.left || this.right || this.down || this.up;
   }
@@ -219,7 +219,6 @@ export default class Bunny extends ConnectingObject {
     }
 
     return userBadVegs;
-
   }
 
   loadFriend() {
