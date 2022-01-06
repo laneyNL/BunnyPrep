@@ -1,5 +1,6 @@
 <h1>Bunny Prep</h1>
-
+<a href="https://laneynl.github.io/BunnyPrep/" target="_blank">Live Link</a>
+<img width="1510" alt="IMG_8978" src="https://user-images.githubusercontent.com/82133627/148460596-2f23e0a8-bfb8-4e12-8fb3-c745b9b896e9.png">
 <h2>Background</h2>
 Bunny Prep is an interactive, educational 2D game that will hep you learn how to care for your rabbit. The user begins the game by choosing a rabbit to adopt. Prompts will then give on what tasks need to be completed to keep their rabbit happy and healthy. As the game progresses the user will be taught different facts about rabbit care. Resource links are available on rabbit care. If a rabbit’s happiness gauge or budget falls to 0, the user will lose the game.
 
@@ -17,6 +18,9 @@ In addition, this project will include:
     <li>A rabbit happiness gauge that will change based on the user's actions.</li>
     <li>A budget to emphasize the monetary commitments of owning a rabbit.</li>
     <li>A sidebar with care tips related to tasks through the game.</li>
+    <li>Dropdown links with resources for learning more about bunny care.</li>
+    <li>Mutable music.</li>
+    <li>Information button that shows/hides credit information when clicked. </li>
   </ul>
 
 <h2>Wireframes</h2>
@@ -58,5 +62,4 @@ In addition, this project will include:
   <li>Allow the user to choose between an idealistic and realistic mode. (Idealistic mode will hide more dangerous situations a rabbit might encounter in real life. This is better for a younger user.)</li>
   <li>Incorporate an adoption website’s API to display real rabbits available for adoption.</li>
 </ul>
-
 
