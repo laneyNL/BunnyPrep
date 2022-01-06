@@ -150,8 +150,8 @@ export default class Bunny extends ConnectingObject {
   wrapXY() {
     if (this.x + this.width >= this.maxWidth) this.x = Math.floor(this.maxWidth - this.width);
     if (this.x < 0) this.x = 0;
-    if (this.x > 500) {
-      let minY = Math.floor(Math.abs((this.x / 2) - 70));
+    if (this.x + (this.width)> 500) {
+      let minY = Math.floor(Math.abs((this.x / 2) - 70)) - (this.height/2);
       let maxY = Math.floor(Math.abs((-this.x/2) + 765));
       if (this.y < minY) {
         this.y = minY;
