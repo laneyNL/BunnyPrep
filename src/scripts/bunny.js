@@ -106,7 +106,6 @@ export default class Bunny extends ConnectingObject {
   }
 
   cursorDirection() {
-    console.log(this.right, this.left, this.down, this.up);
     if (this.newPos[0] > this.x + (this.width/2)) this.right = true;
     if (this.newPos[0] < this.x + (this.width / 2)) this.left = true;
     if (this.newPos[1] > this.y) this.down = true;
@@ -161,12 +160,12 @@ export default class Bunny extends ConnectingObject {
       let maxY = Math.abs((-this.x/2) + 765);
       if (this.y < minY) {
         this.y = minY;
-        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y += Math.floor(Math.random() * 10);
       }
       if (this.y > maxY) {
         this.y = maxY;
-        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y += Math.floor(Math.random() * 10);
       }
     } else {
@@ -174,12 +173,12 @@ export default class Bunny extends ConnectingObject {
       let maxY = Math.abs((this.x / 2) + 355);
       if (this.y + this.height < minY) {
         this.y = minY - this.height;
-        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
       }
       if (this.y +(this.height/2)> maxY) {
         this.y = maxY - (this.height / 2);
-        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
       }
     }
