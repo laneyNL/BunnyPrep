@@ -193,7 +193,7 @@ export default class Bunny extends ConnectingObject {
       if (this.hayPieces <= 0) {
         this.changeHappiness(-1);
       }
-    }, 5000);
+    }, 3000);
   }
 
   multiplyHay() {
