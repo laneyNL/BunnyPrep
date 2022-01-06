@@ -112,7 +112,7 @@ export default class Lesson {
     <input type="submit" name="AdOrFix" value="Decide">`;
     this.game.form.classList.replace('input-form', 'AdOrFix');
     this.taskBar = ``;
-    this.info = `Fixing/Neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
+    this.info = `Spaying or neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
     this.target = ``;
   }
   
