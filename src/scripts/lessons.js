@@ -29,7 +29,7 @@ export default class Lesson {
   }
 
   lesson0(){
-    this.game.question.innerHTML = `You can move ${this.name} around with your cursor or the arrow keys. Trying moving ${this.name} to the litterbox. Earn hearts and money by completing tasks.`;
+    this.game.question.innerHTML = `You can move ${this.name} around with your cursor or the arrow keys. <br>Trying moving ${this.name} to the litterbox. <br>Earn hearts and money by completing tasks.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to the litterbox.`;
     this.game.info.push(`<i class="far fa-star"></i> Bunnies can be trained to use the litterbox just like cats.`)
@@ -39,7 +39,7 @@ export default class Lesson {
   
   
   lesson1() {
-    this.game.question.innerHTML = `You have moved ${this.name} to the litter box! <br>Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.name} will lose hearts if the hay is gone. <br>Try clicking 'Add Hay' button.`;
+    this.game.question.innerHTML = `You have moved ${this.name} to the litter box! <br><br>Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.name} will lose hearts if the hay is gone. <br><br>Try clicking 'Add Hay' button.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Click on the 'Add Hay' button to refill the bunny's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
@@ -55,7 +55,7 @@ export default class Lesson {
     const addHay = document.getElementById('add-hay');
     addHay.removeEventListener('click', this.lessonCompleteBinded);
 
-    this.game.question.innerHTML = `Great job on adding hay! <br>Now it's time to feed ${this.name} some fresh veggies. Select which items would you like to feed ${this.name}. Each vegetable will cost $1. <br>Afterwards, move ${this.name} to the food bowl`;
+    this.game.question.innerHTML = `Great job on adding hay! <br><br>Now it's time to feed ${this.name} some fresh veggies. Select which items would you like to feed ${this.name}. Each vegetable will cost $1. <br><br>Afterwards, move ${this.name} to the food bowl`;
     this.game.form.innerHTML = `<input type='checkbox' id='leeks' name='vegetables'> <label for='leeks'>Leeks</label><br>
     
     <input type='checkbox' id='tomato-leaf' name='vegetables'> <label for='tomato-leaf'>Tomato Leaf</label><br>
@@ -93,12 +93,12 @@ export default class Lesson {
     if (userBadVegs.length <= 0) {
       this.game.question.innerHTML = `Nom nom nom. ${this.name} is super happy.`;
     } else {
-      this.game.question.innerHTML = `Oh no! ${this.name} was fed some dangerous vegetables.`;
-      if (userBadVegs.includes('leeks')) this.game.question.innerHTML += `<br>Vegetables in the onion family including leeks are poisonous to bunnies.`;
-      if (userBadVegs.includes('tomato-leaf')) this.game.question.innerHTML += `<br>Tomato leaves are toxic to bunnies.`;
-      if (userBadVegs.includes('iceberg')) this.game.question.innerHTML += `<br>Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
+      this.game.question.innerHTML = `Oh no! ${this.name} was fed some dangerous vegetables.<br>`;
+      if (userBadVegs.includes('leeks')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Vegetables in the onion family including leeks are poisonous to bunnies.`;
+      if (userBadVegs.includes('tomato-leaf')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Tomato leaves are toxic to bunnies.`;
+      if (userBadVegs.includes('iceberg')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
     }
-    this.game.question.innerHTML += `<br>Now bring ${this.name} to the water bowl to get some water.`
+    this.game.question.innerHTML += `<br><br>Now bring ${this.name} to the water bowl to get some water.`
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to the water bowl.`;
     this.info = `Research before introducing a new vegetable.`;
@@ -106,9 +106,9 @@ export default class Lesson {
   }
   
   lesson4() {
-    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not spayed. You do not have enough to do both. Would you like to adopt another bunny or spay ${this.name}?`;
+    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not spayed. You do not have enough to do both. <br><br>Would you like to adopt another bunny or spay ${this.name}?`;
     this.game.form.innerHTML = `<input type="radio" name="AdOrSp" id="adopt" required><label id="adopt">Adopt</label>
-    <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label>
+    <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label><br>
     <input type="submit" name="AdOrSp" value="Decide">`;
     this.game.form.classList.replace('input-form', 'adOrSp');
     this.taskBar = ``;
@@ -117,7 +117,7 @@ export default class Lesson {
   }
   
   lesson5() {
-    this.game.question.innerHTML = `Congrats on spaying ${this.name}! This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. Move ${this.name} around to pick them up.`;
+    this.game.question.innerHTML = `Congrats on spaying ${this.name}! <br><br>This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. <br><br>Move ${this.name} around to pick them up.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to pick up all the droppings.`;
     this.info = `It is normal and healthy for bunnies to each their own droppings.`;
@@ -125,7 +125,7 @@ export default class Lesson {
   }
   
   lesson8() {
-    this.game.question.innerHTML = `You have chosen to adopt a friend. Please name and select which friend you would like.`;
+    this.game.question.innerHTML = `You have chosen to adopt a friend. <br>Please name and select which friend you would like.`;
     this.game.form.innerHTML = `<label for='input-text'>Name</label>
       <input type="text" id ='input-text' name='bunny-name' required><br>
 
@@ -145,15 +145,15 @@ export default class Lesson {
     
   lesson9() {
     this.game.adoptFriend();
-    this.game.question.innerHTML = `It turns out ${this.name} and your chosen bunny did not get along. The shelter gave you the bunny that got along best with yours. Move ${this.name} to meet ${this.game.friend.name}`;
+    this.game.question.innerHTML = `It turns out ${this.name} and your chosen bunny did not get along.<br> The shelter gave you the bunny that got along best with yours. <br><br>Move ${this.name} to meet ${this.game.friend.name}`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
-    this.taskBar = ``;
-    this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
+    this.taskBar = `Move ${this.name} to meet ${this.game.friend.name}`;
+    this.info = `When getting another bunny, your 1st bunny will choose who they want to bond with.`;
     this.target = `friend`;
   }
 
   lesson10() {
-    this.game.question.innerHTML = `Oh no. It looks like both ${this.name} and ${this.game.friend.name} both weren't fixed and had babies. <br>Catch each baby bunny.`;
+    this.game.question.innerHTML = `Oh no! <br><br>It looks like both ${this.name} and ${this.game.friend.name} both weren't fixed and had babies. <br><br>Catch each baby bunny.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Catch each baby bunny.`;
     this.info = `Pet exercise pens are great for keeping your bunnies contained or separated.`;
