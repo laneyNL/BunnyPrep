@@ -35,6 +35,12 @@
   background-color: #526779;
 }
 
+.fab, .fas{
+  font-size: 50px;
+  margin: 10px;
+  color: white;
+}
+
 #popup {
   background-color: #E1DED6;
   position: fixed;
@@ -124,12 +130,6 @@ canvas {
 
 #credit-button {
  block-size: fit-content;
-}
-
-.fab, .fas{
-  font-size: 50px;
-  margin: 10px;
-  color: white;
 }
 
 #sound-icon {

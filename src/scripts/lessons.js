@@ -94,9 +94,9 @@ export default class Lesson {
     } else {
       this.game.budget -= 75;
       this.game.question.innerHTML = `Oh no! ${this.name} was fed some dangerous vegetables. ${this.name} was brought to the vet and it cost $75.<br>`;
-      if (userBadVegs.includes('leeks')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Vegetables in the onion family including leeks are poisonous to bunnies.`;
-      if (userBadVegs.includes('tomato-leaf')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Tomato leaves are toxic to bunnies.`;
-      if (userBadVegs.includes('iceberg')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
+      if (userBadVegs.includes('leeks')) this.game.question.innerHTML += `<br><i class="fas fa-seedling" style="color:#3A6C4E"></i> Vegetables in the onion family including leeks are poisonous to bunnies.`;
+      if (userBadVegs.includes('tomato-leaf')) this.game.question.innerHTML += `<br><i class="fas fa-seedling" style="color:#3A6C4E"></i> Tomato leaves are toxic to bunnies.`;
+      if (userBadVegs.includes('iceberg')) this.game.question.innerHTML += `<br><i class="fas fa-seedling" style="color:#3A6C4E"></i> Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;
     }
     this.game.question.innerHTML += `<br><br>Now bring ${this.name} to the water bowl to get some water.`
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
