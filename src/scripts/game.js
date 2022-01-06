@@ -12,7 +12,6 @@ export default class Game {
     this.room = new Room(canvas, this);
     this.room.drawRoom();
     this.welcomeMessage();
-    
   }
 
   welcomeMessage() {

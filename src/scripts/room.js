@@ -8,7 +8,7 @@ export default class Room {
     this.height = canvas.height;
     this.door = new ConnectingObject('door', 75, 225, 70, 130);
     this.couch1 = new ConnectingObject('couch', 490, 160, 140, 40,60);
-    this.drawer = new ConnectingObject('drawer', 630, 215, 150, 75, 30);
+    this.drawer = new ConnectingObject('drawer', 630, 120, 150, 175, 30);
     this.couch2 = new ConnectingObject('couch', 770, 300, 140, 40,60);
     this.litterBox = new ConnectingObject('litter box', 520, 520, 80, 110, 10);
     this.water = new ConnectingObject('water', 320, 250, 60, 40);
@@ -16,8 +16,6 @@ export default class Room {
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl];
     this.loadDroppings();
     this.angle = 25;
-    // setTimeout((event) => { 
-    //   this.drawRoom();}, 500);
   }
 
   drawRoom() {
@@ -34,14 +32,12 @@ export default class Room {
     
     this.drawFoodBowl(this.foodBowl.x, this.foodBowl.y, this.foodBowl.width, this.foodBowl.height, this.foodBowl.length);
     this.drawWater(this.water.x, this.water.y, this.water.width, this.water.height);
-    this.drawArt(400, 100, 250, 100);
+    this.drawTV(400, 80, 250, 140);
     
     this.drawPlant(350, 0, 220, 300);
     this.drawCouch(this.couch1.x-30, this.couch1.y+30, this.couch1.width, this.couch1.height, this.couch1.length);
     this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
-    this.drawTV(650, 110, 130, 100, 'gray', 4);
     this.drawCouch(this.couch2.x-30, this.couch2.y+30, this.couch2.width, this.couch2.height, this.couch2.length);
-    // this.room.fillRect(500,610, 10, 10)
   }
 
   clearRoom() {
@@ -72,46 +68,25 @@ export default class Room {
 
   drawDrawer(x, y, width, height, length) {
     this.drawRightCuboid(x, y, width, height, "rgba(77, 67, 56)",length);
-    let shape = () => {
-      this.drawRect('right', x+(width * 0.1), y+(height*0.2),  width*0.8, height*0.3, 'white');
-      this.drawRect('right',x+(width*0.4),y+(height*0.6), 10, 5, "rgba(77, 67, 56)");
-    }
-    this.repeatShape(2, 0, (height * 0.45), shape);
+    this.repeatShape(2, height * 0.30, height * 0.15, () => {
+      this.drawRect('right', x + (width * 0.1), y + (height * 0.15), height * 0.3, width * 0.9, 'white');
+    });
+    this.drawRect('right',x+(width*0.3),y+(height*0.6), 10, 20, "rgba(77, 67, 56)");
+    this.repeatShape(2, height * 0.18, height * 0.09, () => {
+      this.drawRect('right', x + (width * 0.3), y + (height * 0.6), 10, 20, "rgba(77, 67, 56)");
+    });
   }
 
-  drawTV(x, y, width, height, color, length) {
-    this.drawRightCuboid(x, y, width, height, color, length);
-    this.drawRect('right', x + (width * 0.05), y + (height * 0.1), width*0.9, height* 0.8, 'skyblue');
-
-    // let panoX = x;
-    // let panoY = y;
-    // const pano = document.getElementById('panorama');
-    // let panoW = pano.width;
-    // let panoH = pano.height;
-    // this.room.save();
-    // this.room.translate(panoX + (pano.width / 2), panoY + (pano.height/2));
-    // this.room.rotate(22.5 * (Math.PI / 180));
-    // this.room.translate(-(panoX + (pano.width / 2)), -(panoY + (pano.height / 2)));
-    
-    // this.room.translate(-this.panoX, -this.panoY);
-    // // this.room.drawImage(pano, panoX, panoY, width*0.9, h);
-    // this.room.scale(0.5,0.2);
-    // this.room.drawImage(pano, 0, 0, width * 0.9, panoH, panoX, panoY, width * 0.9, panoH);
-    // this.room.restore();
-    // this.panoX += 0.5;
-    // if (this.panoX > 400) this.panoX = 0;
-  }
-
-  drawArt(x, y, width, height) {
-    this.drawRect('left', x, y, width, height, "rgba(77, 67, 56)");
-    this.drawRect('left', x - 10, y + 10, width - 25, height - 10, "rgba(77, 67, 56)");
+  drawTV(x, y, width, height) {
+    this.drawRect('left', x, y, width, height, "rgb(34, 37, 39)");
+    this.drawRect('left', x - 10, y + 20, width - 25, height - 30, "rgba(77, 67, 56)");
     let panoX = x;
 
     // let galaxy = document.getElementById('galaxy');
     let nebula = document.getElementById('nebula');
     // this.room.drawImage(galaxy, x-(width*0.9),y + (height*0.2), width*0.8, height);
     let nebX = x - (width * 0.6);
-    let nebY = y + (height * 0.7);
+    let nebY = y + (height * 0.5);
     this.room.save();
     this.room.translate(nebX + (width * 0.2), nebY + height * 0.35);
     this.room.rotate(this.angle * (Math.PI / 180));

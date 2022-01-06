@@ -7,7 +7,7 @@ Bunny Prep is an interactive, educational 2D game that will teach you how to car
 <h2>Functionality & MVPs</h2>
  In Bunny Prep, the user's will be able to: 
  <ul>
-    <li>Move the rabbit with the cursor to complete assigned tasks. </li>
+    <li>Move the rabbit with the cursor, arrow keys, or WASD keys to complete assigned tasks. </li>
     <li>Make choices in the game that will impact the rabbit's happiness and health. </li>
     <li>Allow the user to adopt another rabbit if happiness reaches a certain level. Simulation the consquences of not spaying/neutering.</li>
     <li>Learn how to care for a rabbit through educational knowledge that pops up throughout the game.</li>
@@ -15,7 +15,7 @@ Bunny Prep is an interactive, educational 2D game that will teach you how to car
 In addition, this project will include:
   <ul>
     <li>A rabbit happiness gauge that will change based on the user's actions.</li>
-    <li>A running total cost tally to emphasize the monetary commitments of owning a rabbit.</li>
+    <li>A budget to emphasize the monetary commitments of owning a rabbit.</li>
     <li>A sidebar with all facts learned throughout the game.</li>
   </ul>
 
@@ -26,7 +26,7 @@ In addition, this project will include:
 <ul>
   <li>Rabbit name will display the user’s chosen rabbit name</li>
   <li>Happiness gauge will display the rabbit’s level of happiness out of 10.</li>
-  <li>Total cost bar that will show the user the running total cost of owning a rabbit. </li>
+  <li>Total budget bar that will show the user the running total cost of owning a rabbit. </li>
   <li>The task bar will display to the user the current task that should be completed to progress in the game.</li>
   <li>The play area display will be where the user can interact with the rabbit.</li>
   <li>The right side will display a sidebar will all the facts the user has learned so far about rabbit care.</li>
