@@ -186,7 +186,6 @@ export default class Game {
   }
 
   multiplyBuns() {
-    console.log('multiply');
     setInterval(()=> {
       const COLORS = ['brown', 'grey', 'black']
       let color = COLORS[Math.floor(Math.random() * COLORS.length)];

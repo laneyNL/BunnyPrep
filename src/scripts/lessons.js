@@ -1,7 +1,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 0;
+    this.currentLessonNum = 8;
     this.taskBar = '';
     this.info = '';
     this.game = game;
@@ -158,6 +158,7 @@ export default class Lesson {
     this.taskBar = `Catch each baby bunny.`;
     this.info = `Pet exercise pens are great for keeping your bunnies contained or separated.`;
     this.target = `baby`;
+
     this.game.form.addEventListener('submit', () => {
       this.game.multiplyBuns();
       setTimeout(() => {
