@@ -92,7 +92,6 @@ export default class Bunny extends ConnectingObject {
           let scaleCanvas = 1000/newCanvasWidth;
 
           this.newPos = [Math.floor(newX * scaleCanvas), Math.floor(newY *scaleCanvas)];
-          console.log(this.newPos);
         }
       }
     })
