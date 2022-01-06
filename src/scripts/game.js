@@ -180,7 +180,7 @@ export default class Game {
       friendColor = colors[Math.floor(Math.random() * colors.length)];
     }
     this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny, 200, 250);
-    this.bunny.name += `<br><br>and<br><br>${this.friend.name}`;
+    this.bunny.name += ` and ${this.friend.name}`;
     let nameHeading = document.getElementById('name-heading');
     nameHeading.innerText = 'Names:'
   }
