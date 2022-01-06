@@ -37,7 +37,6 @@ export default class Lesson {
     this.target = 'litter box';
   }
   
-  
   lesson1() {
     this.game.question.innerHTML = `You have moved ${this.name} to the litter box! <br><br>Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.name} will lose hearts if the hay is gone. <br><br>Try clicking 'Add Hay' button.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;

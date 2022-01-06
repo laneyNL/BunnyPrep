@@ -57,7 +57,6 @@ export default class Bunny extends ConnectingObject {
       let width = 30;
       this.ctx.drawImage(heartImg, 15 + (i*width), 30, width, width*1);
     }
-    
   }
 
   emotion() {
@@ -67,7 +66,8 @@ export default class Bunny extends ConnectingObject {
   }
   
   changeHappiness(change=0) {
-    this.happyMeter = (this.happyMeter + change) % 11;
+    this.happyMeter += change;
+    if (this.happyMeter > 10) this.happyMeter = 10;
     if (this.happyMeter < 0) this.happyMeter = 0;
   }
 
@@ -77,30 +77,23 @@ export default class Bunny extends ConnectingObject {
   }
 
   moveBunnyListener() {
-    window.addEventListener('keydown', (event) => {
-      this.keys[event.keyCode] = true;
-    })
-    window.addEventListener('keyup', () => {
-      this.keys[event.keyCode] = false;
-    })
+    window.addEventListener('keydown', (event) => this.keys[event.keyCode] = true)
+    window.addEventListener('keyup', () => this.keys[event.keyCode] = false)
     
-    window.addEventListener('mousedown', (event) => {
-      this.isMouseDown = true;
-    })
+    window.addEventListener('mousedown', (event) => this.isMouseDown = true)
 
     window.addEventListener('mousemove', (event) => {
       if (this.isMouseDown) {
         let offset = this.canvas.getBoundingClientRect();
         if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && this.game.isFormHidden()) {
-          let newX = event.pageX - offset.left;
-          let newY = event.pageY - offset.top - (this.height / 2);
+          let newX = Math.floor(event.pageX - offset.left);
+          let newY = Math.floor(event.pageY - offset.top - (this.height / 2));
           this.newPos = [newX, newY];
         }
       }
     })
     window.addEventListener('mouseup', (event) => {
       this.isMouseDown = false;
-      this.left = this.right = this.down = this.up = false;
       this.newPos = [];
     })
   }
@@ -118,7 +111,6 @@ export default class Bunny extends ConnectingObject {
       if (this.keys[37] || this.left || this.keys[65]) { //37 = left arrow, 65 = a
         this.vel[0] = -Math.abs(this.vel[0]);
         this.x += this.vel[0];
-        console.log('x move')
       } 
       if (this.keys[38] || this.up || this.keys[87]) { //38 = up arrow, 87 = w
         this.vel[1] = -Math.abs(this.vel[1]);
@@ -153,11 +145,11 @@ export default class Bunny extends ConnectingObject {
   }
   
   wrapXY() {
-    if (this.x + this.width >= this.maxWidth) this.x = this.maxWidth - this.width;
+    if (this.x + this.width >= this.maxWidth) this.x = Math.floor(this.maxWidth - this.width);
     if (this.x < 0) this.x = 0;
     if (this.x > 500) {
-      let minY = Math.abs((this.x / 2) - 70);
-      let maxY = Math.abs((-this.x/2) + 765);
+      let minY = Math.floor(Math.abs((this.x / 2) - 70));
+      let maxY = Math.floor(Math.abs((-this.x/2) + 765));
       if (this.y < minY) {
         this.y = minY;
         if (this.isFriend) this.vel[0] = -this.vel[0];
@@ -169,8 +161,8 @@ export default class Bunny extends ConnectingObject {
         if (this.isFriend) this.y += Math.floor(Math.random() * 10);
       }
     } else {
-      let minY = Math.abs((-this.x/2) + 430);
-      let maxY = Math.abs((this.x / 2) + 355);
+      let minY = Math.floor(Math.abs((-this.x/2) + 430));
+      let maxY = Math.floor(Math.abs((this.x / 2) + 355));
       if (this.y + this.height < minY) {
         this.y = minY - this.height;
         if (this.isFriend) this.vel[0] = -this.vel[0];
@@ -260,6 +252,7 @@ export default class Bunny extends ConnectingObject {
 
   drawFriend() {
     this.happyMeter = this.mainBunny.happyMeter;
+    this.hayPieces = this.mainBunny.hayPieces;
     let orientation = this.vel[0] > 0 ? '-reverse' : '';
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}${orientation}`);
     this.ctx.drawImage(this.friendImg, this.x, this.y, this.width, this.height);

@@ -130,7 +130,6 @@ export default class Game {
   
   endGame() {
     this.form.innerHTML = `<input type="submit" value='Continue'>`;
-    
     if (this.lesson.currentLessonNum === 6) {
       this.question.innerHTML = `Congratulations! You have completed Bunny Prep. Thank you for playing and learning.`
     } else if (this.budget <= 0) {
@@ -140,6 +139,8 @@ export default class Game {
     } else if (this.bunny.happyMeter <= 0) {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
+
+    this.question.innerHTML += "<br>Scroll through the right sidebar for care tips."
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
 
