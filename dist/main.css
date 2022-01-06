@@ -2,11 +2,11 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/style.css ***!
   \****************************************************************************************************/
 .dark {
-  background-image: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37, 114, 158));
+  background: linear-gradient(rgb(68, 119, 148), rgb(150, 173, 207), rgb(37, 114, 158)) fixed;
 }
 
 .light {
-  background-image: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38));
+  background: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38) fixed);
 }
 
 #title {
@@ -122,6 +122,47 @@ footer {
 
 a {
   text-decoration: none;
+  color: white;
+}
+
+.resources {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+  color: white;
+}
+
+.resource-list {
+  display: none;
+  border: 5px solid black;
+  border-radius: 20px;
+  background-color: rgb(85, 90, 92);
+  padding: 5px;
+  z-index: 1;
+}
+
+.resources li {
+  border: 5px solid rgb(85, 90, 92);
+  background-color: rgb(80, 116, 172);
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px
+}
+.resource-list > li {
+  background-color: rgb(46, 73, 131);
+}
+
+.info-links li, .rescue-links li {
+  text-align: right;
+}
+
+.resources:hover .resource-list{
+  display: block;
+}
+
+.info-links li:hover, .rescue-links li:hover {
+  background-color: white;
+  color: rgb(80, 116, 172);
 }
 
 canvas {
