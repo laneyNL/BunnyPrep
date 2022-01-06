@@ -101,8 +101,8 @@ export default class Bunny extends ConnectingObject {
   }
 
   cursorDirection() {
-    if (this.newPos[0] > this.x) this.right = true;
-    if (this.newPos[0] < this.x) this.left = true;
+    if (this.newPos[0] > this.x - (this.width/2)) this.right = true;
+    if (this.newPos[0] < this.x + (this.width / 2)) this.left = true;
     if (this.newPos[1] > this.y) this.down = true;
     if (this.newPos[1] < this.y) this.up = true;
   }

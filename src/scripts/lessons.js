@@ -119,7 +119,7 @@ export default class Lesson {
   lesson5() {
     this.game.question.innerHTML = `Congrats on spaying ${this.name}! This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. Move ${this.name} around to pick them up.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
-    this.taskBar = `Move ${this.name} to pick up the droppings.`;
+    this.taskBar = `Move ${this.name} to pick up all the droppings.`;
     this.info = `It is normal and healthy for bunnies to each their own droppings.`;
     this.target = `dropping`;
   }
@@ -145,7 +145,7 @@ export default class Lesson {
     
   lesson9() {
     this.game.adoptFriend();
-    this.game.question.innerHTML = `It turns out ${this.name} and the new bunny did not get along. The shelter gave you the bunny that got along best with yours. Take some time to get to know ${this.game.friend.name}`;
+    this.game.question.innerHTML = `It turns out ${this.name} and your chosen bunny did not get along. The shelter gave you the bunny that got along best with yours. Take some time to get to know ${this.game.friend.name}`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = ``;
     this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
