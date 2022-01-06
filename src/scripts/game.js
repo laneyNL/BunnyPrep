@@ -140,7 +140,8 @@ export default class Game {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
 
-    this.question.innerHTML += "<br>Scroll through the right sidebar for care tips."
+    const task = document.getElementById('task-details');
+    task.innerHTML = "Read the right sidebar for Care Tips.";
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
 
