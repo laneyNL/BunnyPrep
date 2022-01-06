@@ -88,7 +88,11 @@ export default class Bunny extends ConnectingObject {
         if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && this.game.isFormHidden()) {
           let newX = Math.floor(event.pageX - offset.left);
           let newY = Math.floor(event.pageY - offset.top - (this.height / 2));
-          this.newPos = [newX, newY];
+          let newCanvasWidth = offset.right - offset.left;
+          let scaleCanvas = 1000/newCanvasWidth;
+
+          this.newPos = [Math.floor(newX * scaleCanvas), Math.floor(newY *scaleCanvas)];
+          console.log(this.newPos);
         }
       }
     })
