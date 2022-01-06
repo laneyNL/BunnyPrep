@@ -1,15 +1,11 @@
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/style.css ***!
   \****************************************************************************************************/
-.dark {
+body {
   /* background-image: linear-gradient(rgb(68, 119, 148), rgb(82, 115, 163), rgb(37, 114, 158)); */
   /* background: linear-gradient(#92B1B6, #809da1, #748d91) fixed; */
   background-color: #91A7B2;
 }
-
-/* .light {
-  background: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38) fixed);
-} */
 
 #title {
   font-size: 4vw;
@@ -27,7 +23,7 @@
   border: 5px solid black;
   margin: auto;
   border-radius: 20px;
-  height: 90%;
+  height: 30vw;
   color: white;
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
   box-sizing: border-box;
@@ -46,16 +42,17 @@
 
 #popup {
   background-color: #E1DED6;
-  position: fixed;
-  width: 60%;
+  position: absolute;
+  width: 50%;
   height: auto;
   top: 10%;
-  left: 20%;
+  left: 25%;
   padding: 2% 5%;
   font-size: 2vw;
   font-weight: bold;
   color: black;
   text-shadow: 0 0;
+  max-height: 80%;
 }
 
 button {
@@ -74,6 +71,7 @@ button {
 }
 
 .room {
+  position: relative;
   margin: auto;
   color:rgb(34, 37, 39)
 }
@@ -91,6 +89,7 @@ button {
   overflow-wrap: anywhere;
   overflow: auto;
   text-align: left;
+  max-height: 30vw;
 }
 
 .right-sidebar::-webkit-scrollbar {
@@ -234,11 +233,6 @@ input[type=submit] {
 input[type=text] {
   border-radius: 10px;
   padding: 5px;
-}
-
-.right-sidebar:hover .right-sidebar::before {
-  content: 'Scroll through to view tips.';
-
 }
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
