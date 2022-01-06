@@ -32,7 +32,7 @@ rgb(105, 157, 173)
 .left-sidebar, .right-sidebar,#popup, .foot{
   border: 5px solid black;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 20px;
   height: 500px;
   background-color: rgb(85, 90, 92);
   color: white;
@@ -45,7 +45,7 @@ rgb(105, 157, 173)
 }
 
 button {
-  background-color: rgb(44, 41, 38);
+  background-color:rgb(80, 116, 172);
   border-radius: 5px;
   padding: 10px;
   color: white;
@@ -90,6 +90,7 @@ button {
   display: inline-block;
   overflow-wrap: anywhere;
   overflow: auto;
+  text-align: left;
 }
 
 .left-sidebar{
@@ -103,6 +104,7 @@ button {
   font-weight: bold;
   text-decoration: underline;
   padding: 10px;
+  text-align: center;
 }
 
 #info-learned li {
@@ -155,6 +157,7 @@ canvas {
 
 #info-learned {
   list-style-position: inside;
+  /* list-style-image: url('../src/images/brown/brown_happy.PNG'); */
 }
 
 @media screen and (max-width: 1500px) {

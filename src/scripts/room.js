@@ -1,5 +1,4 @@
 import ConnectingObject from "./connecting_object";
-import Lesson from './lessons.js';
 
 export default class Room {
   constructor(canvas, game) {
@@ -16,17 +15,9 @@ export default class Room {
     this.foodBowl = new ConnectingObject('food-bowl', 230, 440, 30, 30, 5);
     this.furnishings = [this.door, this.drawer, this.litterBox, this.couch1, , this.couch2,this.water, this.foodBowl];
     this.loadDroppings();
-  }
-
-  // resizeRoomCanvas() {
-  //   this.room = this.game.canvas.getContext("2d");
-  //   this.width = this.game.canvas.width;
-  //   this.height = this.game.canvas.height;
-  // }
-  
-  drawConnection(x, y, width, height) {
-    // this.room.fillStyle = 'blue';
-    // this.room.fillRect(x, y, width, height);
+    this.angle = 25;
+    // setTimeout((event) => { 
+    //   this.drawRoom();}, 500);
   }
 
   drawRoom() {
@@ -50,6 +41,7 @@ export default class Room {
     this.drawDrawer(this.drawer.x, this.drawer.y, this.drawer.width, this.drawer.height, this.drawer.length);
     this.drawTV(650, 110, 130, 100, 'gray', 4);
     this.drawCouch(this.couch2.x-30, this.couch2.y+30, this.couch2.width, this.couch2.height, this.couch2.length);
+    // this.room.fillRect(500,610, 10, 10)
   }
 
   clearRoom() {
@@ -72,7 +64,6 @@ export default class Room {
   }
 
   drawDoor(x, y, width, height) {
-    this.drawConnection(x, y, width, height);
     x = x + width;
     this.drawRect('left', x, y, width, height,'white');
     this.drawRect('left', x-(width*0.1), y+(height*0.1), width*0.8, height*0.9, "rgba(147, 96, 38, 0.8)");
@@ -86,27 +77,60 @@ export default class Room {
       this.drawRect('right',x+(width*0.4),y+(height*0.6), 10, 5, "rgba(77, 67, 56)");
     }
     this.repeatShape(2, 0, (height * 0.45), shape);
-    this.drawConnection(x, y, width, height);
   }
 
   drawTV(x, y, width, height, color, length) {
     this.drawRightCuboid(x, y, width, height, color, length);
     this.drawRect('right', x + (width * 0.05), y + (height * 0.1), width*0.9, height* 0.8, 'skyblue');
+
+    // let panoX = x;
+    // let panoY = y;
     // const pano = document.getElementById('panorama');
-    // this.room.drawImage(pano, x , y + (height * 0.4), width, height * 0.8);
+    // let panoW = pano.width;
+    // let panoH = pano.height;
+    // this.room.save();
+    // this.room.translate(panoX + (pano.width / 2), panoY + (pano.height/2));
+    // this.room.rotate(22.5 * (Math.PI / 180));
+    // this.room.translate(-(panoX + (pano.width / 2)), -(panoY + (pano.height / 2)));
+    
+    // this.room.translate(-this.panoX, -this.panoY);
+    // // this.room.drawImage(pano, panoX, panoY, width*0.9, h);
+    // this.room.scale(0.5,0.2);
+    // this.room.drawImage(pano, 0, 0, width * 0.9, panoH, panoX, panoY, width * 0.9, panoH);
+    // this.room.restore();
+    // this.panoX += 0.5;
+    // if (this.panoX > 400) this.panoX = 0;
   }
 
+  drawArt(x, y, width, height) {
+    this.drawRect('left', x, y, width, height, "rgba(77, 67, 56)");
+    this.drawRect('left', x - 10, y + 10, width - 25, height - 10, "rgba(77, 67, 56)");
+    let panoX = x;
+
+    // let galaxy = document.getElementById('galaxy');
+    let nebula = document.getElementById('nebula');
+    // this.room.drawImage(galaxy, x-(width*0.9),y + (height*0.2), width*0.8, height);
+    let nebX = x - (width * 0.6);
+    let nebY = y + (height * 0.7);
+    this.room.save();
+    this.room.translate(nebX + (width * 0.2), nebY + height * 0.35);
+    this.room.rotate(this.angle * (Math.PI / 180));
+    this.room.translate(-(nebX + (width * 0.2)), -(nebY + height * 0.35));
+    this.room.drawImage(nebula, nebX, nebY, width*0.4, height*0.7);
+    
+    this.room.restore();
+    this.angle = (this.angle + 0.5) % 360;
+  }
+  
   drawMat(x, y, width, height, color) {
     this.drawFloorRect(x, y, width, height, color);
   }
   
   drawLitterBox(x, y, width, height, length) {
-    this.drawConnection(x, y, width, height);
     this.drawFloorCuboid(x, y, width, height,'grey', length, 'grey');
   }
 
   drawFoodBowl(x, y, width, height, length) {
-    this.drawConnection(x, y, width, height);
     this.drawFloorCuboid(x, y, width, height, 'grey', length, 'grey');
   }
 
@@ -123,7 +147,6 @@ export default class Room {
   }
 
   drawWater(x, y, width, height) {
-    this.drawConnection(x, y, width, height);
     const waterBowl = document.getElementById('water-bowl');
     this.room.drawImage(waterBowl, x, y, width, height);
   }
@@ -139,12 +162,8 @@ export default class Room {
     }
     
     this.repeatShape(2, ...this.changeInXY(width), shape);
-    this.drawConnection(x+30, y-30, width*2, height);
   }
 
-  drawArt(x, y, width, height) {
-    this.drawRect('left', x, y, width, height, "rgba(77, 67, 56)")
-  }
 
   loadDroppings() {
     this.droppings = [];

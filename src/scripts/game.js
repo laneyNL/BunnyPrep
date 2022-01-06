@@ -1,34 +1,19 @@
 import Bunny from './bunny.js';
 import Lesson from './lessons.js';
 import Room from './room.js';
-import ConnectingObject from './connecting_object.js';
 
 export default class Game {
   constructor(canvas) {
-    this.budget = 300;
+    this.budget = 250;
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
     this.info = [];
     this.room = new Room(canvas, this);
     this.room.drawRoom();
-    // this.resizeCanvas();
     this.welcomeMessage();
     
   }
-
-  // resizeCanvas() {
-  //   window.addEventListener('resize', () => {
-  //     let canvasBounds = this.canvas.getBoundingClientRect();
-  //     let width = canvasBounds.right - canvasBounds.left;
-  //     let height = canvasBounds.bottom - canvasBounds.top;
-  //     console.log(width, height)
-  //     this.canvas.width = width;
-  //     this.canvas.height = height;
-  //     this.bunny.resizeBunnyCanvas();
-  //     this.room.resizeRoomCanvas();
-  //   })
-  // }
 
   welcomeMessage() {
     const welcome = "Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. You will loss the game if your bunnie's happiness or the budget reaches 0. <br>To begin, please choose which bunny you would like to adopt:"
@@ -147,12 +132,6 @@ export default class Game {
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
-    // this.room.room.fillStyle = 'white';
-    // this.room.room.strokeStyle = 'black';
-    // this.room.room.font = '70px sans-serif';
-    // let midWidth = (this.canvas.width / 2) - (this.room.room.measureText('Game Over').width/2);
-    // this.room.room.fillText('Game Over', midWidth, this.canvas.height / 2);
-    // this.room.room.strokeText('Game Over', midWidth, this.canvas.height / 2);
   }
   
   runLesson(){
@@ -162,7 +141,7 @@ export default class Game {
   
     
     task.innerHTML = this.lesson.taskBar;
-    if (this.info) this.info.push(`🥕 ${this.lesson.info}`);
+    if (this.info) this.info.push(`<i class="far fa-star"></i> ${this.lesson.info}`);
     this.togglePopup();
     
   }
@@ -185,6 +164,8 @@ export default class Game {
     }
     this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny, 200, 250);
     this.bunny.name += ` and ${this.friend.name}`;
+    let nameHeading = document.getElementById('name-heading');
+    nameHeading.innerText = 'Names:'
   }
 
   multiplyBuns() {

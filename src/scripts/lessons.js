@@ -1,5 +1,3 @@
-// import Bunny from './scripts/bunny';
-
 export default class Lesson {
 
   constructor(game, bunny) {
@@ -34,7 +32,8 @@ export default class Lesson {
     this.game.question.innerHTML = `You can move ${this.name} around with your cursor or the arrow keys. Trying moving ${this.name} to the litterbox. Earn hearts and money by completing tasks.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to the litterbox.`;
-    this.info = `Bunnies can be trained to use the litterbox just like cats.`;
+    this.game.info.push(`<i class="far fa-star"></i> Bunnies can be trained to use the litterbox just like cats.`)
+    this.info = `Putting hay in the litter box can help litter train the bunny.`;
     this.target = 'litter box';
   }
   
@@ -139,7 +138,7 @@ export default class Lesson {
       <input type='radio' id='black-bunny' name='bunny-color'>
       <label for='black-bunny'><img src="./src/images/black/black_happy.PNG" alt="black bunny pictures" class='bunny-image'></label><br>
       <input type="submit" value='Play Game'>`;
-      this.taskBar = `After deciding, bring ${this.name} to the couch to wait.`;
+      this.taskBar = `After deciding, bring ${this.name} to the seat to wait.`;
       this.info = `Bunnies needed to be slowly introduced as they are very territorial.`;
       this.target = `couch`;
   }

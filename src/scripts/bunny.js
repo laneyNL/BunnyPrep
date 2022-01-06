@@ -19,13 +19,6 @@ export default class Bunny extends ConnectingObject {
     this.hayPieces = 20;
     this.mainBunny = mainBunny;
   }
-  
-  // resizeBunnyCanvas() {
-  //   this.canvas = this.game.canvas;
-  //   this.maxWidth = this.canvas.width;
-  //   this.maxHeight = this.canvas.height;
-  //   this.ctx = this.canvas.getContext("2d");
-  // }
 
   loadBunny() {
     this.loadHay();
@@ -151,22 +144,44 @@ export default class Bunny extends ConnectingObject {
   }
   
   wrapXY() {
-    if (this.x + this.width >= this.maxWidth) {
-      this.x = this.maxWidth - this.width;
-      this.vel[0] = -this.vel[0];
-      if(this.isFriend) this.y += Math.floor(Math.random()*10);
+    if (this.x + this.width >= this.maxWidth) this.x = this.maxWidth - this.width;
+    if (this.x < 0) this.x = 0;
+    if (this.x > 500) {
+      let minY = Math.abs((this.x / 2) - 70);
+      let maxY = Math.abs((-this.x/2) + 765);
+      if (this.y < minY) {
+        this.y = minY;
+        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.y += Math.floor(Math.random() * 10);
+      }
+      if (this.y > maxY) {
+        this.y = maxY;
+        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.y += Math.floor(Math.random() * 10);
+      }
+    } else {
+      let minY = Math.abs((-this.x/2) + 430);
+      let maxY = Math.abs((this.x / 2) + 355);
+      if (this.y + this.height < minY) {
+        this.y = minY - this.height;
+        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
+      }
+      if (this.y +(this.height/2)> maxY) {
+        this.y = maxY - (this.height / 2);
+        this.vel[0] = -this.vel[0];
+        if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
+      }
     }
-    if (this.y + this.height >= this.maxHeight) {
-      this.y = Math.floor(this.maxHeight - this.height);
-    }
-    if (this.x < 0) {
-      this.x = 0;
-      this.vel[0] = -this.vel[0];
-      if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
-    }
-    if (this.y < 0) {
-      this.y = 0;
-    }
+
+
+    // if (this.y ) {
+    //   this.vel[0] = -this.vel[0];
+    //   if(this.isFriend) this.y += Math.floor(Math.random()*10);
+    // } else {
+    //   this.vel[0] = -this.vel[0];
+    //   if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
+    // }
   }
   
   loadHay() {
