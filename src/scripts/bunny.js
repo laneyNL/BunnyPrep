@@ -182,6 +182,7 @@ export default class Bunny extends ConnectingObject {
 
     const addHay = document.getElementById('add-hay');
     addHay.addEventListener('click', () => {
+      if (this.game.form)
       this.hayPieces = 20
       this.game.budget -= 5;
     });

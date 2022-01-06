@@ -29,6 +29,9 @@ export default class Game {
       event.preventDefault();
       if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
     };
+    const addHay = document.getElementById('add-hay');
+    console.log(popup.classList.value);
+    addHay.disabled = popup.classList.value === 'flex hidden' ? false : true;
   }
   
   createBunny(event) {
@@ -92,7 +95,11 @@ export default class Game {
   checkFurnitureCollision() {
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
-        this.lesson.lessonComplete();
+        if (this.lesson.target === 'food-bowl' && this.checkboxInput().length) {
+          this.lesson.lessonComplete();
+        } else if (this.lesson.target !== 'food-bowl') {
+          this.lesson.lessonComplete();
+        }
       }
     })
   }
