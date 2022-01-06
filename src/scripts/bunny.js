@@ -85,21 +85,28 @@ export default class Bunny extends ConnectingObject {
     })
     
     window.addEventListener('mousedown', (event) => {
-      const pop = document.getElementById('popup');
-      let offset = this.canvas.getBoundingClientRect();
-      if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && (pop.classList.value !== 'flex')) {
-        let newX = event.pageX - offset.left;
-        let newY = event.pageY - offset.top - (this.height / 2);
-        this.newPos = [newX, newY];
+      this.isMouseDown = true;
+    })
+
+    window.addEventListener('mousemove', (event) => {
+      if (this.isMouseDown) {
+        let offset = this.canvas.getBoundingClientRect();
+        if (event.pageX >= offset.left && event.pageX <= offset.right && event.pageY >= offset.top && event.pageY <= offset.bottom && this.game.isFormHidden()) {
+          let newX = event.pageX - offset.left;
+          let newY = event.pageY - offset.top - (this.height / 2);
+          this.newPos = [newX, newY];
+        }
       }
     })
     window.addEventListener('mouseup', (event) => {
+      this.isMouseDown = false;
       this.left = this.right = this.down = this.up = false;
       this.newPos = [];
     })
   }
 
   cursorDirection() {
+    console.log(this.right, this.left, this.down, this.up);
     if (this.newPos[0] > this.x + (this.width/2)) this.right = true;
     if (this.newPos[0] < this.x + (this.width / 2)) this.left = true;
     if (this.newPos[1] > this.y) this.down = true;
@@ -107,11 +114,12 @@ export default class Bunny extends ConnectingObject {
   }
 
   updatePosition() {
-    if (this.newPos.length) this.cursorDirection();
+    if (this.isMouseDown) this.cursorDirection();
     if (this.game.isFormHidden()) {
       if (this.keys[37] || this.left || this.keys[65]) { //37 = left arrow, 65 = a
         this.vel[0] = -Math.abs(this.vel[0]);
         this.x += this.vel[0];
+        console.log('x move')
       } 
       if (this.keys[38] || this.up || this.keys[87]) { //38 = up arrow, 87 = w
         this.vel[1] = -Math.abs(this.vel[1]);
@@ -131,6 +139,7 @@ export default class Bunny extends ConnectingObject {
         this.isHopping = false;
       }
     }
+    this.left = this.right = this.down = this.up = false;
     this.wrapXY();
   }
 

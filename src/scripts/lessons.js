@@ -93,7 +93,8 @@ export default class Lesson {
     if (userBadVegs.length <= 0) {
       this.game.question.innerHTML = `Nom nom nom. ${this.name} is super happy.`;
     } else {
-      this.game.question.innerHTML = `Oh no! ${this.name} was fed some dangerous vegetables.<br>`;
+      this.game.budget -= 75;
+      this.game.question.innerHTML = `Oh no! ${this.name} was fed some dangerous vegetables. ${this.name} was brought to the vet and it cost $75.<br>`;
       if (userBadVegs.includes('leeks')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Vegetables in the onion family including leeks are poisonous to bunnies.`;
       if (userBadVegs.includes('tomato-leaf')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Tomato leaves are toxic to bunnies.`;
       if (userBadVegs.includes('iceberg')) this.game.question.innerHTML += `<br><i class="fas fa-seedling"></i> Iceberg lettuce can have toxins that are dangerous to bunnies. Feeding darker leaf lettuces are better.`;

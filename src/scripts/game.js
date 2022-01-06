@@ -4,7 +4,7 @@ import Room from './room.js';
 
 export default class Game {
   constructor(canvas) {
-    this.budget = 250;
+    this.budget = 300;
     this.question = document.getElementById('question');
     this.form = document.querySelector('.input-form');
     this.canvas = canvas;
