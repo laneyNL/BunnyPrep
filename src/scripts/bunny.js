@@ -141,7 +141,7 @@ export default class Bunny extends ConnectingObject {
   resetisHopping() {
     setInterval(() => {
       this.isHopping = true;;
-    }, 500);
+    }, 700);
   }
   
   wrapXY() {

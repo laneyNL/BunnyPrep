@@ -9,7 +9,7 @@
 } */
 
 #title {
-  font-size: 500%;
+  font-size: 4vw;
   font-weight: bold;
   text-align: center;
   padding: 10px;
@@ -31,12 +31,12 @@
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
-  font-size: 20px;
+  font-size: 1.5vw;
   background-color: #526779;
 }
 
 .fab, .fas{
-  font-size: 50px;
+  font-size: 3vw;
   margin: 10px;
   color: white;
 }
@@ -49,7 +49,6 @@
   top: 10%;
   left: 20%;
   padding: 5%;
-  font-size: 20px;
   font-size: 2vw;
   font-weight: bold;
   color: black;
@@ -61,7 +60,7 @@ button {
   border-radius: 5px;
   padding: 10px;
   color: black;
-  font-size: 20px;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
@@ -98,12 +97,11 @@ button {
 .left-sidebar{
   width: 80%;
   justify-content: space-around;
-  font-size: 25px;
   padding: 0 10px;
 }
 
 .heading {
-  font-size: 30px;
+  font-size: 2vw;
   font-weight: bold;
   text-decoration: underline;
   padding: 10px;
@@ -115,6 +113,8 @@ button {
 }
 
 canvas {
+  width: 100%;
+  height: auto;
   margin: auto;
 }
 
@@ -127,7 +127,6 @@ canvas {
   list-style-position: inside;
 }
 
-
 #credit-button {
  block-size: fit-content;
 }
@@ -137,7 +136,6 @@ canvas {
   right: 7%;
   top: 3%;
 }
-
 
 .foot {
   height: auto;
@@ -179,7 +177,7 @@ a {
 .resources li {
   border: 5px solid rgb(85, 90, 92);
   background-color: #E1DED6;
-  font-size: 20px;
+  font-size: 2vs;
   border-radius: 10px;
   padding: 10px;
   color: black;
@@ -224,10 +222,15 @@ input[type=submit] {
   border-radius: 10px;
   background-color: #526779;
   color: white;
-  font-size: 15px;
+  font-size: 1.5vw;
 }
 
 input[type=text] {
   border-radius: 10px;
   padding: 5px;
+}
+
+.right-sidebar:hover .right-sidebar::before {
+  content: 'Scroll through to view tips.';
+
 }

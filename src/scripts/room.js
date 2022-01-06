@@ -80,19 +80,24 @@ export default class Room {
   drawTV(x, y, width, height) {
     this.drawRect('left', x, y, width, height, "rgb(34, 37, 39)");
     this.drawRect('left', x - 10, y + 20, width - 25, height - 30, "rgba(77, 67, 56)");
-    let panoX = x;
 
-    // let galaxy = document.getElementById('galaxy');
+    let stars = document.getElementById('stars');
     let nebula = document.getElementById('nebula');
-    // this.room.drawImage(galaxy, x-(width*0.9),y + (height*0.2), width*0.8, height);
     let nebX = x - (width * 0.6);
     let nebY = y + (height * 0.5);
+
+    this.room.save();
+    this.room.translate(nebX + (width * 0.2), nebY + height * 0.35);
+    this.room.rotate(-22 * (Math.PI / 180));
+    this.room.translate(-(nebX + (width * 0.2)), -(nebY + height * 0.35));
+    this.room.drawImage(stars, x - width + 25, y + 60, width * 0.9, height * 0.8);
+    this.room.restore();
+
     this.room.save();
     this.room.translate(nebX + (width * 0.2), nebY + height * 0.35);
     this.room.rotate(this.angle * (Math.PI / 180));
     this.room.translate(-(nebX + (width * 0.2)), -(nebY + height * 0.35));
     this.room.drawImage(nebula, nebX, nebY, width*0.4, height*0.7);
-    
     this.room.restore();
     this.angle = (this.angle + 0.5) % 360;
   }
