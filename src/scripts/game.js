@@ -26,7 +26,7 @@ export default class Game {
     popup.classList.toggle('hidden');
     if (event) {
       event.preventDefault();
-      if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
+      if (event.target.classList.value === 'AdOrFix') this.adoptOrFix();
     };
     const addHay = document.getElementById('add-hay');
     addHay.disabled = this.isFormHidden() ? false : true;
@@ -105,7 +105,6 @@ export default class Game {
     })
   }
 
-
   checkDroppingCollision() {
     if(this.room.droppings.length === 0) this.lesson.currentLessonNum += 1;
     this.room.droppings.forEach(drop => {
@@ -163,11 +162,11 @@ export default class Game {
     
   }
   
-  adoptOrSpay() {
+  adoptOrFix() {
     this.budget -= 200;
     let decision = this.radioInput();
     if (decision === 'adopt') this.lesson.currentLessonNum = 7;
-    this.form.classList.replace('adOrSp', 'input-form');
+    this.form.classList.replace('AdOrFix', 'input-form');
     this.lesson.lessonComplete();
   }
 

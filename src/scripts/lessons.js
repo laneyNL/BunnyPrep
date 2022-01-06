@@ -107,18 +107,18 @@ export default class Lesson {
   }
   
   lesson4() {
-    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not spayed. You do not have enough to do both. <br><br>Would you like to adopt another bunny or spay ${this.name}?`;
-    this.game.form.innerHTML = `<input type="radio" name="AdOrSp" id="adopt" required><label id="adopt">Adopt</label>
-    <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label><br>
-    <input type="submit" name="AdOrSp" value="Decide">`;
-    this.game.form.classList.replace('input-form', 'adOrSp');
+    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not fixed. You do not have enough to do both. <br><br>Would you like to adopt another bunny or fix ${this.name}?`;
+    this.game.form.innerHTML = `<input type="radio" name="AdOrFix" id="adopt" required><label id="adopt">Adopt</label>
+    <input type="radio" name="AdOrFix" id="fix"><label id="fix">Fix</label><br>
+    <input type="submit" name="AdOrFix" value="Decide">`;
+    this.game.form.classList.replace('input-form', 'AdOrFix');
     this.taskBar = ``;
-    this.info = `Spaying/Neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
+    this.info = `Fixing/Neutering your bunny will help reduce risk of cancer and can help with behavioral problems.`;
     this.target = ``;
   }
   
   lesson5() {
-    this.game.question.innerHTML = `Congrats on spaying ${this.name}! <br><br>This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. <br><br>Move ${this.name} around to pick them up.`;
+    this.game.question.innerHTML = `Congrats on fixing ${this.name}! <br><br>This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. <br><br>Move ${this.name} around to pick them up.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to pick up all the droppings.`;
     this.info = `It is normal and healthy for bunnies to each their own droppings.`;
