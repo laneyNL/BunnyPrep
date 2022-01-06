@@ -32,7 +32,7 @@ export default class Lesson {
     this.game.question.innerHTML = `You can move ${this.name} around with your cursor or the arrow keys. <br>Trying moving ${this.name} to the litterbox. <br>Earn hearts and money by completing tasks.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to the litterbox.`;
-    this.game.info.push(`<i class="far fa-star"></i> Bunnies can be trained to use the litterbox just like cats.`)
+    this.game.info.unshift(`<i class="far fa-star"></i> Bunnies can be trained to use the litterbox just like cats.`);
     this.info = `Putting hay in the litter box can help litter train your bunny.`;
     this.target = 'litter box';
   }

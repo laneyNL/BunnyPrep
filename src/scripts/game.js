@@ -159,7 +159,7 @@ export default class Game {
   
     
     task.innerHTML = this.lesson.taskBar;
-    if (this.info) this.info.push(`<i class="far fa-star"></i> ${this.lesson.info}`);
+    if (this.info) this.info.unshift(`<i class="far fa-star"></i> ${this.lesson.info}`);
     this.togglePopup();
     
   }
