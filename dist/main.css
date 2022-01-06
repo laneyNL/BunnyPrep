@@ -181,13 +181,15 @@ a {
 
 .resources li {
   border: 5px solid rgb(85, 90, 92);
-  background-color: rgb(80, 116, 172);
+  background-color: #E1DED6;
   font-size: 20px;
   border-radius: 10px;
-  padding: 10px
+  padding: 10px;
+  color: black;
 }
 .resource-list > li {
-  background-color: rgb(46, 73, 131);
+  background-color: #526779;
+  color: white;
 }
 
 .info-links li, .rescue-links li {
