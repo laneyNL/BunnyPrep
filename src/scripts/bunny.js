@@ -174,14 +174,6 @@ export default class Bunny extends ConnectingObject {
       }
     }
 
-
-    // if (this.y ) {
-    //   this.vel[0] = -this.vel[0];
-    //   if(this.isFriend) this.y += Math.floor(Math.random()*10);
-    // } else {
-    //   this.vel[0] = -this.vel[0];
-    //   if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
-    // }
   }
   
   loadHay() {

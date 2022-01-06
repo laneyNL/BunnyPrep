@@ -119,7 +119,7 @@ export default class Lesson {
   lesson5() {
     this.game.question.innerHTML = `Congrats on spaying ${this.name}! This was the best choice to take to keep ${this.name} healthy. <br> It looks like ${this.name} left some droppings on the ground. Move ${this.name} around to pick them up.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
-    this.taskBar = `${this.name} will need to rest in order to recover.`;
+    this.taskBar = `Move ${this.name} to pick up the droppings.`;
     this.info = `It is normal and healthy for bunnies to each their own droppings.`;
     this.target = `dropping`;
   }
