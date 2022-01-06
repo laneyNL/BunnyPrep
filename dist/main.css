@@ -2,11 +2,13 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/style.css ***!
   \****************************************************************************************************/
 .dark {
-  background: linear-gradient(rgb(80, 116, 172), rgb(150, 173, 207), rgb(80, 116, 172)) fixed;
+  /* background-image: linear-gradient(rgb(68, 119, 148), rgb(82, 115, 163), rgb(37, 114, 158)); */
+  /* background: linear-gradient(#92B1B6, #809da1, #748d91) fixed; */
+  background-color: #91A7B2;
 }
 
 /* .light {
-  background: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38)) fixed;
+  background: linear-gradient(rgb(44, 41, 38), rgb(150, 173, 207), rgb(44, 41, 38) fixed);
 } */
 
 #title {
@@ -26,8 +28,6 @@
   margin: auto;
   border-radius: 20px;
   height: 500px;
-  /* background-color: white; */
-  background-color: linear-gradient(rgb(15, 24, 41), rgb(150, 173, 207), rgb(44, 41, 38) fixed);
   color: white;
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
   box-sizing: border-box;
@@ -35,14 +35,31 @@
   font-family: 'Roboto', sans-serif;
   font-family: 'Signika Negative', sans-serif;
   font-size: 20px;
+  background-color: #526779;
+}
+
+#popup {
+  background-color: #E1DED6;
+  position: fixed;
+  width: 60%;
+  height: auto;
+  top: 10%;
+  left: 20%;
+  padding: 5%;
+  font-size: 20px;
+  font-size: 2vw;
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 0;
 }
 
 button {
-  background-color:rgb(80, 116, 172);
+  background-color:#E1DED6;
   border-radius: 5px;
   padding: 10px;
-  color: white;
+  color: black;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .main {
@@ -98,21 +115,6 @@ canvas {
   margin: auto;
 }
 
-#popup {
-  position: fixed;
-  width: 60%;
-  height: auto;
-  top: 10%;
-  left: 20%;
-  background-color: rgb(80, 116, 172);
-  padding: 5%;
-  font-size: 20px;
-  font-size: 2vw;
-  font-weight: bold;
-  color: black;
-  text-shadow: 0 0;
-
-}
 .bunny-image {
   width: 20%;
   height: auto;
@@ -218,9 +220,10 @@ a {
 }
 
 input[type=submit] {
+  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgb(85, 90, 92);
+  background-color: #526779;
   color: white;
   font-size: 15px;
 }

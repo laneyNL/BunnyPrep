@@ -21,7 +21,7 @@ export default class Room {
   drawRoom() {
     this.room.lineWidth = 4;
     this.room.strokeStyle = "black";
-    this.drawBackground(this.width/2, 15, this.width/2, this.height/4, 'rgba(242, 236, 207, 0.8)');
+    this.drawBackground(this.width / 2, 15, this.width / 2, this.height / 4, '#E1DED6');
     this.drawWindow(510, 40, 135, 100, 'white', 5);
     this.drawWindow(810, 190, 135, 100, 'white', 5);
     
