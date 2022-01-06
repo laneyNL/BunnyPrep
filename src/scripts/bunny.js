@@ -108,26 +108,28 @@ export default class Bunny extends ConnectingObject {
 
   updatePosition() {
     if (this.newPos.length) this.cursorDirection();
-    if (this.keys[37] || this.left || this.keys[65]) { //37 = left arrow, 65 = a
-      this.vel[0] = -Math.abs(this.vel[0]);
-      this.x += this.vel[0];
-    } 
-    if (this.keys[38] || this.up || this.keys[87]) { //38 = up arrow, 87 = w
-      this.vel[1] = -Math.abs(this.vel[1]);
-      this.y += this.vel[1];
-    }
-    if (this.keys[39] || this.right || this.keys[68]) { //39 = right arrow, d = 68
-      this.vel[0] = Math.abs(this.vel[0]);
-      this.x += this.vel[0];
-    }
-    if (this.keys[40] || this.down || this.keys[83]) { //40 = down arrow, s = 83
-      this.vel[1] = Math.abs(this.vel[1]);
-      this.y += this.vel[1];
-    } 
-    if (this.isMoving() && this.isHopping) {
-      this.y += this.hopVel;
-      this.hopVel = -this.hopVel;
-      this.isHopping = false;
+    if (this.game.isFormHidden()) {
+      if (this.keys[37] || this.left || this.keys[65]) { //37 = left arrow, 65 = a
+        this.vel[0] = -Math.abs(this.vel[0]);
+        this.x += this.vel[0];
+      } 
+      if (this.keys[38] || this.up || this.keys[87]) { //38 = up arrow, 87 = w
+        this.vel[1] = -Math.abs(this.vel[1]);
+        this.y += this.vel[1];
+      }
+      if (this.keys[39] || this.right || this.keys[68]) { //39 = right arrow, d = 68
+        this.vel[0] = Math.abs(this.vel[0]);
+        this.x += this.vel[0];
+      }
+      if (this.keys[40] || this.down || this.keys[83]) { //40 = down arrow, s = 83
+        this.vel[1] = Math.abs(this.vel[1]);
+        this.y += this.vel[1];
+      } 
+      if (this.isMoving() && this.isHopping) {
+        this.y += this.hopVel;
+        this.hopVel = -this.hopVel;
+        this.isHopping = false;
+      }
     }
     this.wrapXY();
   }
