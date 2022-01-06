@@ -49,7 +49,6 @@ export default class Bunny extends ConnectingObject {
     this.ctx.fillStyle = 'black';
     this.ctx.font = '30px sans-serif';
     let text = `Budget: ${this.game.budget}`
-    // let midWidth = (this.canvas.width / 2) - (this.ctx.measureText('Game Over').width/2);
     this.ctx.fillText(text, this.canvas.width*0.7, 50);
 
     for (let i = 0; i < 10; i++) {

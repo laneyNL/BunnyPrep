@@ -106,7 +106,7 @@ export default class Lesson {
   }
   
   lesson4() {
-    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not spayed. Each option is $200. Would you like to adopt another bunny or spay ${this.name}?`;
+    this.game.question.innerHTML = `The shelter has contacted you to ask if you would like to adopt another bunny. However ${this.name} is not spayed. You do not have enough to do both. Would you like to adopt another bunny or spay ${this.name}?`;
     this.game.form.innerHTML = `<input type="radio" name="AdOrSp" id="adopt" required><label id="adopt">Adopt</label>
     <input type="radio" name="AdOrSp" id="spay"><label id="spay">Spay</label>
     <input type="submit" name="AdOrSp" value="Decide">`;
@@ -145,15 +145,11 @@ export default class Lesson {
     
   lesson9() {
     this.game.adoptFriend();
-    this.game.question.innerHTML = `It turns out ${this.name} and your chosen bunny did not get along. The shelter gave you the bunny that got along best with yours. Take some time to get to know ${this.game.friend.name}`;
+    this.game.question.innerHTML = `It turns out ${this.name} and your chosen bunny did not get along. The shelter gave you the bunny that got along best with yours. Move ${this.name} to meet ${this.game.friend.name}`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = ``;
     this.info = `When getting another bunny, the 1st bunny will choose who they want to bond with.`;
-    this.target = ``;
-    setTimeout(() => {
-      this.currentLessonNum += 1;
-      this.game.runLesson();
-    }, 5000);
+    this.target = `friend`;
   }
 
   lesson10() {

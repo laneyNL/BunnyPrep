@@ -62,6 +62,8 @@ export default class Game {
         this.checkDroppingCollision();
     } else if (this.lesson.target === 'baby') {
       this.checkBabyCollision();
+    } else if (this.lesson.target === 'friend') {
+      if (this.bunny.isCollidedWith(this.friend)) this.lesson.lessonComplete();
     } else if (this.lesson.target) {
       this.checkFurnitureCollision();
     }
@@ -94,6 +96,7 @@ export default class Game {
       }
     })
   }
+
 
   checkDroppingCollision() {
     if(this.room.droppings.length === 0) this.lesson.currentLessonNum += 1;
