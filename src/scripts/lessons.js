@@ -1,7 +1,7 @@
 export default class Lesson {
 
   constructor(game, bunny) {
-    this.currentLessonNum = 8;
+    this.currentLessonNum = 0;
     this.taskBar = '';
     this.info = '';
     this.game = game;
