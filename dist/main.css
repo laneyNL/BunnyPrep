@@ -27,7 +27,7 @@
   border: 5px solid black;
   margin: auto;
   border-radius: 20px;
-  height: 500px;
+  height: 90%;
   color: white;
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
   box-sizing: border-box;
@@ -51,7 +51,7 @@
   height: auto;
   top: 10%;
   left: 20%;
-  padding: 5%;
+  padding: 2% 5%;
   font-size: 2vw;
   font-weight: bold;
   color: black;
@@ -203,9 +203,12 @@ a {
   color: rgb(80, 116, 172);
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1000px) {
   .right-sidebar{
     display: none;
+  }
+  .main {
+    grid-template-columns: 20% 80%;
   }
 }
 
