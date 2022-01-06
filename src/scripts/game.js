@@ -144,6 +144,12 @@ export default class Game {
     }
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
+
+    let text = 'Game Ended';
+    let offset = this.bunny.ctx.measureText(text).width;
+    this.bunny.ctx.fillStyle = 'black';
+    this.bunny.ctx.font = '30px sans-serif';
+    this.bunny.ctx.fillText(text, 500-(offset/2), 425);
   }
   
   runLesson(){
