@@ -83,8 +83,12 @@ button {
   text-align: left;
 }
 
+.right-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 .left-sidebar{
-  width: 90%;
+  width: 80%;
   justify-content: space-around;
   font-size: 25px;;
 }
@@ -188,7 +192,6 @@ canvas {
 
 #info-learned {
   list-style-position: inside;
-  /* list-style-image: url('../src/images/brown/brown_happy.PNG'); */
 }
 
 @media screen and (max-width: 1500px) {
@@ -200,15 +203,10 @@ canvas {
 .credits {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 10px;
 }
 
 .hidden {
   display: none;
 }
 
-/* canvas {
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-} */

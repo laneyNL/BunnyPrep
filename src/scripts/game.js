@@ -144,7 +144,7 @@ export default class Game {
     const popup = document.getElementById('popup');
     popup.classList = 'flex';
 
-    let text = 'Game Ended';
+    let text = 'Game End';
     let offset = this.bunny.ctx.measureText(text).width;
     this.bunny.ctx.fillStyle = 'black';
     this.bunny.ctx.font = '30px sans-serif';
@@ -180,7 +180,7 @@ export default class Game {
       friendColor = colors[Math.floor(Math.random() * colors.length)];
     }
     this.friend = new Bunny(name, friendColor, this.canvas, this, true, this.bunny, 200, 250);
-    this.bunny.name += ` and ${this.friend.name}`;
+    this.bunny.name += `<br><br>and<br><br>${this.friend.name}`;
     let nameHeading = document.getElementById('name-heading');
     nameHeading.innerText = 'Names:'
   }
