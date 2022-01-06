@@ -231,3 +231,10 @@ input[type=text] {
   border-radius: 10px;
   padding: 5px;
 }
+
+#foster-button, .foster-bunny {
+  border-radius: 40px;
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+} 

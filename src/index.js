@@ -23,4 +23,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   displayCredit.onclick = () => {
     credits.classList.toggle('hidden');
   }
+  const fosterButton = document.getElementById('foster-button');
+  const foster = document.getElementById('foster');
+
+  fosterButton.onclick = () => {
+    foster.classList.toggle('hidden');
+  }
 });
