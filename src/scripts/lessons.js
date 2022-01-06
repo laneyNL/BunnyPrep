@@ -33,7 +33,7 @@ export default class Lesson {
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
     this.taskBar = `Move ${this.name} to the litterbox.`;
     this.game.info.push(`<i class="far fa-star"></i> Bunnies can be trained to use the litterbox just like cats.`)
-    this.info = `Putting hay in the litter box can help litter train the bunny.`;
+    this.info = `Putting hay in the litter box can help litter train your bunny.`;
     this.target = 'litter box';
   }
   
@@ -41,7 +41,7 @@ export default class Lesson {
   lesson1() {
     this.game.question.innerHTML = `You have moved ${this.name} to the litter box! <br>Bunnies eat hay all day. Keep an eye on the hay pile and refill it often. Each refill will cost $5. ${this.name} will lose hearts if the hay is gone. <br>Try clicking 'Add Hay' button.`;
     this.game.form.innerHTML = `<input type="submit" value='Continue'>`;
-    this.taskBar = `Click on the 'Add Hay' button to refill the rabbit's hay.`;
+    this.taskBar = `Click on the 'Add Hay' button to refill the bunny's hay.`;
     this.info = `Bunnies need to have access to hay 24/7. This should be the main part of their diet.`;
     this.target = '';
     const addHay = document.getElementById('add-hay');

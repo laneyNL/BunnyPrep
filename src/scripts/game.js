@@ -16,7 +16,7 @@ export default class Game {
   }
 
   welcomeMessage() {
-    const welcome = "Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. You will loss the game if your bunnie's happiness or the budget reaches 0. <br>To begin, please choose which bunny you would like to adopt:"
+    const welcome = "Welcome to Bunny Prep! <br><br>This game will help you learn how to care for a bunny or rabbit. You will be assigned tasks and your goal is to keep your bunny happy and healthy. You will lose the game if your bunny's happiness or the budget reaches 0. <br>To begin, please choose which bunny you would like to adopt:"
     this.question.innerHTML = welcome;
     this.createBunny = this.createBunny.bind(this);
     this.form.addEventListener('submit', this.createBunny);
@@ -30,8 +30,7 @@ export default class Game {
       if (event.target.classList.value === 'adOrSp') this.adoptOrSpay();
     };
     const addHay = document.getElementById('add-hay');
-    console.log(popup.classList.value);
-    addHay.disabled = popup.classList.value === 'flex hidden' ? false : true;
+    addHay.disabled = this.isFormHidden() ? false : true;
   }
   
   createBunny(event) {
@@ -61,17 +60,24 @@ export default class Game {
     this.bunny.drawBunny();
     this.lesson.displayLessons();
 
-    if (this.lesson.target === 'dropping') {
-        this.checkDroppingCollision();
-    } else if (this.lesson.target === 'baby') {
-      this.checkBabyCollision();
-    } else if (this.lesson.target === 'friend') {
-      if (this.bunny.isCollidedWith(this.friend)) this.lesson.lessonComplete();
-    } else if (this.lesson.target) {
-      this.checkFurnitureCollision();
+    if (this.isFormHidden()) {
+      if (this.lesson.target === 'dropping') {
+          this.checkDroppingCollision();
+      } else if (this.lesson.target === 'baby') {
+        this.checkBabyCollision();
+      } else if (this.lesson.target === 'friend') {
+        if (this.bunny.isCollidedWith(this.friend)) this.lesson.lessonComplete();
+      } else if (this.lesson.target) {
+        this.checkFurnitureCollision();
+      }
     }
 
     this.isGameOver() ? this.endGame() : window.requestAnimationFrame(this.runGame.bind(this));
+  }
+
+  isFormHidden() {
+    const popup = document.getElementById('popup');
+    return popup.classList.value === 'flex hidden' ? true : false;
   }
 
   radioInput() {
@@ -95,11 +101,7 @@ export default class Game {
   checkFurnitureCollision() {
     this.room.furnishings.forEach(furniture => {
       if (this.bunny.isCollidedWith(furniture) && furniture.name === this.lesson.target) {
-        if (this.lesson.target === 'food-bowl' && this.checkboxInput().length) {
           this.lesson.lessonComplete();
-        } else if (this.lesson.target !== 'food-bowl') {
-          this.lesson.lessonComplete();
-        }
       }
     })
   }
@@ -136,7 +138,7 @@ export default class Game {
     } else if (this.budget <= 0) {
       this.question.innerHTML = `Your budget has reached $0. You have lost the game.`
     } else if (this.babyBuns.length){
-      this.question.innerHTML = `You have let your rabbit population get out of hand. You have lost the game.`
+      this.question.innerHTML = `You have let your bunny population get out of hand. You have lost the game.`
     } else if (this.bunny.happyMeter <= 0) {
       this.question.innerHTML = `${this.bunny.name}'s happiness has reached 0. You have lost the game.`
     }
