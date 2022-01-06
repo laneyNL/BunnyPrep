@@ -12,7 +12,7 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.vel = [-2, 1]
+    this.vel = [-1, 1]
     this.newPos = [];
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
