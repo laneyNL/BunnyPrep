@@ -17,10 +17,14 @@ In addition, this project will include:
   <ul>
     <li>A rabbit happiness gauge that will change based on the user's actions.</li>
     <li>A budget to emphasize the monetary commitments of owning a rabbit.</li>
-    <li>A sidebar with care tips related to tasks through the game.</li>
+    <li>A scrollable sidebar with care tips related to tasks through the game.</li>
     <li>Dropdown links with resources for learning more about bunny care.</li>
     <li>Mutable music.</li>
-    <li>Information button that shows/hides credit information when clicked. </li>
+    <li>Information and bunny icons that shows/hides information when clicked. </li>
+    <li>Resizable browser that will hide care tips for small screens.</li>
+    <li>Cursor input that calculations new offsets and canvas size to accurately move the bunny.</li>
+    <li>Background drawn with canvas code.</li>
+    <li>Auto decremting hay to simiulate bunny eating.</li>
   </ul>
 
 <h2>Wireframes</h2>
