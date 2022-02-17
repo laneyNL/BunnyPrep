@@ -12,7 +12,7 @@ export default class Bunny extends ConnectingObject {
     this.game = game;
     this.happyMeter = 5;
     this.keys = {};
-    this.vel = [-1, 1]
+    this.vel = [-2, 2]
     this.newPos = [];
     this.isFriend = isFriend;
     this.isFriend ? this.loadFriend() : this.loadBunny();
@@ -29,7 +29,7 @@ export default class Bunny extends ConnectingObject {
     
     this.moveBunnyListener();
     this.displayBunnyInfo();
-    this.hopVel = 5;
+    this.hopVel = 4;
     this.isHopping = true;
     this.resetisHopping();
   }
@@ -90,8 +90,13 @@ export default class Bunny extends ConnectingObject {
           let newY = Math.floor(event.pageY - offset.top - (this.height / 2));
           let newCanvasWidth = offset.right - offset.left;
           let scaleCanvas = 1000/newCanvasWidth;
+          
+          let scaledX = Math.floor(newX * scaleCanvas);
+          let scaledY = Math.floor(newY * scaleCanvas);
 
-          this.newPos = [Math.floor(newX * scaleCanvas), Math.floor(newY *scaleCanvas)];
+          let evenX = scaledX % 2 === 0 ? scaledX : scaledX - 1;
+          let evenY = scaledY % 2 === 0 ? scaledY : scaledY - 1;
+          this.newPos = [ evenX, evenY];
         }
       }
     })
@@ -135,6 +140,7 @@ export default class Bunny extends ConnectingObject {
     }
     this.left = this.right = this.down = this.up = false;
     this.wrapXY();
+
   }
 
   isMoving() {
@@ -151,7 +157,7 @@ export default class Bunny extends ConnectingObject {
     if (this.x + this.width >= this.maxWidth) this.x = Math.floor(this.maxWidth - this.width);
     if (this.x < 0) this.x = 0;
     if (this.x + (this.width)> 500) {
-      let minY = Math.floor(Math.abs((this.x / 2) - 70)) - (this.height/2);
+      let minY = Math.floor(Math.abs((this.x / 2) - 70) - (this.height/2));
       let maxY = Math.floor(Math.abs((-this.x/2) + 765));
       if (this.y < minY) {
         this.y = minY;
@@ -167,16 +173,18 @@ export default class Bunny extends ConnectingObject {
       let minY = Math.floor(Math.abs((-this.x/2) + 430));
       let maxY = Math.floor(Math.abs((this.x / 2) + 355));
       if (this.y + this.height < minY) {
-        this.y = minY - this.height;
+        this.y = Math.floor(minY - this.height);
         if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
       }
       if (this.y +(this.height/2)> maxY) {
-        this.y = maxY - (this.height / 2);
+        this.y = Math.floor(maxY - (this.height / 2));
         if (this.isFriend) this.vel[0] = -this.vel[0];
         if (this.isFriend) this.y -= Math.floor(Math.random() * 10);
       }
     }
+    this.y = this.y % 2 === 0 ? this.y : this.y -1;
+    this.x = this.x % 2 === 0 ? this.x : this.x -1;
 
   }
   
@@ -240,7 +248,7 @@ export default class Bunny extends ConnectingObject {
     this.friendImg = document.getElementById(`${this.color}-${this.emotion()}`);
     this.width = this.friendImg.width / 8;
     this.height = this.friendImg.height / 8;
-    this.vel = [-5,5];
+    this.vel = [-6,6];
     setInterval(() => {
       this.x += this.vel[0];
       this.y += this.vel[1];
@@ -249,7 +257,7 @@ export default class Bunny extends ConnectingObject {
     }, 500);
     const EMOTIONS = ['happy', 'sad', 'mad'];
     this.randEmotion = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
-    const VELS = [-30, -20, -10, -8, -5, -3, -4, 3, 5, 7, 10, 12, 20, 30];
+    const VELS = [-40, -30, -20, -10, -8, -6, 6, 8, 10, 12, 20, 30, 40, 50];
     if (this.name === 'baby') this.vel = [VELS[Math.floor(Math.random() * VELS.length)], VELS[Math.floor(Math.random() * VELS.length)]];
   }
 
