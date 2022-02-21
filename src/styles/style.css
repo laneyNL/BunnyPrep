@@ -254,8 +254,14 @@ input[type=text] {
 }
 
 #foster-button, .foster-bunny {
-  border-radius: 40px;
+  border-radius: 50%;
   height: 40px;
-  width: auto;
+  width: 40px;
   vertical-align: middle;
+  object-fit: cover;
 } 
+
+
+.rabbit-haven-link:hover {
+  color: #91A7B2;
+}
